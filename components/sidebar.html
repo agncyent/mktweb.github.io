@@ -12,7 +12,7 @@
         <li><a href="members.html"><i class="fas fa-users"></i> <span>Member</span></a></li>
         <li><a href="release.html"><i class="fas fa-compact-disc"></i> <span>Release</span></a></li>
         
-        <hr style="opacity:0.1; margin:20px 0;">
+        <hr style="opacity:0.1; margin:20px 0; border: none; border-top: 1px solid #eee;">
         
         <li><a href="upgrade.html" class="fc-link"><i class="fas fa-heart"></i> <span>Fanclub</span></a></li>
         <li>
@@ -25,27 +25,32 @@
 </div>
 
 <style>
-/* SIDEBAR POSISI KIRI */
+/* SIDEBAR FIX POSISI KANAN */
 .sidebar {
     position: fixed;
     top: 0;
-    left: -280px; /* Sembunyi di kiri luar layar */
+    /* Kita matikan kiri, pindah ke kanan */
+    right: -280px; 
+    left: auto !important; 
+    
     width: 280px;
     height: 100%;
     background: #ffffff;
-    border-right: 3px solid #AAF0D1;
+    /* Border sekarang di sisi kiri sidebar */
+    border-left: 3px solid #AAF0D1; 
     z-index: 2000;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 25px 20px;
     overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
 }
 
-/* Aktif = Geser ke posisi 0 */
+/* Aktif = Masuk dari kanan ke posisi 0 */
 .sidebar.active {
-    left: 0;
+    right: 0 !important;
+    left: auto !important;
 }
 
-/* Logo di Sidebar biar gak kegedean */
 .sidebar-logo {
     text-align: center;
     margin-bottom: 30px;
@@ -53,11 +58,10 @@
 }
 
 .sidebar-logo img {
-    width: 140px; /* Ukuran proporsional sesuai feedback */
+    width: 140px;
     height: auto;
 }
 
-/* List Menu */
 #menuList {
     list-style: none;
     padding: 0;
@@ -86,19 +90,18 @@
 }
 
 #menuList li a:hover {
-    background: #AAF0D1;
-    color: #ffffff;
+    background: #f0fff9;
+    color: #4db6ac;
 }
 
 #menuList li a:hover i {
-    color: #ffffff;
+    color: #4db6ac;
 }
 
 .fc-link {
     color: #4db6ac !important;
 }
 
-/* Overlay Background */
 .overlay {
     position: fixed;
     top: 0;
@@ -108,6 +111,7 @@
     background: rgba(0, 0, 0, 0.5);
     display: none;
     z-index: 1500;
+    backdrop-filter: blur(2px);
 }
 
 .overlay.active {
