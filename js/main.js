@@ -1,47 +1,77 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // 1. FUNGSI PANGGIL NAVBAR & FOOTER (SATSET!)
-    // Script ini otomatis deteksi apakah file ada di folder luar atau di dalam folder /members
-    const isSubFolder = window.location.pathname.includes('/members/');
-    const prefix = isSubFolder ? '../' : '';
+    // 1. DETEKSI LOKASI FOLDER (Root atau /members)
+    const isSub = window.location.pathname.includes('/members/');
+    const prefix = isSub ? '../' : '';
 
-    // Panggil Navbar
-    const navPlaceholder = document.getElementById('navbar-placeholder');
-    if (navPlaceholder) {
-        fetch(prefix + 'components/navbar.html')
-            .then(res => res.text())
-            .then(data => {
-                navPlaceholder.innerHTML = data;
-            })
-            .catch(err => console.error("Gagal ambil navbar:", err));
-    }
+    // 2. AMBIL NAVBAR DAN SIDEBAR (Berurutan)
+    fetch(prefix + 'components/navbar.html')
+        .then(res => res.text())
+        .then(navData => {
+            document.getElementById('navbar-placeholder').innerHTML = navData;
+            return fetch(prefix + 'components/sidebar.html');
+        })
+        .then(res => res.text())
+        .then(sideData => {
+            document.getElementById('sidebar-placeholder').innerHTML = sideData;
+            // Jalankan semua logika setelah elemen HTML berhasil ditempel
+            initMKT4XLogic();
+        })
+        .catch(err => console.error("Gagal memuat komponen:", err));
 
-    // Panggil Footer
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-    if (footerPlaceholder) {
-        fetch(prefix + 'components/footer.html')
-            .then(res => res.text())
-            .then(data => {
-                footerPlaceholder.innerHTML = data;
-            });
-    }
+    // 3. SEMUA LOGIKA UTAMA (Sidebar, Language, Slider)
+    function initMKT4XLogic() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const menuBtn = document.getElementById('menuBtn');
+        const langSelect = document.getElementById('langSelect');
 
-    // 2. FUNGSI HERO SLIDER (GESER OTOMATIS 8 FOTO)
-    const slides = document.querySelectorAll('.slide');
-    if (slides.length > 0) {
-        let currentSlide = 0;
+        // --- Logika Sidebar ---
+        if (menuBtn && sidebar && overlay) {
+            menuBtn.onclick = () => {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+            };
 
-        function nextSlide() {
-            // Sembunyikan slide yang sekarang
-            slides[currentSlide].style.display = 'none';
-            // Pindah ke slide berikutnya (kalau sudah 8 balik ke 0)
-            currentSlide = (currentSlide + 1) % slides.length;
-            // Tampilkan slide baru
-            slides[currentSlide].style.display = 'block';
+            overlay.onclick = () => {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            };
         }
 
-        // Jalankan setiap 3 detik (3000ms)
-        setInterval(nextSlide, 3000);
+        // --- Logika Language Switcher ---
+        const dict = {
+            id: { news: "BERITA TERBARU", bday: "ULANG TAHUN", list: ["Home", "Berita", "Jadwal", "Member", "Setlist", "Fanclub", "Masuk"] },
+            en: { news: "LATEST NEWS", bday: "BIRTHDAY", list: ["Home", "News", "Schedule", "Member", "Setlist", "Fanclub", "Login"] },
+            jp: { news: "最新ニュース", bday: "誕生日", list: ["ホーム", "ニュース", "スケジュール", "メンバー", "セットリスト", "ファンクラブ", "ログイン"] },
+            my: { news: "BERITA TERKINI", bday: "HARI JADI", list: ["Utama", "Berita", "Jadual", "Ahli", "Senarai Lagu", "Kelab Peminat", "Log Masuk"] }
+        };
+
+        if (langSelect) {
+            langSelect.addEventListener('change', function() {
+                const l = this.value;
+                // Update Judul di Index (Pastikan ID ini ada di index.html)
+                const newsTitle = document.getElementById('newsTitle');
+                const bdayTitle = document.getElementById('bdayTitle');
+                if (newsTitle) newsTitle.innerText = dict[l].news;
+                if (bdayTitle) bdayTitle.innerText = dict[l].bday;
+
+                // Update Menu Sidebar
+                const spans = document.querySelectorAll('#menuList span');
+                dict[l].list.forEach((teks, i) => {
+                    if (spans[i]) spans[i].innerText = teks;
+                });
+            });
+        }
+
+        // --- Logika Hero Slider (8 Foto) ---
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length > 0) {
+            let current = 0;
+            setInterval(() => {
+                slides[current].style.display = 'none';
+                current = (current + 1) % slides.length;
+                slides[current].style.display = 'block';
+            }, 3000);
+        }
     }
 });
-
