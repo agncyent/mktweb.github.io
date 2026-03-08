@@ -1,192 +1,173 @@
 /* ==========================================================
-   CSS KHUSUS MKT4X - TEMA PAPERMINT (BNK48 STYLE READY)
+   CSS KHUSUS MKT4X - TEMA PAPERMINT SOLID (BNK48 PRECISE)
    Programmer: Gemini | Designer: Lu
    ========================================================== */
 
 :root {
-    --papermint: #AAF0D1;
-    --papermint-dark: #4db6ac;
-    --papermint-soft: #f0fff9;
-    --text-dark: #333;
+    --papermint: #2BCBBA; /* Hijau Mint yang lebih solid & tajam */
+    --papermint-dark: #0fb9b1; 
+    --papermint-soft: #e0faf7;
+    --text-dark: #2d3436;
+    --text-gray: #636e72;
     --white: #ffffff;
-    --gray-light: #f4f4f4;
-    --shadow: rgba(92, 214, 192, 0.3);
+    --border-color: #f1f2f6;
+    --shadow: rgba(43, 203, 186, 0.2);
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* RESET & DASAR */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--white);
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.5;
     overflow-x: hidden;
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 15px;
 }
 
-/* 1. NAVBAR STYLING */
+/* 1. NAVBAR (STIKY & TAJAM) */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 12px 20px;
     background: #fff;
-    border-bottom: 4px solid var(--papermint);
+    border-bottom: 5px solid var(--papermint);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-.logo img { height: 35px; }
-
-/* 2. SIDEBAR (FIXED KANAN TOTAL) */
-#sidebar {
-    position: fixed;
-    top: 0;
-    right: -280px; 
-    left: auto !important; 
-    width: 280px;
-    height: 100%;
-    background: var(--white);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    transition: 0.3s ease-in-out;
-    z-index: 2000;
-    padding: 25px;
-}
-
-#sidebar.active {
-    right: 0 !important; 
-    left: auto !important;
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    z-index: 1500;
-}
-
-#overlay.active { display: block; }
-
-/* 3. HERO SLIDER RAMPING */
+/* 2. HERO SLIDER (CINEMATIC) */
 .hero-container {
     width: 100%;
-    position: relative;
-    overflow: hidden;
-    background: var(--gray-light);
+    background: #f9f9f9;
 }
 
 .slide {
     width: 100%;
-    display: block;
     height: auto;
-    aspect-ratio: 16 / 7; /* Lebih ramping ala BNK48 */
+    aspect-ratio: 16 / 7;
     object-fit: cover;
+    display: block;
 }
 
-/* 4. SECTION HEADER ALA BNK48 */
+/* 3. SECTION HEADER (ALA BNK48 - GARIS TEGAS) */
+.section-spacing { padding: 50px 0; }
+
 .section-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--papermint);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    align-items: flex-end;
+    border-bottom: 3px solid var(--papermint);
+    padding-bottom: 8px;
+    margin-bottom: 25px;
 }
 
 .section-header h2 {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 800;
-    color: var(--papermint-dark);
+    color: var(--text-dark);
     text-transform: uppercase;
+    line-height: 1;
 }
 
 .view-more {
-    background: var(--papermint-dark);
-    color: #fff;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 10px;
+    color: var(--papermint-dark);
+    font-size: 12px;
     font-weight: 800;
     text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
 
-/* 5. NEWS CARD (THUMBNAIL STYLE) */
+.view-more:hover { color: var(--text-dark); }
+
+/* 4. NEWS CARD (THUMBNAIL LIST) */
 .news-card {
     display: flex;
-    gap: 15px;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: 0.2s;
 }
 
-.news-img img {
-    width: 110px;
-    height: 75px;
-    object-fit: cover;
-    border-radius: 5px;
+.news-card:hover { background: var(--papermint-soft); }
+
+.news-img {
+    flex-shrink: 0;
+    width: 140px;
+    height: 90px;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.news-content { flex: 1; }
-.news-tags { display: flex; gap: 8px; margin-bottom: 5px; }
-.news-label-red { color: #ff4757; font-weight: 800; font-size: 10px; }
-.news-title { 
-    text-decoration: none; 
-    color: var(--text-dark); 
-    font-weight: 700; 
-    font-size: 14px;
-    line-height: 1.3;
-    display: block;
+.news-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.news-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+.news-tags { margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }
+
+.tag-pm { background: var(--papermint); color: #fff; padding: 2px 8px; font-size: 10px; font-weight: 800; border-radius: 2px; }
+.news-label-red { color: #eb4d4b; font-weight: 800; font-size: 11px; }
+
+.news-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+    margin-bottom: 5px;
 }
 
-/* 6. SCHEDULE LIST (VERTICAL DATE) */
+.news-date-text { font-size: 12px; color: var(--text-gray); }
+
+/* 5. SCHEDULE LIST (VERTICAL BORDER) */
 .sch-card {
     display: flex;
-    border-bottom: 1px solid #eee;
-    padding: 15px 0;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
     align-items: center;
 }
 
 .sch-date {
-    min-width: 85px;
-    border-right: 3px solid var(--papermint);
-    margin-right: 20px;
+    min-width: 100px;
+    border-right: 4px solid var(--papermint);
+    margin-right: 25px;
+    text-align: left;
 }
 
-.sch-date .day { display: block; font-size: 18px; font-weight: 800; color: var(--text-dark); }
-.sch-date .year { font-size: 10px; color: #999; display: block; }
-.sch-info p { font-weight: 600; font-size: 14px; color: #444; }
+.sch-date .day { display: block; font-size: 22px; font-weight: 800; color: var(--text-dark); line-height: 1; }
+.sch-date .year { font-size: 11px; color: var(--text-gray); font-weight: 600; text-transform: uppercase; }
 
-/* 7. BIRTHDAY CARD */
+.sch-info p { font-size: 16px; font-weight: 600; color: var(--text-dark); }
+
+/* 6. BIRTHDAY CARD (CLEAN) */
 .birthday-card {
     display: flex;
     align-items: center;
-    gap: 25px;
-    padding: 20px;
-    border: 3px solid var(--papermint);
+    gap: 30px;
+    padding: 25px;
     background: var(--white);
-    border-radius: 12px;
-    margin-top: 20px;
+    border: 2px solid var(--border-color);
+    border-left: 8px solid var(--papermint);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow);
 }
 
-.birthday-card img { width: 100px; height: 130px; object-fit: cover; border-radius: 8px; }
+.birthday-card img { width: 110px; height: 140px; object-fit: cover; border-radius: 4px; }
 
-/* 8. RESPONSIVE */
+.bday-info h3 { font-size: 28px; color: var(--papermint-dark); margin: 5px 0; }
+
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    .news-img img { width: 90px; height: 60px; }
-    .sch-date { min-width: 70px; margin-right: 15px; }
-    .birthday-card { flex-direction: row; padding: 15px; }
+    .news-img { width: 100px; height: 70px; }
+    .news-title { font-size: 14px; }
+    .sch-date { min-width: 80px; margin-right: 15px; }
+    .sch-date .day { font-size: 18px; }
 }
