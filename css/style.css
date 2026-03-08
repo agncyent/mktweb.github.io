@@ -1,34 +1,35 @@
-/* ==========================================================
-   MKT4X PREMIUM - NAV & SIDEBAR AMAN (BNK48 STYLE)
-   ========================================================== */
-
+/* --- VARIABLE DASAR --- */
 :root {
-    --papermint: #00D2B4; /* Mint Solid & Jelas */
-    --papermint-dark: #00A38D;
-    --text-dark: #1a1a1a;
+    --papermint: #AAF0D1;
+    --papermint-dark: #88d4b3;
+    --text-dark: #333;
+    --light-gray: #f9f9f9;
     --white: #ffffff;
-    --border-soft: #f1f1f1;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
-.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--white);
+}
 
-/* --- 1. NAVBAR (TETEP PUNYA LU) --- */
+/* --- 1. NAVBAR (Punya Lu + Integrasi) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background: #fff;
-    border-bottom: 4px solid var(--papermint);
+    background: var(--white);
+    border-bottom: 4px solid var(--papermint); /* Garis bawah khas BNK48 */
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 .logo img { height: 35px; }
 
-/* --- 2. SIDEBAR (FIX KANAN TOTAL - TETEP PUNYA LU) --- */
+/* --- 2. SIDEBAR & OVERLAY (Punya Lu - Fix Kanan) --- */
 #sidebar {
     position: fixed;
     top: 0;
@@ -43,6 +44,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--white); color: v
     padding: 25px;
 }
 #sidebar.active { right: 0 !important; left: auto !important; }
+
 #overlay {
     position: fixed;
     top: 0;
@@ -55,44 +57,172 @@ body { font-family: 'Montserrat', sans-serif; background: var(--white); color: v
 }
 #overlay.active { display: block; }
 
-/* --- 3. BANNER RAMPING (ANTI BURIK) --- */
-.hero-section { width: 100%; background: #000; overflow: hidden; }
-.main-banner { width: 100%; height: auto; display: block; aspect-ratio: 16/7; object-fit: cover; }
+/* --- 3. SECTION STYLE (Gaya BNK48) --- */
+.bnk-section {
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.section-header { margin-bottom: 30px; }
+.section-title {
+    color: var(--papermint-dark);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin: 0;
+}
+.zigzag-line {
+    width: 80px;
+    height: 8px;
+    margin-top: 5px;
+    background: linear-gradient(135deg, transparent 25%, var(--papermint) 25%, var(--papermint) 50%, transparent 50%, transparent 75%, var(--papermint) 75%);
+    background-size: 12px 12px;
+}
 
-/* --- 4. NEWS & SCHEDULE HEADER (ALA BNK48) --- */
-.section-margin { padding: 40px 0; }
-.header-line {
+/* --- 4. HERO BANNER --- */
+.hero-banner {
+    padding: 20px 0;
+    text-align: center;
+    background: var(--white);
+}
+.banner-wrapper img {
+    width: 95%;
+    max-width: 1100px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* --- 5. BERITA / NEWS --- */
+.news-category-label {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
-    margin-bottom: 20px;
-    position: relative;
+    font-weight: bold;
+    color: #999;
 }
-.header-line::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 80px;
-    height: 4px;
+.view-more {
     background: var(--papermint);
+    color: #333;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 11px;
 }
-.header-line h2 { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
-.btn-more { font-size: 10px; font-weight: 800; color: #fff; background: var(--papermint); padding: 5px 15px; border-radius: 20px; text-decoration: none; }
+.news-item {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.news-thumb img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+.news-tag {
+    font-size: 10px;
+    border: 1px solid #ddd;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #777;
+}
+.news-badge { color: red; font-weight: bold; font-size: 12px; margin-left: 5px; }
+.news-title {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #333;
+    margin: 8px 0;
+}
+.news-date { font-size: 13px; color: #aaa; }
 
-/* --- 5. NEWS ITEM (LIST CARD) --- */
-.news-item { display: flex; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--border-soft); text-decoration: none; color: inherit; align-items: center; }
-.news-thumb { width: 120px; height: 75px; flex-shrink: 0; border-radius: 4px; overflow: hidden; background: #eee; }
-.news-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.label-new { color: #ff0000; font-weight: 800; font-size: 10px; font-style: italic; margin-left: 5px; }
-.news-headline { font-size: 14px; font-weight: 700; display: block; margin-bottom: 2px; }
-.news-date { font-size: 11px; color: #888; }
+/* --- 6. JADWAL / SCHEDULE --- */
+.schedule-bg { background-color: var(--light-gray); }
+.schedule-top-row { text-align: right; margin-bottom: 15px; }
+.view-more-alt {
+    background: var(--papermint-dark);
+    color: white;
+    padding: 6px 18px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.sch-row {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background: var(--white);
+    margin-bottom: 5px;
+}
+.sch-date {
+    width: 80px;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--papermint-dark);
+}
+.sch-date .day { font-size: 10px; color: #999; display: block; margin-top: -5px; }
+.sch-desc { font-weight: 600; padding-left: 20px; color: #444; }
 
-/* --- 6. SCHEDULE ITEM (ALA BNK48) --- */
-.sch-item { display: flex; padding: 15px 0; border-bottom: 1px solid var(--border-soft); align-items: center; }
-.sch-date-box { min-width: 90px; border-right: 4px solid var(--papermint); margin-right: 20px; padding-right: 10px; }
-.sch-day { display: block; font-size: 20px; font-weight: 900; line-height: 1; }
-.sch-year { font-size: 10px; color: #888; font-weight: 600; }
-.sch-detail p { font-size: 14px; font-weight: 700; color: #333; }
+/* --- 7. TEATER & ULANG TAHUN --- */
+.theater-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+.theater-banner { position: relative; }
+.theater-banner img { width: 100%; }
+.theater-status {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #ff4757;
+    color: white;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.theater-info { padding: 25px; text-align: center; }
+.btn-ticket {
+    display: inline-block;
+    background: var(--papermint);
+    padding: 12px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    color: #333;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+.btn-ticket:hover { background: var(--papermint-dark); transform: translateY(-3px); }
+
+.birthday-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.bday-photo {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border: 5px solid var(--papermint);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.bday-photo img { width: 100%; height: 100%; object-fit: cover; }
+.bday-date {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--papermint);
+    font-weight: 800;
+    font-size: 11px;
+    text-align: center;
+    padding: 3px 0;
+}
+.bday-name { margin-top: 15px; font-weight: 800; text-align: center; color: #555; }
