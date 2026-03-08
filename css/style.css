@@ -1,173 +1,141 @@
 /* ==========================================================
-   CSS KHUSUS MKT4X - TEMA PAPERMINT SOLID (BNK48 PRECISE)
-   Programmer: Gemini | Designer: Lu
+   MKT4X PREMIUM CSS - BNK48 INSPIRED (SOLID & BOLD)
    ========================================================== */
 
 :root {
-    --papermint: #2BCBBA; /* Hijau Mint yang lebih solid & tajam */
-    --papermint-dark: #0fb9b1; 
-    --papermint-soft: #e0faf7;
-    --text-dark: #2d3436;
-    --text-gray: #636e72;
-    --white: #ffffff;
-    --border-color: #f1f2f6;
-    --shadow: rgba(43, 203, 186, 0.2);
+    --papermint: #00D2B4; /* Mint yang Tajam & Solid */
+    --papermint-dark: #00A38D;
+    --border-bold: #333; /* Garis tegas ala BNK48 */
+    --text-main: #111;
+    --text-muted: #777;
+    --bg-gray: #f9f9f9;
 }
 
-/* RESET & DASAR */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--white);
-    color: var(--text-dark);
-    line-height: 1.5;
-    overflow-x: hidden;
+    background-color: #fff;
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
 
-/* 1. NAVBAR (STIKY & TAJAM) */
+/* NAVBAR - GARIS TEBAL DI BAWAH */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
+    padding: 15px 25px;
     background: #fff;
-    border-bottom: 5px solid var(--papermint);
+    border-bottom: 6px solid var(--papermint);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* 2. HERO SLIDER (CINEMATIC) */
-.hero-container {
-    width: 100%;
-    background: #f9f9f9;
-}
+/* HERO BANNER */
+.hero-container { width: 100%; overflow: hidden; }
+.slide { width: 100%; height: auto; aspect-ratio: 16 / 7; object-fit: cover; display: block; }
 
-.slide {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 7;
-    object-fit: cover;
-    display: block;
-}
-
-/* 3. SECTION HEADER (ALA BNK48 - GARIS TEGAS) */
-.section-spacing { padding: 50px 0; }
+/* SECTION HEADER - INI KUNCINYA */
+.section-spacing { padding: 40px 0; }
 
 .section-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    border-bottom: 3px solid var(--papermint);
-    padding-bottom: 8px;
-    margin-bottom: 25px;
+    align-items: center;
+    border-bottom: 2px solid #eee; /* Garis tipis panjang */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Garis warna di bawah judul doang */
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: var(--papermint);
 }
 
 .section-header h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
-    color: var(--text-dark);
     text-transform: uppercase;
-    line-height: 1;
+    letter-spacing: 1px;
 }
 
 .view-more {
-    color: var(--papermint-dark);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
+    color: #fff;
+    background: var(--papermint);
+    padding: 4px 12px;
+    border-radius: 20px;
     text-decoration: none;
-    letter-spacing: 1px;
     transition: 0.3s;
 }
 
-.view-more:hover { color: var(--text-dark); }
-
-/* 4. NEWS CARD (THUMBNAIL LIST) */
+/* NEWS CARD - LIST STYLE */
 .news-card {
     display: flex;
     gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border-color);
-    transition: 0.2s;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    text-decoration: none;
+    color: inherit;
 }
 
-.news-card:hover { background: var(--papermint-soft); }
-
-.news-img {
-    flex-shrink: 0;
-    width: 140px;
-    height: 90px;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
+.news-img { width: 140px; height: 85px; flex-shrink: 0; border-radius: 4px; overflow: hidden; }
 .news-img img { width: 100%; height: 100%; object-fit: cover; }
 
-.news-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.news-content { flex: 1; }
+.news-tags { margin-bottom: 5px; display: flex; gap: 8px; align-items: center; }
+.tag-pm { background: #333; color: #fff; font-size: 9px; padding: 2px 8px; font-weight: 800; }
+.news-label-red { color: #ff0000; font-weight: 800; font-size: 11px; font-style: italic; }
 
-.news-tags { margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }
+.news-title { font-size: 15px; font-weight: 700; display: block; margin-bottom: 4px; line-height: 1.3; }
+.news-date-text { font-size: 12px; color: var(--text-muted); }
 
-.tag-pm { background: var(--papermint); color: #fff; padding: 2px 8px; font-size: 10px; font-weight: 800; border-radius: 2px; }
-.news-label-red { color: #eb4d4b; font-weight: 800; font-size: 11px; }
-
-.news-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-dark);
-    text-decoration: none;
-    margin-bottom: 5px;
-}
-
-.news-date-text { font-size: 12px; color: var(--text-gray); }
-
-/* 5. SCHEDULE LIST (VERTICAL BORDER) */
+/* SCHEDULE LIST - VERTICAL BORDER */
 .sch-card {
     display: flex;
     padding: 20px 0;
-    border-bottom: 1px solid var(--border-color);
-    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .sch-date {
-    min-width: 100px;
+    min-width: 90px;
     border-right: 4px solid var(--papermint);
     margin-right: 25px;
-    text-align: left;
 }
 
-.sch-date .day { display: block; font-size: 22px; font-weight: 800; color: var(--text-dark); line-height: 1; }
-.sch-date .year { font-size: 11px; color: var(--text-gray); font-weight: 600; text-transform: uppercase; }
+.sch-date .day { display: block; font-size: 24px; font-weight: 800; line-height: 1; }
+.sch-date .year { font-size: 11px; color: var(--text-muted); font-weight: 600; }
 
-.sch-info p { font-size: 16px; font-weight: 600; color: var(--text-dark); }
+.sch-info p { font-size: 16px; font-weight: 600; color: #222; margin-top: 5px; }
 
-/* 6. BIRTHDAY CARD (CLEAN) */
+/* BIRTHDAY - CLEAN CARD */
 .birthday-card {
     display: flex;
     align-items: center;
-    gap: 30px;
-    padding: 25px;
-    background: var(--white);
-    border: 2px solid var(--border-color);
-    border-left: 8px solid var(--papermint);
-    border-radius: 8px;
-    box-shadow: 0 5px 15px var(--shadow);
+    gap: 25px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
 }
 
-.birthday-card img { width: 110px; height: 140px; object-fit: cover; border-radius: 4px; }
+.birthday-card img { width: 100px; height: 135px; object-fit: cover; border-radius: 5px; }
+.bday-info h3 { font-size: 26px; color: var(--papermint); margin: 5px 0; }
 
-.bday-info h3 { font-size: 28px; color: var(--papermint-dark); margin: 5px 0; }
-
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 @media (max-width: 768px) {
-    .news-img { width: 100px; height: 70px; }
-    .news-title { font-size: 14px; }
-    .sch-date { min-width: 80px; margin-right: 15px; }
-    .sch-date .day { font-size: 18px; }
+    .news-img { width: 110px; height: 70px; }
+    .sch-date { min-width: 75px; }
 }
