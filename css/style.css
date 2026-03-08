@@ -12,28 +12,30 @@ body {
     margin: 0;
     color: var(--text-dark);
     line-height: 1.6;
-    background-color: var(--white);
+    /* GANTI: Background utama sekarang Papermint Muda biar gak putih doang */
+    background-color: #f0fff8; 
+    overflow-x: hidden;
 }
 
-/* --- 1. NAVBAR (Punya Lu + Integrasi) --- */
+/* --- 1. NAVBAR --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background: var(--white);
-    border-bottom: 4px solid var(--papermint); /* Garis bawah khas BNK48 */
+    border-bottom: 4px solid var(--papermint);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 .logo img { height: 35px; }
 
-/* --- 2. SIDEBAR & OVERLAY (Punya Lu - Fix Kanan) --- */
+/* --- 2. SIDEBAR & OVERLAY (FIX: Nggak bakal muncul duluan) --- */
 #sidebar {
     position: fixed;
     top: 0;
-    right: -280px; 
+    right: -280px; /* Jarak aman di luar layar */
     left: auto !important; 
     width: 280px;
     height: 100%;
@@ -42,8 +44,14 @@ body {
     transition: 0.3s ease-in-out;
     z-index: 2000;
     padding: 25px;
+    /* Tambahan biar bener-bener tersembunyi */
+    visibility: hidden; 
 }
-#sidebar.active { right: 0 !important; left: auto !important; }
+#sidebar.active { 
+    right: 0 !important; 
+    left: auto !important; 
+    visibility: visible;
+}
 
 #overlay {
     position: fixed;
@@ -57,11 +65,14 @@ body {
 }
 #overlay.active { display: block; }
 
-/* --- 3. SECTION STYLE (Gaya BNK48) --- */
+/* --- 3. SECTION STYLE --- */
 .bnk-section {
     padding: 50px 20px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 20px auto;
+    background: var(--white); /* Section box tetep putih biar teks jelas */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 .section-header { margin-bottom: 30px; }
 .section-title {
@@ -83,7 +94,6 @@ body {
 .hero-banner {
     padding: 20px 0;
     text-align: center;
-    background: var(--white);
 }
 .banner-wrapper img {
     width: 95%;
@@ -97,18 +107,21 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+    /* WARNA: Label pake Papermint */
+    background: var(--papermint);
+    padding: 10px 15px;
+    border-radius: 8px;
     font-weight: bold;
-    color: #999;
+    color: var(--text-dark);
 }
 .view-more {
-    background: var(--papermint);
-    color: #333;
+    background: var(--white);
+    color: var(--text-dark);
     padding: 4px 12px;
     border-radius: 20px;
     text-decoration: none;
     font-size: 11px;
+    font-weight: bold;
 }
 .news-item {
     display: flex;
@@ -124,10 +137,11 @@ body {
 }
 .news-tag {
     font-size: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--papermint);
+    background: #f0fff8;
     padding: 2px 8px;
     border-radius: 4px;
-    color: #777;
+    color: var(--papermint-dark);
 }
 .news-badge { color: red; font-weight: bold; font-size: 12px; margin-left: 5px; }
 .news-title {
@@ -141,7 +155,7 @@ body {
 .news-date { font-size: 13px; color: #aaa; }
 
 /* --- 6. JADWAL / SCHEDULE --- */
-.schedule-bg { background-color: var(--light-gray); }
+.schedule-bg { background-color: #e6fdf3; } /* Papermint lebih gelap dikit */
 .schedule-top-row { text-align: right; margin-bottom: 15px; }
 .view-more-alt {
     background: var(--papermint-dark);
@@ -155,9 +169,10 @@ body {
 .sch-row {
     display: flex;
     padding: 15px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
     background: var(--white);
     margin-bottom: 5px;
+    border-radius: 8px;
 }
 .sch-date {
     width: 80px;
@@ -175,18 +190,6 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     overflow: hidden;
 }
-.theater-banner { position: relative; }
-.theater-banner img { width: 100%; }
-.theater-status {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #ff4757;
-    color: white;
-    padding: 5px 15px;
-    font-weight: bold;
-    border-radius: 4px;
-}
 .theater-info { padding: 25px; text-align: center; }
 .btn-ticket {
     display: inline-block;
@@ -197,9 +200,7 @@ body {
     font-weight: 800;
     color: #333;
     margin-top: 15px;
-    transition: 0.3s;
 }
-.btn-ticket:hover { background: var(--papermint-dark); transform: translateY(-3px); }
 
 .birthday-grid {
     display: flex;
@@ -226,3 +227,13 @@ body {
     padding: 3px 0;
 }
 .bday-name { margin-top: 15px; font-weight: 800; text-align: center; color: #555; }
+
+/* --- 8. TRANSLATE FIX --- */
+#google_translate_element {
+    margin-right: 15px;
+}
+.goog-te-gadget-simple {
+    border: 1px solid var(--papermint) !important;
+    border-radius: 5px !important;
+    padding: 2px 5px !important;
+}
