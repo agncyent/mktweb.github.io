@@ -4,7 +4,7 @@
     </div>
     <div class="nav-right">
         <div class="lang-container">
-            <i class="fas fa-globe"></i>
+            <i class="fas fa-globe" style="color: #000000 !important;"></i> 
             <select id="langSelect">
                 <option value="id">Indonesia</option>
                 <option value="en">English</option>
@@ -13,26 +13,77 @@
             </select>
         </div>
         <div class="menu-btn" id="menuBtn">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 </nav>
 
 <style>
+/* NAVBAR STYLING */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background: #fff;
-    border-bottom: 4px solid #AAF0D1;
+    background: #ffffff;
+    border-bottom: 4px solid #AAF0D1; 
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-.logo img { height: 40px; }
-.nav-right { display: flex; align-items: center; gap: 15px; }
-.menu-btn { cursor: pointer; display: flex; flex-direction: column; gap: 4px; }
-.menu-btn span { display: block; width: 25px; height: 3px; background: #4db6ac; transition: 0.3s; }
-</style>
 
+.logo img {
+    height: 35px;
+    width: auto;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f9f9f9;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #AAF0D1;
+}
+
+/* Style Globe Hitam */
+.lang-container i {
+    color: #000000; 
+    font-size: 16px;
+}
+
+#langSelect {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    color: #000000;
+}
+
+/* HAMBURGER MENU */
+.menu-btn {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #4db6ac; 
+    border-radius: 2px;
+}
+</style>
