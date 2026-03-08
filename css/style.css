@@ -1,5 +1,5 @@
 /* ==========================================================
-   CSS KHUSUS MKT4X - TEMA PAPERMINT (FIX FINAL)
+   CSS KHUSUS MKT4X - TEMA PAPERMINT (BNK48 STYLE READY)
    Programmer: Gemini | Designer: Lu
    ========================================================== */
 
@@ -48,22 +48,7 @@ body {
 
 .logo img { height: 35px; }
 
-.menu-btn {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.menu-btn span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: var(--papermint-dark);
-    border-radius: 2px;
-}
-
-/* 2. SIDEBAR (FIXED KANAN - ANTI GAGAL) */
+/* 2. SIDEBAR (FIXED KANAN TOTAL) */
 #sidebar {
     position: fixed;
     top: 0;
@@ -94,43 +79,9 @@ body {
     z-index: 1500;
 }
 
-#overlay.active {
-    display: block;
-}
+#overlay.active { display: block; }
 
-.sidebar-logo {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.sidebar-logo img {
-    width: 140px;
-    height: auto;
-}
-
-#menuList { list-style: none; }
-#menuList li a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px;
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-#menuList li a:hover {
-    background: var(--papermint);
-}
-
-#menuList li a i {
-    width: 20px;
-    color: var(--papermint-dark);
-}
-
-/* 3. HERO SLIDER */
+/* 3. HERO SLIDER RAMPING */
 .hero-container {
     width: 100%;
     position: relative;
@@ -142,195 +93,100 @@ body {
     width: 100%;
     display: block;
     height: auto;
-    aspect-ratio: 12 / 5;
+    aspect-ratio: 16 / 7; /* Lebih ramping ala BNK48 */
     object-fit: cover;
 }
 
-/* 4. NEWS SECTION (FIX JARAK BANNER) */
-.section-spacing { 
-    padding: 60px 0; /* Memberi ruang antara banner dan judul berita */
-}
-
-.title-center {
-    text-align: center;
-    color: var(--papermint-dark);
-    font-size: 26px;
-    font-weight: 800;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.news-list-home { border-top: 1px solid #eee; }
-.news-row {
-    padding: 18px 10px;
-    border-bottom: 1px dotted #ccc;
+/* 4. SECTION HEADER ALA BNK48 */
+.section-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
+    border-bottom: 2px solid var(--papermint);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.news-date { color: #888; font-size: 13px; min-width: 110px; }
-.news-link {
-    text-decoration: none;
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 800;
     color: var(--papermint-dark);
-    font-weight: 700;
-    flex: 1;
-}
-
-[class^="tag-"] {
-    font-size: 10px;
-    color: #fff;
-    padding: 3px 10px;
-    font-weight: bold;
-    border-radius: 3px;
     text-transform: uppercase;
 }
-.tag-pm { background: var(--papermint-dark); }
-.tag-info { background: #333; }
-.tag-event { background: #ff9800; }
-.tag-theater { background: #9b59b6; }
 
-/* 5. SCHEDULE & KALENDER */
-.calendar-card { 
-    background: #fff; 
-    max-width: 450px; 
-    width: 100%; 
-    border-radius: 30px; 
-    padding: 25px; 
-    box-shadow: 0 15px 35px var(--shadow); 
-    margin: 0 auto 25px; 
-    box-sizing: border-box; 
-    border: 3px solid var(--papermint);
+.view-more {
+    background: var(--papermint-dark);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    text-decoration: none;
 }
 
-.calendar-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    margin-bottom: 20px; 
+/* 5. NEWS CARD (THUMBNAIL STYLE) */
+.news-card {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
 }
 
-.nav-btns button { 
-    background: var(--papermint-soft); 
-    border: none; 
-    color: var(--papermint-dark); 
-    width: 35px; 
-    height: 35px; 
-    border-radius: 10px; 
-    cursor: pointer; 
-    font-weight: bold; 
+.news-img img {
+    width: 110px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-.days-grid { 
-    display: grid; 
-    grid-template-columns: repeat(7, 1fr); 
-    text-align: center; 
-    font-weight: 800; 
-    font-size: 0.75rem; 
-    color: var(--papermint-dark); 
-    margin-bottom: 15px; 
+.news-content { flex: 1; }
+.news-tags { display: flex; gap: 8px; margin-bottom: 5px; }
+.news-label-red { color: #ff4757; font-weight: 800; font-size: 10px; }
+.news-title { 
+    text-decoration: none; 
+    color: var(--text-dark); 
+    font-weight: 700; 
+    font-size: 14px;
+    line-height: 1.3;
+    display: block;
 }
 
-.dates-grid { 
-    display: grid; 
-    grid-template-columns: repeat(7, 1fr); 
-    gap: 8px; 
+/* 6. SCHEDULE LIST (VERTICAL DATE) */
+.sch-card {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    align-items: center;
 }
 
-.date-cell { 
-    aspect-ratio: 1; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-size: 0.9rem; 
-    font-weight: 600; 
-    border-radius: 12px; 
-    cursor: pointer; 
-    position: relative; 
-    transition: 0.2s;
+.sch-date {
+    min-width: 85px;
+    border-right: 3px solid var(--papermint);
+    margin-right: 20px;
 }
 
-.date-cell:hover { background: var(--papermint-soft); }
-.date-cell.today { background: var(--papermint-dark); color: white; }
+.sch-date .day { display: block; font-size: 18px; font-weight: 800; color: var(--text-dark); }
+.sch-date .year { font-size: 10px; color: #999; display: block; }
+.sch-info p { font-weight: 600; font-size: 14px; color: #444; }
 
-.date-cell.has-event::after { 
-    content: ''; 
-    width: 6px; 
-    height: 6px; 
-    background: #40c057; 
-    border-radius: 50%; 
-    position: absolute; 
-    bottom: 4px; 
-}
-
-.date-cell.active { 
-    border: 2px solid var(--papermint-dark); 
-    color: var(--papermint-dark); 
-}
-
-.info-card { 
-    background: #fff; 
-    max-width: 450px; 
-    width: 100%; 
-    border-radius: 20px; 
-    padding: 20px; 
-    box-shadow: 0 10px 20px var(--shadow); 
-    margin: 0 auto;
-    box-sizing: border-box; 
-}
-
-.info-card h4 { 
-    margin: 0 0 10px 0; 
-    border-bottom: 1px dashed var(--papermint-dark); 
-    padding-bottom: 5px; 
-}
-
-.event-item { display: flex; align-items: center; gap: 10px; font-weight: 600; margin-top: 10px; }
-.dot { width: 12px; height: 12px; border-radius: 50%; background: #40c057; }
-
-/* 6. BIRTHDAY & MEMBER GRID */
+/* 7. BIRTHDAY CARD */
 .birthday-card {
     display: flex;
     align-items: center;
     gap: 25px;
-    padding: 25px;
+    padding: 20px;
     border: 3px solid var(--papermint);
     background: var(--white);
-    margin-bottom: 40px;
-    border-radius: 8px;
+    border-radius: 12px;
+    margin-top: 20px;
 }
 
-.birthday-card img { width: 130px; height: 160px; object-fit: cover; border-radius: 6px; }
-
-.member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-/* 7. BUTTONS */
-.btn-check-all {
-    display: inline-block;
-    padding: 14px 70px;
-    border: 2px solid var(--papermint-dark);
-    border-radius: 35px;
-    text-decoration: none;
-    color: var(--papermint-dark);
-    font-weight: 800;
-    background: #fff;
-    transition: 0.3s;
-}
-
-.btn-check-all:hover {
-    background: var(--papermint-dark);
-    color: #fff;
-}
+.birthday-card img { width: 100px; height: 130px; object-fit: cover; border-radius: 8px; }
 
 /* 8. RESPONSIVE */
 @media (max-width: 768px) {
-    .section-spacing { padding: 40px 15px; }
-    .birthday-card { flex-direction: column; text-align: center; }
-    #sidebar { width: 260px; }
+    .news-img img { width: 90px; height: 60px; }
+    .sch-date { min-width: 70px; margin-right: 15px; }
+    .birthday-card { flex-direction: row; padding: 15px; }
 }
