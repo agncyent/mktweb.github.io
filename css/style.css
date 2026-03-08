@@ -289,3 +289,20 @@ body {
     .birthday-card { flex-direction: column; text-align: center; }
     #sidebar { width: 260px; }
 }
+
+/* --- PASTE INI DI style.css --- */
+.content-main { margin-top: 80px; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+.calendar-card { background: #fff; max-width: 450px; width: 100%; border-radius: 30px; padding: 25px; box-shadow: 0 15px 35px var(--shadow); margin-bottom: 25px; box-sizing: border-box; }
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.nav-btns button { background: var(--mint-soft); border: none; color: var(--mint-accent); width: 35px; height: 35px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+.days-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: 800; font-size: 0.7rem; color: var(--mint-accent); margin-bottom: 15px; }
+.dates-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+.date-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; border-radius: 12px; cursor: pointer; position: relative; }
+.date-cell:hover { background: var(--mint-soft); }
+.date-cell.today { background: var(--mint-accent); color: white; }
+.date-cell.has-event::after { content: ''; width: 6px; height: 6px; background: #40c057; border-radius: 50%; position: absolute; bottom: 4px; }
+.info-card { background: #fff; max-width: 450px; width: 100%; border-radius: 20px; padding: 20px; box-shadow: 0 10px 20px var(--shadow); box-sizing: border-box; }
+.info-card h4 { margin: 0 0 10px 0; border-bottom: 1px dashed var(--mint-primary); padding-bottom: 5px; }
+.event-item { display: flex; align-items: center; gap: 10px; font-weight: 600; margin-top: 10px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: #40c057; }
+
