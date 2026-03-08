@@ -1,21 +1,20 @@
 /* ==========================================================
-   1. NAVBAR & SIDEBAR (JANGAN DIUBAH)
-========================================================== */
+   MKT4X PREMIUM - NAV & SIDEBAR AMAN (BNK48 STYLE)
+   ========================================================== */
 
 :root {
-    --papermint: #00D2B4;
+    --papermint: #00D2B4; /* Mint Solid & Jelas */
     --papermint-dark: #00A38D;
     --text-dark: #1a1a1a;
     --white: #ffffff;
     --border-soft: #f1f1f1;
 }
 
-/* ===== GENERAL RESET ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
 .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-/* --- NAVBAR --- */
+/* --- 1. NAVBAR (TETEP PUNYA LU) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -29,12 +28,12 @@ body { font-family: 'Montserrat', sans-serif; background: var(--white); color: v
 }
 .logo img { height: 35px; }
 
-/* --- SIDEBAR --- */
+/* --- 2. SIDEBAR (FIX KANAN TOTAL - TETEP PUNYA LU) --- */
 #sidebar {
     position: fixed;
     top: 0;
-    right: -280px;
-    left: auto !important;
+    right: -280px; 
+    left: auto !important; 
     width: 280px;
     height: 100%;
     background: var(--white);
@@ -56,113 +55,44 @@ body { font-family: 'Montserrat', sans-serif; background: var(--white); color: v
 }
 #overlay.active { display: block; }
 
-/* ==========================================================
-   2. KONTEN UTAMA (HERO, NEWS, SCHEDULE, BIRTHDAY, FOOTER)
-   BNK48 Style + Papermint Theme
-========================================================== */
+/* --- 3. BANNER RAMPING (ANTI BURIK) --- */
+.hero-section { width: 100%; background: #000; overflow: hidden; }
+.main-banner { width: 100%; height: auto; display: block; aspect-ratio: 16/7; object-fit: cover; }
 
-/* HERO SLIDER */
-.hero-slider { position: relative; width: 100%; height: 500px; overflow: hidden; border-radius: 10px; margin-bottom: 60px; }
-.hero-slider .slides img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.6s ease-in-out; }
-.hero-slider .dots { position: absolute; bottom: 15px; width: 100%; text-align: center; }
-.hero-slider .dots span { display: inline-block; width: 12px; height: 12px; margin: 0 5px; background: rgba(255,255,255,0.6); border-radius: 50%; cursor: pointer; transition: 0.3s; }
-.hero-slider .dots span.active { background: var(--papermint); }
-
-/* SECTION TITLES */
-.section-title {
-    font-size: 24px;
-    font-weight: 900;
-    text-align: center;
-    color: var(--text-dark);
-    margin-bottom: 30px;
+/* --- 4. NEWS & SCHEDULE HEADER (ALA BNK48) --- */
+.section-margin { padding: 40px 0; }
+.header-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
     position: relative;
 }
-.section-title::after {
+.header-line::after {
     content: '';
-    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
     width: 80px;
     height: 4px;
     background: var(--papermint);
-    margin: 10px auto 0;
-    border-radius: 2px;
 }
+.header-line h2 { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+.btn-more { font-size: 10px; font-weight: 800; color: #fff; background: var(--papermint); padding: 5px 15px; border-radius: 20px; text-decoration: none; }
 
-/* NEWS GRID */
-.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.news-card {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.news-card .tag { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 800; border-radius: 12px; color: #fff; margin-bottom: 5px; }
-.news-card .tag.pm { background: #FF6B6B; }
-.news-card .tag.info { background: var(--papermint-dark); }
-.news-card .tag.event { background: #FFB400; }
-.news-card .tag.theater { background: #6C5CE7; }
-.news-card .date { font-size: 12px; color: #888; display: block; margin-bottom: 5px; }
-.news-card .news-link { font-weight: 700; font-size: 14px; text-decoration: none; color: var(--text-dark); }
-.news-card .news-link:hover { color: var(--papermint); }
+/* --- 5. NEWS ITEM (LIST CARD) --- */
+.news-item { display: flex; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--border-soft); text-decoration: none; color: inherit; align-items: center; }
+.news-thumb { width: 120px; height: 75px; flex-shrink: 0; border-radius: 4px; overflow: hidden; background: #eee; }
+.news-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.label-new { color: #ff0000; font-weight: 800; font-size: 10px; font-style: italic; margin-left: 5px; }
+.news-headline { font-size: 14px; font-weight: 700; display: block; margin-bottom: 2px; }
+.news-date { font-size: 11px; color: #888; }
 
-/* SCHEDULE */
-.schedule-section { background: #f9f9f9; padding: 50px 0; }
-.schedule-legend { margin-top: 20px; }
-.sch-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    border-bottom: 1px solid var(--border-soft);
-    transition: background 0.3s;
-}
-.sch-item:hover { background: rgba(0,210,180,0.05); border-left: 4px solid var(--papermint); }
-.sch-date-box { min-width: 100px; margin-right: 20px; text-align: center; }
-.sch-day { font-size: 20px; font-weight: 900; }
+/* --- 6. SCHEDULE ITEM (ALA BNK48) --- */
+.sch-item { display: flex; padding: 15px 0; border-bottom: 1px solid var(--border-soft); align-items: center; }
+.sch-date-box { min-width: 90px; border-right: 4px solid var(--papermint); margin-right: 20px; padding-right: 10px; }
+.sch-day { display: block; font-size: 20px; font-weight: 900; line-height: 1; }
 .sch-year { font-size: 10px; color: #888; font-weight: 600; }
 .sch-detail p { font-size: 14px; font-weight: 700; color: #333; }
-
-/* BIRTHDAY CARD */
-.birthday-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
-.birthday-card {
-    background: #f9f9f9;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    padding-bottom: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.birthday-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.birthday-card img { width: 100%; height: 180px; object-fit: cover; }
-.bd-info { padding: 10px; }
-.bd-tag { font-size: 10px; font-weight: 700; color: var(--papermint); }
-.bd-info h3 { font-size: 16px; font-weight: 900; margin: 5px 0; }
-.bd-info p { font-size: 13px; color: #888; }
-
-/* BUTTONS */
-.center-btn { text-align: center; margin-top: 20px; }
-.btn-check-all {
-    display: inline-block;
-    padding: 8px 20px;
-    font-weight: 800;
-    font-size: 12px;
-    background: var(--papermint);
-    color: #fff;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-.btn-check-all:hover { background: var(--papermint-dark); }
-
-/* FOOTER */
-.footer { background: var(--papermint); color: #fff; padding: 40px 20px; }
-.footer-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; }
-.footer-logo { height: 35px; margin-bottom: 15px; }
-.footer-right h4 { font-weight: 800; margin-bottom: 10px; }
-.footer-right .social-icons a {
-    display: inline-block;
-    margin-right: 10px;
-    color: #fff;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-.footer-right .social-icons a:hover { color: #000; }
