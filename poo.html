@@ -5,60 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MKT4X Official Website</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Include Navbar & Sidebar -->
     <div id="navbar-placeholder"></div>
     <div id="sidebar-placeholder"></div>
 
-    <section class="hero-section">
-        <div class="banner-container">
-            <img src="img/banner1.jpg" class="main-banner" alt="MKT4X Banner">
-        </div>
-    </section>
+    <main>
+        <!-- HERO / SLIDER -->
+        <section class="hero-slider">
+            <div class="slides">
+                <img src="https://i.imgur.com/D1Nu6SI.png" class="slide" onerror="this.src='https://via.placeholder.com/1200x500/AAF0D1/333?text=MKT4X+Banner+1'">
+                <img src="https://i.imgur.com/FmA7J4M.png" class="slide" style="display:none;">
+            </div>
+            <div class="dots" id="dots-container"></div>
+        </section>
 
-    <section class="container section-margin">
-        <div class="header-line">
-            <h2 id="newsTitle">NEWS</h2>
-            <a href="news.html" class="btn-more">VIEW MORE</a>
-        </div>
-        
-        <div class="news-wrapper">
-            <a href="#" class="news-item">
-                <div class="news-thumb">
-                    <img src="img/news/kiara-bday.jpg" alt="Kiara">
+        <!-- BERITA TERBARU -->
+        <section class="section news-section">
+            <h2 class="section-title">BERITA TERBARU</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <span class="tag pm">PM</span>
+                    <span class="date">8 Maret 2026</span>
+                    <a href="news/pm-update.html" class="news-link">Update Fitur Private Message AI Kiara MKT4X</a>
                 </div>
-                <div class="news-info">
-                    <div class="meta-tags">
-                        <span class="badge-pm">PM</span>
-                        <span class="label-new">NEW!</span>
-                    </div>
-                    <span class="news-headline">Update Fitur Private Message AI Kiara MKT4X</span>
-                    <span class="news-date">8 Mar 2026 | 14:00 WIB</span>
+                <div class="news-card">
+                    <span class="tag info">INFO</span>
+                    <span class="date">7 Maret 2026</span>
+                    <a href="upgrade.html" class="news-link">Cara Upgrade ke Premium Membership MKT4X</a>
                 </div>
-            </a>
-        </div>
-    </section>
-
-    <section class="container section-margin">
-        <div class="header-line">
-            <h2 id="schTitle">SCHEDULE</h2>
-            <a href="schedule.html" class="btn-more">VIEW MORE</a>
-        </div>
-
-        <div class="sch-wrapper">
-            <div class="sch-item">
-                <div class="sch-date-box">
-                    <span class="sch-day">10/03</span>
-                    <span class="sch-year">TUE/2026</span>
+                <div class="news-card">
+                    <span class="tag event">EVENT</span>
+                    <span class="date">6 Maret 2026</span>
+                    <a href="#" class="news-link">MKT4X First Handshake Event: Papermint Vibes</a>
                 </div>
-                <div class="sch-detail">
-                    <p>Release Single "Akhirnya Bertemu"</p>
+                <div class="news-card">
+                    <span class="tag theater">THEATER</span>
+                    <span class="date">5 Maret 2026</span>
+                    <a href="#" class="news-link">Jadwal Teater Minggu Ke-2 Maret 2026</a>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="center-btn">
+                <a href="news.html" class="btn-check-all">Check All »</a>
+            </div>
+        </section>
+
+        <!-- SCHEDULE / KALENDER -->
+        <section class="section schedule-section">
+            <h2 class="section-title">SCHEDULE</h2>
+            <div class="calendar-box" id="calendar-mini">
+                <div class="loading">Memuat Kalender...</div>
+            </div>
+            <div class="schedule-legend">
+                <div class="sch-item">🟢 10 Maret 2026 - Release Single "Akhirnya Bertemu"</div>
+                <div class="sch-item">🟢 15 Maret 2026 - MKT4X 1st Stage: Pajama Drive</div>
+            </div>
+            <div class="center-btn">
+                <a href="schedule.html" class="btn-check-all">Check All »</a>
+            </div>
+        </section>
+
+        <!-- ULANG TAHUN MEMBER -->
+        <section class="section birthday-section">
+            <h2 class="section-title">ULANG TAHUN</h2>
+            <div class="birthday-grid">
+                <div class="birthday-card">
+                    <img src="img/members/kiara.jpg" alt="Kiara" onerror="this.src='https://via.placeholder.com/150x150/AAF0D1/333?text=Kiara'">
+                    <div class="bd-info">
+                        <span class="bd-tag">[MKT4X]</span>
+                        <h3>Kiara</h3>
+                        <p>8 Maret 2010</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
 
     <script src="js/main.js"></script>
 </body>
