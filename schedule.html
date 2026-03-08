@@ -3,42 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule - MKT4X Official</title>
+    <title>Schedule - MKT4X</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="navbar-placeholder"></div>
     <div id="sidebar-placeholder"></div>
 
-    <main class="container section-spacing" style="margin-top: 80px;">
-        <h2 class="title-center" id="schTitle">SCHEDULE MKT4X</h2>
+    <main class="content-main">
+        <h1 id="txt-main-title">SCHEDULE MKT4X</h1>
         
-        <div class="schedule-page-wrapper">
-            <div id="calendar-mini" class="calendar-box">
-                <div style="text-align: center; padding: 40px; color: #888;">
-                    <i class="fas fa-spinner fa-spin"></i> Memuat Kalender...
+        <div class="calendar-card">
+            <div class="calendar-header">
+                <h2 id="monthYear"></h2>
+                <div class="nav-btns">
+                    <button onclick="prevMonth()"><i class="fas fa-chevron-left"></i></button>
+                    <button onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
+            <div class="days-grid" id="daysLabel">
+                <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+            </div>
+            <div class="dates-grid" id="datesGrid"></div>
+        </div>
 
-            <div class="event-details-box">
-                <h4 style="border-bottom: 2px solid var(--papermint); padding-bottom: 10px; margin-bottom: 15px;">
-                    Detail Jadwal
-                </h4>
-                <div id="eventDisplay">
-                    <div class="sch-item">
-                        <span class="tag-pm">PM</span> 
-                        <strong>8 Maret 2026</strong><br>
-                        Kiara Birthday - Private Message Special AI
-                    </div>
-                    <div class="sch-item">
-                        <span class="tag-theater">THEATER</span> 
-                        <strong>15 Maret 2026</strong><br>
-                        MKT4X 1st Stage: Pajama Drive
-                    </div>
-                </div>
+        <div class="info-card">
+            <h4 id="infoTitle">Detail Jadwal</h4>
+            <div id="eventDisplay">
+                <p id="infoPlaceholder" style="color:#888; font-size:0.8rem;">Klik tanggal untuk melihat jadwal.</p>
             </div>
         </div>
     </main>
