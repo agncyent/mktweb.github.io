@@ -110,7 +110,7 @@ body {
 .tag-theater { background: #9b59b6; }
 .tag-other { background: #7f8c8d; }
 
-/* 3. SCHEDULE SECTION */
+/* 3. SCHEDULE & INTERACTIVE CALENDAR */
 .schedule-container {
     background-color: var(--papermint-soft);
     padding: 60px 0;
@@ -119,15 +119,67 @@ body {
 .calendar-box {
     background: #fff;
     border: 3px solid var(--papermint);
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 25px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
 }
 
-.calendar-box img {
-    width: 100%;
-    height: auto;
-    display: block;
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.calendar-header h3 {
+    font-size: 18px;
+    color: var(--papermint-dark);
+    font-weight: 800;
+}
+
+.calendar-header button {
+    background: var(--papermint);
+    border: none;
+    color: var(--text-dark);
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.calendar-header button:hover {
+    background: var(--papermint-dark);
+    color: #fff;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-grid div {
+    padding: 10px 0;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.calendar-grid .day-name {
+    color: var(--papermint-dark);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.calendar-grid .active {
+    background: var(--papermint-dark);
+    color: #fff;
+    font-weight: 800;
 }
 
 .schedule-legend {
@@ -179,12 +231,7 @@ body {
     color: var(--text-dark);
 }
 
-.bd-text p {
-    color: #666;
-    font-weight: 500;
-}
-
-/* 5. MEMBER GRID (Untuk halaman members.html) */
+/* 5. MEMBER GRID (Persiapan 6 Member MKT4X) */
 .member-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -195,21 +242,24 @@ body {
 .member-card {
     background: #fff;
     border: 1px solid #eee;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
     transition: 0.3s;
+    border-radius: 8px;
 }
 
 .member-card:hover {
     border-color: var(--papermint);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
 }
 
 .member-card img {
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
 }
 
 /* 6. BUTTONS */
