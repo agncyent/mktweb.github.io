@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. CEK PATH (Biar link gak patah di GitHub Pages atau folder members)
     const isSub = window.location.pathname.includes('/members/');
     const prefix = isSub ? '../' : '';
 
-    // 2. LOAD KOMPONEN (NAVBAR & SIDEBAR)
     fetch(prefix + 'components/navbar.html')
         .then(res => res.text())
         .then(navHtml => {
@@ -13,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(res => res.text())
         .then(sideHtml => {
             document.getElementById('sidebar-placeholder').innerHTML = sideHtml;
-            startMKT4X(); // Jalankan semua fungsi setelah HTML nempel
+            startMKT4X(); 
         })
         .catch(err => console.error("Gagal muat komponen:", err));
 
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const menuBtn = document.getElementById('menuBtn');
         const langSelect = document.getElementById('langSelect');
 
-        // --- LOGIKA SIDEBAR (FIXED KANAN) ---
         if (menuBtn && sidebar && overlay) {
             menuBtn.onclick = () => { 
                 sidebar.classList.add('active'); 
@@ -35,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
             };
         }
 
-        // --- LOGIKA TRANSLATE 4 BAHASA (LENGKAP) ---
         const dict = {
             id: { 
                 news: "BERITA TERBARU", bday: "ULANG TAHUN", sch: "JADWAL", 
@@ -63,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         };
 
-        // Data Event MKT4X
         const events = { 
             "2026-03-08": "🎂 Kiara Birthday - Private Message Special AI", 
             "2026-03-10": "💿 Release Single 'Akhirnya Bertemu'",
@@ -72,8 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (langSelect) {
             langSelect.onchange = function() {
-                renderCalendar(currentCalDate.getFullYear(), currentCalDate.getMonth());
-                
                 const l = this.value;
                 if(document.getElementById('newsTitle')) document.getElementById('newsTitle').innerText = dict[l].news;
                 if(document.getElementById('bdayTitle')) document.getElementById('bdayTitle').innerText = dict[l].bday;
@@ -82,10 +75,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 const spans = document.querySelectorAll('#menuList span');
                 dict[l].list.forEach((t, i) => { if(spans[i]) spans[i].innerText = t; });
+
+                renderCalendar(currentCalDate.getFullYear(), currentCalDate.getMonth());
             };
         }
 
-        // --- LOGIKA SLIDER 8 FOTO ---
+        // SLIDER
         const slides = document.querySelectorAll('.slide');
         if (slides.length > 0) {
             let cur = 0;
@@ -96,31 +91,27 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 3000);
         }
 
-        // --- LOGIKA KALENDER INTERAKTIF ---
+        // KALENDER
         let currentCalDate = new Date(2026, 2); 
         
-        // Fungsi showEvent (Biar bisa diklik kayak web lama)
         window.showEvent = function(dateStr) {
             const display = document.getElementById('eventDisplay');
             if (!display) return;
             const lang = langSelect ? langSelect.value : 'id';
-            
-            if (events[dateStr]) {
-                display.innerHTML = `<div class="event-item"><span class="dot"></span> ${events[dateStr]}</div>`;
-            } else {
-                display.innerHTML = `<p id="infoPlaceholder" style="color:#888; font-size:0.8rem;">${dict[lang].placeholder}</p>`;
-            }
+            display.innerHTML = events[dateStr] ? 
+                `<div class="event-item"><span class="dot"></span> ${events[dateStr]}</div>` : 
+                `<p id="infoPlaceholder" style="color:#888; font-size:0.8rem;">${dict[lang].placeholder}</p>`;
         };
 
         function renderCalendar(year, month) {
             const container = document.getElementById('calendar-mini');
-            if (!container) return;
+            const datesGrid = document.getElementById('datesGrid'); // Untuk schedule.html
+            if (!container && !datesGrid) return;
 
             const lang = langSelect ? langSelect.value : 'id';
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const firstDay = new Date(year, month, 1).getDay();
             
-            // Nama Bulan Sesuai Bahasa
             const monthNames = {
                 id: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"],
                 en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -128,18 +119,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 my: ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"]
             };
 
-            let html = `
-                <div class="calendar-header">
-                    <button id="prevMonth">❮</button>
-                    <h3>${monthNames[lang][month]} ${year}</h3>
-                    <button id="nextMonth">❯</button>
-                </div>
-                <div class="days-grid">
-                    ${dict[lang].days.map(d => `<span>${d}</span>`).join('')}
-                </div>
-                <div class="dates-grid">
-            `;
+            // Update Header Bulan & Tahun
+            if(document.getElementById('monthYear')) {
+                document.getElementById('monthYear').innerText = `${monthNames[lang][month]} ${year}`;
+            }
 
+            // Update Label Hari (MIN, SEN, SEL...)
+            const daysLabel = document.getElementById('daysLabel');
+            if(daysLabel) {
+                daysLabel.innerHTML = dict[lang].days.map(d => `<span>${d}</span>`).join('');
+            }
+
+            let html = "";
             for (let i = 0; i < firstDay; i++) html += `<div></div>`;
 
             for (let d = 1; d <= daysInMonth; d++) {
@@ -151,18 +142,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 html += `<div class="date-cell ${hasEvent} ${isToday} ${isKiaraBday}" onclick="showEvent('${dateStr}')">${d}</div>`;
             }
 
-            html += `</div></div>`;
-            container.innerHTML = html;
+            // Masukkan ke Grid yang sesuai
+            if(datesGrid) {
+                datesGrid.innerHTML = html;
+            } else if (container) {
+                // Fallback untuk index.html jika strukturnya berbeda
+                container.querySelector('.dates-grid').innerHTML = html;
+            }
 
-            document.getElementById('prevMonth').onclick = () => {
+            // Button Navigasi
+            const btnPrev = document.getElementById('prevMonth');
+            const btnNext = document.getElementById('nextMonth');
+            if(btnPrev) btnPrev.onclick = () => {
                 currentCalDate.setMonth(currentCalDate.getMonth() - 1);
                 renderCalendar(currentCalDate.getFullYear(), currentCalDate.getMonth());
             };
-            document.getElementById('nextMonth').onclick = () => {
-                if (currentCalDate.getFullYear() < 2030) {
-                    currentCalDate.setMonth(currentCalDate.getMonth() + 1);
-                    renderCalendar(currentCalDate.getFullYear(), currentCalDate.getMonth());
-                }
+            if(btnNext) btnNext.onclick = () => {
+                currentCalDate.setMonth(currentCalDate.getMonth() + 1);
+                renderCalendar(currentCalDate.getFullYear(), currentCalDate.getMonth());
             };
         }
 
