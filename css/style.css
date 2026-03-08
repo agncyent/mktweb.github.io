@@ -1,5 +1,5 @@
 /* ==========================================================
-   CSS KHUSUS MKT4X - TEMA PAPERMINT (FIX KANAN TOTAL)
+   CSS KHUSUS MKT4X - TEMA PAPERMINT (FIX FINAL)
    Programmer: Gemini | Designer: Lu
    ========================================================== */
 
@@ -67,8 +67,8 @@ body {
 #sidebar {
     position: fixed;
     top: 0;
-    right: -280px; /* Sembunyi di kanan luar layar */
-    left: auto !important; /* Matikan semua tarikan kiri */
+    right: -280px; 
+    left: auto !important; 
     width: 280px;
     height: 100%;
     background: var(--white);
@@ -79,7 +79,7 @@ body {
 }
 
 #sidebar.active {
-    right: 0 !important; /* Muncul di posisi kanan layar */
+    right: 0 !important; 
     left: auto !important;
 }
 
@@ -146,8 +146,11 @@ body {
     object-fit: cover;
 }
 
-/* 4. NEWS SECTION */
-.section-spacing { padding: 40px 0; }
+/* 4. NEWS SECTION (FIX JARAK BANNER) */
+.section-spacing { 
+    padding: 60px 0; /* Memberi ruang antara banner dan judul berita */
+}
+
 .title-center {
     text-align: center;
     color: var(--papermint-dark);
@@ -189,14 +192,7 @@ body {
 .tag-event { background: #ff9800; }
 .tag-theater { background: #9b59b6; }
 
-/* 5. SCHEDULE & KALENDER (STYLE MINT-SOFT) */
-.content-main { 
-    margin-top: 20px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-}
-
+/* 5. SCHEDULE & KALENDER */
 .calendar-card { 
     background: #fff; 
     max-width: 450px; 
@@ -204,7 +200,7 @@ body {
     border-radius: 30px; 
     padding: 25px; 
     box-shadow: 0 15px 35px var(--shadow); 
-    margin-bottom: 25px; 
+    margin: 0 auto 25px; 
     box-sizing: border-box; 
     border: 3px solid var(--papermint);
 }
@@ -259,7 +255,6 @@ body {
 .date-cell:hover { background: var(--papermint-soft); }
 .date-cell.today { background: var(--papermint-dark); color: white; }
 
-/* Titik Hijau Jadwal sesuai Foto 3 */
 .date-cell.has-event::after { 
     content: ''; 
     width: 6px; 
@@ -270,7 +265,6 @@ body {
     bottom: 4px; 
 }
 
-/* Highlight Birthday Kiara */
 .date-cell.active { 
     border: 2px solid var(--papermint-dark); 
     color: var(--papermint-dark); 
@@ -283,6 +277,7 @@ body {
     border-radius: 20px; 
     padding: 20px; 
     box-shadow: 0 10px 20px var(--shadow); 
+    margin: 0 auto;
     box-sizing: border-box; 
 }
 
@@ -303,6 +298,7 @@ body {
     padding: 25px;
     border: 3px solid var(--papermint);
     background: var(--white);
+    margin-bottom: 40px;
     border-radius: 8px;
 }
 
@@ -334,6 +330,7 @@ body {
 
 /* 8. RESPONSIVE */
 @media (max-width: 768px) {
+    .section-spacing { padding: 40px 15px; }
     .birthday-card { flex-direction: column; text-align: center; }
     #sidebar { width: 260px; }
 }
