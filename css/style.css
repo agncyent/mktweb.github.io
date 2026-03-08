@@ -1,0 +1,174 @@
+/* CSS KHUSUS MKT4X - TEMA PAPERMINT */
+:root {
+    --papermint: #AAF0D1;
+    --papermint-dark: #4db6ac;
+    --papermint-soft: #f0fff9;
+    --text-dark: #333;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 1. HERO SLIDER */
+.hero-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #eee;
+}
+
+.slide {
+    width: 100%;
+    display: block;
+    height: auto;
+    aspect-ratio: 12 / 5;
+    object-fit: cover;
+}
+
+/* 2. NEWS SECTION */
+.title-center {
+    text-align: center;
+    color: var(--papermint-dark);
+    font-size: 24px;
+    font-weight: 800;
+    margin: 40px 0 20px;
+    letter-spacing: 1px;
+}
+
+.news-list-home {
+    border-top: 1px solid #eee;
+}
+
+.news-row {
+    padding: 15px 10px;
+    border-bottom: 1px dotted #ccc;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.news-date {
+    color: #888;
+    font-size: 13px;
+    min-width: 100px;
+}
+
+.news-link {
+    text-decoration: none;
+    color: var(--papermint-dark);
+    font-weight: 700;
+    flex: 1;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+}
+
+/* Tags ala JKT48 */
+[class^="tag-"] {
+    font-size: 10px;
+    color: #fff;
+    padding: 2px 8px;
+    font-weight: bold;
+    border-radius: 2px;
+}
+.tag-pm { background: #4db6ac; }
+.tag-info { background: #333; }
+.tag-event { background: #ff9800; }
+.tag-theater { background: #9b59b6; }
+
+/* 3. SCHEDULE SECTION */
+.schedule-container {
+    background-color: var(--papermint-soft);
+    padding: 50px 0;
+    margin-top: 40px;
+}
+
+.calendar-box {
+    background: #fff;
+    border: 2px solid var(--papermint);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.calendar-box img {
+    width: 100%;
+    height: auto;
+}
+
+.schedule-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sch-item {
+    background: #fff;
+    padding: 15px;
+    border-left: 6px solid var(--papermint-dark);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 4. BIRTHDAY SECTION */
+.birthday-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid var(--papermint);
+    background: var(--white);
+    margin-bottom: 50px;
+}
+
+.birthday-card img {
+    width: 120px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.bd-tag { color: var(--papermint-dark); font-weight: bold; font-size: 14px; }
+.bd-text h3 { font-size: 22px; margin: 5px 0; }
+
+/* 5. BUTTONS */
+.center-btn {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.btn-check-all {
+    display: inline-block;
+    padding: 12px 60px;
+    border: 2px solid var(--papermint-dark);
+    border-radius: 30px;
+    text-decoration: none;
+    color: var(--papermint-dark);
+    font-weight: 800;
+    transition: 0.3s ease;
+    background: #fff;
+}
+
+.btn-check-all:hover {
+    background: var(--papermint-dark);
+    color: #fff;
+  }
