@@ -1,0 +1,28 @@
+<div class="overlay" id="overlay"></div>
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+        <img src="https://i.imgur.com/yq2JRbl.png" alt="MKT4X Logo">
+    </div>
+    <ul id="menuList">
+        <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+        <li><a href="news.html"><i class="fas fa-newspaper"></i> <span>Berita</span></a></li>
+        <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> <span>Jadwal</span></a></li>
+        <li><a href="members.html"><i class="fas fa-users"></i> <span>Member</span></a></li>
+        <li><a href="release.html"><i class="fas fa-compact-disc"></i> <span>Release</span></a></li>
+        <hr style="opacity:0.1; margin:20px 0;">
+        <li><a href="upgrade.html" class="reg-link"><i class="fas fa-heart"></i> <span>Fanclub</span></a></li>
+        <li><a href="#" id="authBtn"><i class="fas fa-sign-in-alt"></i> <span id="authText">Masuk</span></a></li>
+    </ul>
+</div>
+
+<style>
+.sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #fff; border-right: 3px solid #AAF0D1; z-index: 2000; transition: 0.4s; padding: 20px; }
+.sidebar.active { left: 0; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; z-index: 1500; }
+.overlay.active { display: block; }
+#menuList { list-style: none; padding: 0; }
+#menuList li a { text-decoration: none; color: #333; font-weight: 700; display: flex; align-items: center; gap: 15px; padding: 12px; border-radius: 8px; }
+#menuList li a:hover { background: #AAF0D1; color: #fff; }
+.reg-link { color: #4db6ac !important; }
+</style>
+
