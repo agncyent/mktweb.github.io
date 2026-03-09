@@ -1,20 +1,7 @@
-/* --- VARIABLE DASAR --- */
-:root {
-    --papermint: #AAF0D1;
-    --papermint-dark: #88d4b3;
-    --text-dark: #333;
-    --light-gray: #f9f9f9;
-    --white: #ffffff;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    color: var(--text-dark);
-    line-height: 1.6;
-    /* GANTI: Background utama sekarang Papermint Muda biar gak putih doang */
-    background-color: #f0fff8; 
-    overflow-x: hidden;
+body{
+margin:0;
+font-family:sans-serif;
+background:#f1fffb;
 }
 
 /* --- 1. NAVBAR --- */
@@ -65,168 +52,117 @@ body {
 }
 #overlay.active { display: block; }
 
-/* --- 3. SECTION STYLE --- */
-.bnk-section {
-    padding: 50px 20px;
-    max-width: 1000px;
-    margin: 20px auto;
-    background: var(--white); /* Section box tetep putih biar teks jelas */
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-.section-header { margin-bottom: 30px; }
-.section-title {
-    color: var(--papermint-dark);
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin: 0;
-}
-.zigzag-line {
-    width: 80px;
-    height: 8px;
-    margin-top: 5px;
-    background: linear-gradient(135deg, transparent 25%, var(--papermint) 25%, var(--papermint) 50%, transparent 50%, transparent 75%, var(--papermint) 75%);
-    background-size: 12px 12px;
+/* HERO */
+
+.hero img{
+width:100%;
+display:block;
 }
 
-/* --- 4. HERO BANNER --- */
-.hero-banner {
-    padding: 20px 0;
-    text-align: center;
-}
-.banner-wrapper img {
-    width: 95%;
-    max-width: 1100px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+/* HEADER SECTION */
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
 }
 
-/* --- 5. BERITA / NEWS --- */
-.news-category-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* WARNA: Label pake Papermint */
-    background: var(--papermint);
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    color: var(--text-dark);
-}
-.view-more {
-    background: var(--white);
-    color: var(--text-dark);
-    padding: 4px 12px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: bold;
-}
-.news-item {
-    display: flex;
-    padding: 20px 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-.news-thumb img {
-    width: 80px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 20px;
-    border-radius: 4px;
-}
-.news-tag {
-    font-size: 10px;
-    border: 1px solid var(--papermint);
-    background: #f0fff8;
-    padding: 2px 8px;
-    border-radius: 4px;
-    color: var(--papermint-dark);
-}
-.news-badge { color: red; font-weight: bold; font-size: 12px; margin-left: 5px; }
-.news-title {
-    display: block;
-    font-size: 18px;
-    font-weight: 700;
-    text-decoration: none;
-    color: #333;
-    margin: 8px 0;
-}
-.news-date { font-size: 13px; color: #aaa; }
-
-/* --- 6. JADWAL / SCHEDULE --- */
-.schedule-bg { background-color: #e6fdf3; } /* Papermint lebih gelap dikit */
-.schedule-top-row { text-align: right; margin-bottom: 15px; }
-.view-more-alt {
-    background: var(--papermint-dark);
-    color: white;
-    padding: 6px 18px;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
-.sch-row {
-    display: flex;
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    background: var(--white);
-    margin-bottom: 5px;
-    border-radius: 8px;
-}
-.sch-date {
-    width: 80px;
-    font-weight: 800;
-    font-size: 20px;
-    color: var(--papermint-dark);
-}
-.sch-date .day { font-size: 10px; color: #999; display: block; margin-top: -5px; }
-.sch-desc { font-weight: 600; padding-left: 20px; color: #444; }
-
-/* --- 7. TEATER & ULANG TAHUN --- */
-.theater-card {
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    overflow: hidden;
-}
-.theater-info { padding: 25px; text-align: center; }
-.btn-ticket {
-    display: inline-block;
-    background: var(--papermint);
-    padding: 12px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 800;
-    color: #333;
-    margin-top: 15px;
+.section-header h2{
+margin:0;
+font-size:24px;
+color:#3bbfae;
 }
 
-.birthday-grid {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
+.section-header a{
+text-decoration:none;
+font-size:14px;
+color:white;
+background:#3bbfae;
+padding:6px 12px;
+border-radius:20px;
 }
-.bday-photo {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    border: 5px solid var(--papermint);
-    border-radius: 50%;
-    overflow: hidden;
+
+
+
+/* NEWS */
+
+.news-list{
+padding:0 20px;
 }
-.bday-photo img { width: 100%; height: 100%; object-fit: cover; }
-.bday-date {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: var(--papermint);
-    font-weight: 800;
-    font-size: 11px;
-    text-align: center;
-    padding: 3px 0;
+
+.news-item{
+display:flex;
+text-decoration:none;
+color:black;
+background:white;
+margin-bottom:15px;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
-.bday-name { margin-top: 15px; font-weight: 800; text-align: center; color: #555; }
+
+.news-item img{
+width:90px;
+height:90px;
+object-fit:cover;
+}
+
+.news-text{
+padding:10px;
+}
+
+.news-text h3{
+margin:5px 0;
+font-size:15px;
+}
+
+.tag{
+font-size:11px;
+background:#3bbfae;
+color:white;
+padding:3px 6px;
+border-radius:5px;
+}
+
+
+
+/* SCHEDULE */
+
+.schedule-list{
+padding:0 20px 40px;
+}
+
+.schedule-item{
+display:flex;
+align-items:center;
+background:white;
+margin-bottom:10px;
+border-radius:10px;
+padding:12px;
+text-decoration:none;
+color:black;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.date{
+font-weight:bold;
+font-size:18px;
+color:#3bbfae;
+margin-right:15px;
+}
+
+.event h3{
+margin:0;
+font-size:16px;
+}
+
+.event p{
+margin:0;
+font-size:12px;
+color:gray;
+}
 
 /* --- 8. TRANSLATE FIX --- */
 #google_translate_element {
