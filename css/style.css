@@ -1,8 +1,9 @@
-body{
-margin:0;
-font-family:'Montserrat', sans-serif;
-background:#eaf7f4;
-color:#333;
+/* Style Dasar */
+:root {
+    --papermint: #DAF7ED;
+    --papermint-dark: #b8e9d8;
+    --text-gray: #666;
+    --mkt-pink: #d683a3; /* Aksen warna khas idol */
 }
 
 /* --- 1. NAVBAR --- */
@@ -53,146 +54,148 @@ color:#333;
 }
 #overlay.active { display: block; }
 
-/* HERO */
-
-.hero img{
-width:100%;
-display:block;
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fcfcfc;
+    margin: 0;
+    color: #333;
 }
 
-
-/* SECTION */
-
-.news,
-.schedule{
-max-width:1100px;
-margin:auto;
-padding:20px;
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-
-/* HEADER SECTION */
-
-.section-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:15px;
-border-bottom:2px solid #9de3d5;
-padding-bottom:5px;
+/* Banner */
+.main-banner {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.section-header h2{
-margin:0;
-font-size:24px;
-font-weight:800;
-color:#3bbfae;
+/* Section Header */
+.content-section {
+    margin-top: 40px;
 }
 
-.section-header a{
-text-decoration:none;
-background:#3bbfae;
-color:white;
-padding:6px 12px;
-border-radius:20px;
-font-size:13px;
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--papermint);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-
-/* NEWS */
-
-.news-list{
-display:flex;
-flex-direction:column;
-gap:12px;
+.section-title {
+    color: var(--mkt-pink);
+    font-size: 24px;
+    margin: 0;
+    letter-spacing: 2px;
 }
 
-.news-item{
-display:flex;
-text-decoration:none;
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-transition:0.2s;
+.view-more {
+    background-color: var(--mkt-pink);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.news-item:hover{
-transform:translateY(-3px);
+.view-more:hover {
+    background-color: #bc6d8a;
 }
 
-.news-item img{
-width:120px;
-height:90px;
-object-fit:cover;
+/* News List */
+.news-item {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
 }
 
-.news-text{
-padding:10px;
+.news-thumb img {
+    width: 120px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 20px;
 }
 
-.news-text h3{
-margin:4px 0;
-font-size:15px;
-color:#222;
+.news-category {
+    display: block;
+    font-size: 10px;
+    color: var(--mkt-pink);
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.news-text p{
-margin:0;
-font-size:12px;
-color:#777;
+.news-headline {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
 }
 
-.tag{
-font-size:10px;
-background:#3bbfae;
-color:white;
-padding:3px 6px;
-border-radius:4px;
+.news-headline:hover {
+    color: var(--mkt-pink);
 }
 
-
-/* SCHEDULE */
-
-.schedule-list{
-display:flex;
-flex-direction:column;
-gap:10px;
+.news-date {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin: 5px 0 0 0;
 }
 
-.schedule-item{
-display:flex;
-align-items:center;
-text-decoration:none;
-background:white;
-padding:12px;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-transition:0.2s;
+/* Schedule List */
+.schedule-item {
+    display: flex;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    border-left: 5px solid var(--papermint);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.schedule-item:hover{
-transform:translateY(-3px);
+.schedule-date {
+    background-color: var(--papermint);
+    padding: 15px;
+    min-width: 80px;
+    text-align: center;
 }
 
-.date{
-font-size:20px;
-font-weight:700;
-color:#3bbfae;
-margin-right:15px;
-min-width:60px;
+.date-num {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.event h3{
-margin:0;
-font-size:15px;
-color:#222;
+.date-day {
+    display: block;
+    font-size: 10px;
+    color: var(--text-gray);
 }
 
-.event p{
-margin:0;
-font-size:12px;
-color:#777;
+.schedule-detail {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.schedule-title {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+}
+
+.schedule-title:hover {
+    text-decoration: underline;
 }
 
 /* --- 8. TRANSLATE FIX --- */
@@ -203,4 +206,4 @@ color:#777;
     border: 1px solid var(--papermint) !important;
     border-radius: 5px !important;
     padding: 2px 5px !important;
-    }
+}
