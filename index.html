@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MKT4X Official Website</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Home - BNK48 Inspired</title>
+<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
@@ -12,78 +12,69 @@
 
     <div id="navbar-placeholder"></div>
     <div id="sidebar-placeholder"></div>
-
-    <main>
-        <section class="hero-container">
-            <div class="slider">
-                <img src="https://i.imgur.com/D1Nu6SI.png" class="slide" onerror="this.src='https://via.placeholder.com/1200x500/AAF0D1/333?text=MKT4X+Banner+1'">
-                <img src="https://i.imgur.com/FmA7J4M.png" class="slide" style="display:none;">
+    
+    <div class="container">
+        <!-- Header with logo and social icons -->
+        <header>
+            <div class="logo">
+                <img src="https://via.placeholder.com/150x50?text=BNK48+Style" alt="Logo">
             </div>
-            <div class="slider-dots" id="dots-container"></div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </header>
+
+        <!-- Hero / Featured Image -->
+        <section class="hero">
+            <img src="https://via.placeholder.com/1200x400?text=BNK48+Banner" alt="Hero Banner">
         </section>
 
-        <section class="container section-spacing">
-            <h2 class="title-center" id="newsTitle">BERITA TERBARU</h2>
-            <div class="news-list-home">
-                <div class="news-row">
-                    <span class="tag-pm">PM</span> <span class="news-date">8 Maret 2026</span>
-                    <a href="news/pm-update.html" class="news-link">Update Fitur Private Message AI Kiara MKT4X</a>
-                </div>
-                <div class="news-row">
-                    <span class="tag-info">INFO</span> <span class="news-date">7 Maret 2026</span>
-                    <a href="upgrade.html" class="news-link">Cara Upgrade ke Premium Membership MKT4X</a>
-                </div>
-                <div class="news-row">
-                    <span class="tag-event">EVENT</span> <span class="news-date">6 Maret 2026</span>
-                    <a href="#" class="news-link">MKT4X First Handshake Event: Papermint Vibes</a>
-                </div>
-                <div class="news-row">
-                    <span class="tag-theater">THEATER</span> <span class="news-date">5 Maret 2026</span>
-                    <a href="#" class="news-link">Jadwal Teater Minggu Ke-2 Maret 2026</a>
-                </div>
-                <div class="news-row">
-                    <span class="tag-info">INFO</span> <span class="news-date">4 Maret 2026</span>
-                    <a href="#" class="news-link">MKT4X Official Website Versi 2.0 Resmi Dirilis</a>
-                </div>
+        <!-- News Section -->
+        <section class="news">
+            <div class="section-header">
+                <h2>Berita</h2>
+                <a href="#" class="view-all">Lihat semua</a>
             </div>
-            <div class="center-btn">
-                <a href="news.html" class="btn-check-all">Check All »</a>
+            <div class="news-list" id="news-list">
+                <!-- News items will be injected by JS -->
             </div>
         </section>
 
-        <section class="schedule-container section-spacing">
-            <div class="container">
-                <h2 class="title-center" id="schTitle">SCHEDULE</h2>
-                
-                <div id="calendar-mini" class="calendar-box">
-                    <div style="text-align: center; padding: 20px; color: #888;">Memuat Kalender...</div>
-                </div>
-
-                <div class="schedule-legend">
-                    <div class="sch-item">🟢 10 Maret 2026 - Release Single "Akhirnya Bertemu"</div>
-                    <div class="sch-item">🟢 15 Maret 2026 - MKT4X 1st Stage: Pajama Drive</div>
-                </div>
-                
-                <div class="center-btn">
-                    <a href="schedule.html" class="btn-check-all">Check All »</a>
-                </div>
+        <!-- Schedule Section -->
+        <section class="schedule">
+            <div class="section-header">
+                <h2>Jadwal</h2>
+                <a href="#" class="view-all">Lihat semua</a>
+            </div>
+            <div class="schedule-list" id="schedule-list">
+                <!-- Schedule items will be injected by JS -->
             </div>
         </section>
 
-        <section class="container section-spacing">
-            <h2 class="title-center" id="bdayTitle">ULANG TAHUN</h2>
-            <div class="birthday-card">
-                <img src="img/members/kiara.jpg" alt="Kiara" onerror="this.src='https://via.placeholder.com/150x150/AAF0D1/333?text=Kiara'">
-                <div class="bd-text">
-                    <span class="bd-tag">[MKT4X]</span>
-                    <h3>Kiara</h3>
-                    <p>8 Maret 2010</p>
-                </div>
+        <!-- Symbols / Icons Section (Social / Features) -->
+        <section class="symbols">
+            <div class="symbol-item">
+                <i class="fas fa-music"></i>
+                <span>Musik</span>
+            </div>
+            <div class="symbol-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Event</span>
+            </div>
+            <div class="symbol-item">
+                <i class="fas fa-star"></i>
+                <span>Idol</span>
+            </div>
+            <div class="symbol-item">
+                <i class="fas fa-heart"></i>
+                <span>Fanclub</span>
             </div>
         </section>
-    </main>
-
-    <div id="footer-placeholder"></div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
