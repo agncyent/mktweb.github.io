@@ -1,40 +1,81 @@
-const translations={
+document.addEventListener("DOMContentLoaded", () => {
 
-en:{
-gen:"MKT4X 1st Generation Member",
-birthday:"Birthday",
-hometown:"Hometown",
-blood:"Blood Type",
-status_lbl:"Status:",
-status_val:"Active"
-},
+fetch("components/navbar.html")
+.then(res => res.text())
+.then(data => {
+document.getElementById("navbar").innerHTML = data;
+});
+
+fetch("components/sidebar.html")
+.then(res => res.text())
+.then(data => {
+document.getElementById("sidebar").innerHTML = data;
+startProfile();
+});
+
+function startProfile(){
+
+const langSelect = document.getElementById("langSelect");
+
+const dict = {
 
 id:{
-gen:"Anggota Generasi ke-1 MKT4X",
 birthday:"Tanggal Lahir",
-hometown:"Asal",
+origin:"Asal",
 blood:"Gol. Darah",
-status_lbl:"Status:",
-status_val:"Aktif"
+generation:"Anggota Generasi 1",
+quote:"Seperti cahaya yang bersinar di malam hari.",
+status:"Status",
+active:"AKTIF"
+},
+
+en:{
+birthday:"Birthday",
+origin:"Origin",
+blood:"Blood Type",
+generation:"1st Generation Member",
+quote:"Like a light shining in the night.",
+status:"Status",
+active:"ACTIVE"
+},
+
+jp:{
+birthday:"誕生日",
+origin:"出身",
+blood:"血液型",
+generation:"第1期生",
+quote:"夜に輝く光のように。",
+status:"ステータス",
+active:"活動中"
+},
+
+my:{
+birthday:"Hari Lahir",
+origin:"Asal",
+blood:"Jenis Darah",
+generation:"Ahli Generasi 1",
+quote:"Seperti cahaya yang bersinar di malam hari.",
+status:"Status",
+active:"AKTIF"
 }
 
 };
 
-document.addEventListener("change",(e)=>{
+if(!langSelect) return;
 
-if(e.target.id==="langSelect"){
+langSelect.onchange = function(){
 
-const lang=e.target.value;
-const t=translations[lang];
+const l = this.value;
 
-if(!t) return;
+document.getElementById("birthdayLabel").innerText = dict[l].birthday;
+document.getElementById("originLabel").innerText = dict[l].origin;
+document.getElementById("bloodLabel").innerText = dict[l].blood;
+document.getElementById("generationText").innerText = dict[l].generation;
+document.getElementById("quoteText").innerText = dict[l].quote;
+document.getElementById("statusLabel").innerText = dict[l].status;
+document.getElementById("statusActive").innerText = dict[l].active;
 
-document.getElementById("txt-gen").innerText=t.gen;
-document.getElementById("lbl-birthday").innerText=t.birthday;
-document.getElementById("lbl-hometown").innerText=t.hometown;
-document.getElementById("lbl-blood").innerText=t.blood;
-document.getElementById("lbl-status").innerText=t.status_lbl;
-document.getElementById("txt-status").innerText=t.status_val;
+};
 
 }
 
