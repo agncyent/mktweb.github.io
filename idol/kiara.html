@@ -1,88 +1,67 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kiara Profile - MKT4X</title>
+<title>Kiara - MKT4X</title>
 
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/member-profile.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div id="navbar-placeholder"></div>
-<div id="sidebar-placeholder"></div>
+<!-- Navbar -->
+<div id="navbar"></div>
 
-<main class="content-main">
+<!-- Sidebar -->
+<div id="sidebar"></div>
 
-<div class="member-card">
+<div class="member-container">
 
-<div class="member-img">
-<img src="https://i.imgur.com/KjU8YTn.png">
-</div>
+<img class="member-photo" src="https://i.imgur.com/2i5bOP3.jpeg">
 
-<div class="member-info">
+<h1>KIARA</h1>
 
-<h1 id="txt-member-name">KIARA</h1>
+<span class="generation" id="generationText">
+Anggota Generasi 1
+</span>
 
-<div class="badge-gen" id="txt-gen">
-Anggota Generasi ke-1 MKT4X
-</div>
+<div class="profile-info">
 
-<div class="bio-table">
-
-<div class="bio-row">
-<span class="bio-label" id="lbl-birthday">Tanggal Lahir</span>
+<div class="row">
+<span id="birthdayLabel">Tanggal Lahir</span>
 <span>1 Maret 2002</span>
 </div>
 
-<div class="bio-row">
-<span class="bio-label" id="lbl-hometown">Asal</span>
+<div class="row">
+<span id="originLabel">Asal</span>
 <span>Surabaya</span>
 </div>
 
-<div class="bio-row">
-<span class="bio-label" id="lbl-blood">Gol. Darah</span>
+<div class="row">
+<span id="bloodLabel">Gol. Darah</span>
 <span>B</span>
 </div>
 
 </div>
 
-<div class="member-footer">
-
-<div class="catchphrase-box">
-<i class="fas fa-quote-left"></i>
-
-<p id="txt-phrase">
-"Seperti cahaya yang bersinar di langit malam, siap menerangi harimu!"
-</p>
-
+<div class="quote" id="quoteText">
+Seperti cahaya yang bersinar di malam hari.
 </div>
 
-<div class="status-box">
-
-<span id="lbl-status">Status:</span>
-
-<span class="status-tag" id="txt-status">
-Aktif
-</span>
-
+<div class="status">
+<span id="statusLabel">Status</span> :
+<span class="active" id="statusActive">AKTIF</span>
 </div>
 
 </div>
 
-</div>
-</div>
-
-</main>
-
+<!-- JS -->
 <script src="js/main.js"></script>
 <script src="js/member-profile.js"></script>
 
