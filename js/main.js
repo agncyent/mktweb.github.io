@@ -166,3 +166,39 @@ document.addEventListener("DOMContentLoaded", function() {
         renderCalendar(currentCalDate.getFullYear(), currentCalDate.getMonth());
     }
 });
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Data Translasi Khusus Halaman Member
+    const translations = {  
+        'en': { 'member': 'MEMBER', 'gen': 'MKT4X 1st Generation Members' },  
+        'id': { 'member': 'ANGGOTA', 'gen': 'Anggota Generasi ke-1 MKT4X' },  
+        'my': { 'member': 'AHLI', 'gen': 'Ahli Generasi Pertama MKT4X' },  
+        'jp': { 'member': 'メンバー', 'gen': 'MKT4X 第1期生メンバー' }  
+    };  
+
+    // 2. Ambil elemen select-nya
+    const langSelect = document.getElementById('langSelect');
+
+    // 3. Fungsi Perubahan Bahasa
+    if (langSelect) {
+        langSelect.onchange = function() {
+            const lang = this.value;
+            
+            // Update teks Member
+            const txtMember = document.getElementById('txt-member');
+            const txtGen = document.getElementById('txt-gen');
+
+            if (txtMember) txtMember.innerText = translations[lang].member;
+            if (txtGen) txtGen.innerText = translations[lang].gen;
+            
+            // Opsional: Simpan pilihan bahasa ke LocalStorage supaya pas pindah page gak reset
+            localStorage.setItem('selectedLang', lang);
+        };
+
+        // 4. Load bahasa yang tersimpan (biar sinkron antar page)
+        const savedLang = localStorage.getItem('selectedLang');
+        if (savedLang) {
+            langSelect.value = savedLang;
+            langSelect.onchange(); // Trigger update teks saat pertama load
+        }
+    }
+});
