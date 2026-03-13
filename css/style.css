@@ -2,7 +2,7 @@
 :root {
     --papermint: #DAF7ED;
     --papermint-dark: #b8e9d8;
-    --papermint-bg: #f0faf7; /* Warna background halaman */
+    --papermint-bg: #f0faf7; 
     --text-gray: #666;
     --text-dark: #2F4F4F;
     --mkt-pink: #d683a3; 
@@ -19,7 +19,7 @@
 
 body {
     font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--papermint-bg); /* FIX: Background sekarang Papermint */
+    background-color: var(--papermint-bg); 
     color: var(--text-dark);
     line-height: 1.6;
 }
@@ -91,18 +91,21 @@ body {
     padding: 20px;
 }
 
-/* Banner/Slider */
+/* Banner/Slider Fix */
 .hero-carousel {
     position: relative;
     margin-bottom: 25px;
+    width: 100%;
 }
 .banner-img {
     width: 100%;
+    height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #eee; /* Placeholder kalo gambar blm load */
 }
 
-/* Quick Access (3 Kolom) */
+/* Quick Access (Tetap 3 Kolom tapi proporsional) */
 .quick-access {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -121,14 +124,16 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
-.card h3 { font-size: 13px; margin-top: 5px; }
+.card h3 { font-size: 11px; margin-top: 5px; font-weight: bold; }
+.card p { font-size: 9px; line-height: 1.2; }
 
-/* Grid Info */
+/* --- FIX INFO GRID: TUMPUK KE BAWAH DI HP --- */
 .info-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 25px;
+    display: flex;
+    flex-direction: column; /* Default: Tumpuk ke bawah */
+    gap: 30px;
 }
 
 .section-header {
@@ -140,6 +145,8 @@ body {
     margin-bottom: 15px;
 }
 
+.section-header h2 { font-size: 1.1rem; }
+
 .btn-orange, .view-more {
     background-color: var(--mkt-pink);
     color: white;
@@ -150,19 +157,19 @@ body {
     font-weight: bold;
 }
 
-/* News List Fix */
-.news-list { display: flex; flex-direction: column; gap: 10px; }
+/* News List */
+.news-list { display: flex; flex-direction: column; gap: 12px; }
 .news-item {
     background: white;
-    padding: 12px;
+    padding: 12px 15px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .news-item a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
 
-/* Schedule Fix */
-.schedule-flex { display: flex; flex-direction: column; gap: 10px; }
+/* Schedule */
+.schedule-flex { display: flex; flex-direction: column; gap: 12px; }
 .schedule-box {
     background: white;
     border-radius: 10px;
@@ -171,23 +178,36 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .schedule-box h4 {
-    font-size: 11px;
+    font-size: 10px;
     color: var(--mkt-pink);
     text-transform: uppercase;
     margin-bottom: 5px;
+    letter-spacing: 1px;
 }
 
-/* --- 5. MEMBER PAGE & RESPONSIVE --- */
+/* --- 5. RESPONSIVE & MEMBER PAGE --- */
+
+/* Tampilan Desktop: News & Schedule baru boleh berdampingan */
+@media (min-width: 992px) {
+    .info-grid {
+        flex-direction: row; /* Berjejer kiri-kanan */
+    }
+    .news-container { flex: 1.5; }
+    .schedule-container { flex: 1; }
+}
+
 .member-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
+
 @media (min-width: 768px) {
     .member-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
 @media (max-width: 600px) {
-    .info-grid { grid-template-columns: 1fr; }
-    .quick-access { gap: 5px; }
+    .quick-access { gap: 8px; }
     .card h3 { font-size: 10px; }
+    .section-header h2 { font-size: 1rem; }
 }
