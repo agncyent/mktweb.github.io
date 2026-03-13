@@ -3,78 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - BNK48 Inspired</title>
-<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>MKT4X - Official Landing Page</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="navbar-placeholder"></div>
     <div id="sidebar-placeholder"></div>
-    
-    <div class="container">
-        <!-- Header with logo and social icons -->
-        <header>
-            <div class="logo">
-                <img src="https://via.placeholder.com/150x50?text=BNK48+Style" alt="Logo">
-            </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </header>
 
-        <!-- Hero / Featured Image -->
-        <section class="hero">
-            <img src="https://via.placeholder.com/1200x400?text=BNK48+Banner" alt="Hero Banner">
-        </section>
-
-        <!-- News Section -->
-        <section class="news">
-            <div class="section-header">
-                <h2>Berita</h2>
-                <a href="#" class="view-all">Lihat semua</a>
-            </div>
-            <div class="news-list" id="news-list">
-                <!-- News items will be injected by JS -->
+    <main class="main-wrapper">
+        
+        <section class="hero-carousel">
+            <img src="assets/banner-mkt4x.jpg" alt="MKT4X Group Photo" class="banner-img">
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </section>
 
-        <!-- Schedule Section -->
-        <section class="schedule">
-            <div class="section-header">
-                <h2>Jadwal</h2>
-                <a href="#" class="view-all">Lihat semua</a>
+        <section class="quick-access">
+            <div class="card pink-card">
+                <p class="tagline">✦ FANCLUB ✦</p>
+                <h3>Pendaftaran & Perpanjangan</h3>
             </div>
-            <div class="schedule-list" id="schedule-list">
-                <!-- Schedule items will be injected by JS -->
+            <div class="card center-card">
+                <img src="assets/icon-music.png" alt="Digital Stream">
+                <p>Digital Streaming Platform</p>
+            </div>
+            <div class="card pink-card">
+                <p class="tagline">✦ 1st SINGLE ✦</p>
+                <h3>Handshake Event</h3>
             </div>
         </section>
 
-        <!-- Symbols / Icons Section (Social / Features) -->
-        <section class="symbols">
-            <div class="symbol-item">
-                <i class="fas fa-music"></i>
-                <span>Musik</span>
-            </div>
-            <div class="symbol-item">
-                <i class="fas fa-calendar-alt"></i>
-                <span>Event</span>
-            </div>
-            <div class="symbol-item">
-                <i class="fas fa-star"></i>
-                <span>Idol</span>
-            </div>
-            <div class="symbol-item">
-                <i class="fas fa-heart"></i>
-                <span>Fanclub</span>
-            </div>
-        </section>
-    </div>
+        <div class="info-grid">
+            <section class="news-container">
+                <div class="section-header">
+                    <h2>NEWS <small>Berita Terbaru</small></h2>
+                    <a href="news.html" class="btn-orange">View all</a>
+                </div>
+                <div class="news-list">
+                    <div class="news-item">
+                        <span class="date">2026.03.13</span>
+                        <span class="label official">OFFICIAL NEWS</span>
+                        <a href="#">Pengumuman Member Generasi 1 MKT4X</a>
+                    </div>
+                    <div class="news-item">
+                        <span class="date">2026.03.10</span>
+                        <span class="label event">EVENT</span>
+                        <a href="#">MKT4X Live in Jakarta: Musim Semi</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="schedule-container">
+                <div class="section-header">
+                    <h2>SCHEDULE <small>Jadwal</small></h2>
+                    <a href="schedule.html" class="btn-orange">View all</a>
+                </div>
+                <div class="schedule-flex">
+                    <div class="schedule-box">
+                        <h4>BIRTHDAY</h4>
+                        <p>🎂 03/15 - Member Name</p>
+                    </div>
+                    <div class="schedule-box">
+                        <h4>EVENT</h4>
+                        <p>🎤 03/20 - Theater Show</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 
     <script src="js/main.js"></script>
 </body>
