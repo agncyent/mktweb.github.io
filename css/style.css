@@ -519,6 +519,11 @@ a.schedule-item:hover { background: var(--mint-pale); }
   display: block; text-decoration: none;
   aspect-ratio: 16/9;
 }
+a.video-main {
+  aspect-ratio: unset;
+  height: 100%;
+  min-height: 200px;
+}
 .video-card:hover, a.video-card:hover, a.video-main:hover { transform: scale(1.02); }
 .video-card .thumb {
   width: 100%; aspect-ratio: 16/9;
