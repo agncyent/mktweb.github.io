@@ -14,11 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(sideHtml => {
             const sidePlaceholder = document.getElementById('sidebar-placeholder');
             if(sidePlaceholder) sidePlaceholder.innerHTML = sideHtml;
-            
-            // Setelah komponen masuk ke DOM, baru jalankan logic web
-            startMKT4X(); 
+            startMKT4X();
         })
-        .catch(err => console.error("Gagal muat komponen:", err));
+        .catch(err => {
+            // Kalau tidak ada komponen, tetap jalankan
+            startMKT4X();
+        });
 
     function startMKT4X() {
         const sidebar = document.getElementById('sidebar');
@@ -28,84 +29,111 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Toggle Sidebar
         if (menuBtn && sidebar && overlay) {
-            menuBtn.onclick = () => { 
-                sidebar.classList.add('active'); 
-                overlay.classList.add('active'); 
+            menuBtn.onclick = () => {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
             };
-            overlay.onclick = () => { 
-                sidebar.classList.remove('active'); 
-                overlay.classList.remove('active'); 
+            overlay.onclick = () => {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
             };
         }
 
-        // 2. KAMUS BAHASA (Dictionary)
+        // 2. KAMUS BAHASA
         const dict = {
-            id: { 
-                // Menu Sidebar
-                menu_home: "Beranda",
-                menu_news: "Berita",
-                menu_sch: "Jadwal",
-                menu_member: "Member",
+            id: {
+                // Navbar & Sidebar
+                menu_home:    "Beranda",
+                menu_news:    "Berita",
+                menu_sch:     "Jadwal",
+                menu_member:  "Member",
                 menu_release: "Rilis",
                 menu_fanclub: "Fanclub",
-                menu_login: "Masuk",
+                menu_login:   "Masuk",
                 // Halaman Member
                 txt_member_title: "MEMBER",
-                txt_gen: "Member MKT4X Generasi ke-1",
-                // Home/Lainnya
-                news_title: "BERITA TERBARU",
-                bday_title: "ULANG TAHUN",
-                sch_title: "JADWAL"
+                txt_gen:          "Member MKT4X Generasi ke-1",
+                // Homepage
+                news_title:    "BERITA",
+                news_sub:      "PEMBARUAN MKT4X",
+                btn_more:      "LIHAT LAGI",
+                sch_title:     "JADWAL",
+                release_title: "RILIS",
+                yt_label:      "YOUTUBE RESMI",
+                member_title:  "MEMBER",
+                btn_all_member:"Lihat Semua Member →",
+                // Hero
+                hero_badge:    "MKT4X SINGLE KE-1",
+                hero_sub:      "Lagu tentang bintang dan mimpi",
             },
-            en: { 
-                menu_home: "Home",
-                menu_news: "News",
-                menu_sch: "Schedule",
-                menu_member: "Member",
+            en: {
+                menu_home:    "Home",
+                menu_news:    "News",
+                menu_sch:     "Schedule",
+                menu_member:  "Member",
                 menu_release: "Release",
                 menu_fanclub: "Fanclub",
-                menu_login: "Login",
+                menu_login:   "Login",
                 txt_member_title: "MEMBERS",
-                txt_gen: "MKT4X 1st Generation Members",
-                news_title: "LATEST NEWS",
-                bday_title: "BIRTHDAY",
-                sch_title: "SCHEDULE"
+                txt_gen:          "MKT4X 1st Generation Members",
+                news_title:    "News",
+                news_sub:      "MKT4X UPDATE",
+                btn_more:      "VIEW MORE",
+                sch_title:     "Schedule",
+                release_title: "Release",
+                yt_label:      "OFFICIAL YOUTUBE",
+                member_title:  "Member",
+                btn_all_member:"See All Members →",
+                hero_badge:    "MKT4X 1ST SINGLE",
+                hero_sub:      "A song about stars and dreams",
             },
-            jp: { 
-                menu_home: "ホーム",
-                menu_news: "ニュース",
-                menu_sch: "スケジュール",
-                menu_member: "メンバー",
+            jp: {
+                menu_home:    "ホーム",
+                menu_news:    "ニュース",
+                menu_sch:     "スケジュール",
+                menu_member:  "メンバー",
                 menu_release: "リリース",
                 menu_fanclub: "ファンクラブ",
-                menu_login: "ログイン",
+                menu_login:   "ログイン",
                 txt_member_title: "メンバー",
-                txt_gen: "MKT4X 第1期生メンバー",
-                news_title: "最新ニュース",
-                bday_title: "誕生日",
-                sch_title: "スケジュール"
+                txt_gen:          "MKT4X 第1期生メンバー",
+                news_title:    "ニュース",
+                news_sub:      "MKT4X 更新情報",
+                btn_more:      "もっと見る",
+                sch_title:     "スケジュール",
+                release_title: "リリース",
+                yt_label:      "公式YouTube",
+                member_title:  "メンバー",
+                btn_all_member:"全メンバーを見る →",
+                hero_badge:    "MKT4X シングル第1弾",
+                hero_sub:      "星と夢についての歌",
             },
-            my: { 
-                menu_home: "Utama",
-                menu_news: "Berita",
-                menu_sch: "Jadual",
-                menu_member: "Ahli",
+            my: {
+                menu_home:    "Utama",
+                menu_news:    "Berita",
+                menu_sch:     "Jadual",
+                menu_member:  "Ahli",
                 menu_release: "Rilis",
                 menu_fanclub: "Kelab Peminat",
-                menu_login: "Log Masuk",
+                menu_login:   "Log Masuk",
                 txt_member_title: "AHLI",
-                txt_gen: "Ahli Generasi Pertama MKT4X",
-                news_title: "BERITA TERKINI",
-                bday_title: "HARI JADI",
-                sch_title: "JADUAL"
+                txt_gen:          "Ahli Generasi Pertama MKT4X",
+                news_title:    "Berita",
+                news_sub:      "KEMASKINI MKT4X",
+                btn_more:      "LIHAT LAGI",
+                sch_title:     "Jadual",
+                release_title: "Siaran",
+                yt_label:      "YOUTUBE RASMI",
+                member_title:  "Ahli",
+                btn_all_member:"Lihat Semua Ahli →",
+                hero_badge:    "SINGLE PERTAMA MKT4X",
+                hero_sub:      "Lagu tentang bintang dan mimpi",
             }
         };
 
         // 3. FUNGSI UPDATE TEKS
         window.applyLanguage = function(lang) {
             localStorage.setItem('selectedLang', lang);
-
-            // Cari semua elemen yang punya atribut data-key
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (dict[lang] && dict[lang][key]) {
@@ -119,14 +147,16 @@ document.addEventListener("DOMContentLoaded", function() {
             langSelect.onchange = function() {
                 applyLanguage(this.value);
             };
-
-            // Set ke bahasa yang tersimpan atau default ke 'id'
             const savedLang = localStorage.getItem('selectedLang') || 'id';
             langSelect.value = savedLang;
             applyLanguage(savedLang);
+        } else {
+            // Tetap apply bahasa tersimpan walau tanpa langSelect
+            const savedLang = localStorage.getItem('selectedLang') || 'id';
+            applyLanguage(savedLang);
         }
 
-        // 4. SLIDER (Auto-check jika elemen ada)
+        // 4. SLIDER
         const slides = document.querySelectorAll('.slide');
         if (slides.length > 0) {
             let cur = 0;
