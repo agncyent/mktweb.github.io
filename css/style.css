@@ -517,6 +517,7 @@ a.schedule-item:hover { background: var(--mint-pale); }
   background: #111; border-radius: 8px; overflow: hidden;
   position: relative; cursor: pointer; transition: transform .15s;
   display: block; text-decoration: none;
+  aspect-ratio: 16/9;
 }
 .video-card:hover, a.video-card:hover, a.video-main:hover { transform: scale(1.02); }
 .video-card .thumb {
