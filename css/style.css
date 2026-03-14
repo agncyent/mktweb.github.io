@@ -462,9 +462,10 @@ font-family:Arial;
 }
 
 body{
-background:#f2f4f7;
+background:#f3fbf8;
 color:#333;
 }
+
 
 
 /* HERO */
@@ -472,51 +473,56 @@ color:#333;
 .hero{
 display:flex;
 justify-content:center;
-padding:40px;
+padding:50px;
 }
 
 .birthday-banner{
 background:white;
-padding:15px;
-border-radius:12px;
+border-radius:15px;
+padding:20px;
 display:flex;
-align-items:center;
 gap:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+align-items:center;
+text-decoration:none;
+color:#333;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.birthday-banner:hover{
+transform:translateY(-5px);
 }
 
 .birthday-banner img{
 width:120px;
 height:120px;
 object-fit:cover;
-border-radius:8px;
+border-radius:10px;
 }
 
-.birthday-text h2{
-color:#6fa6c7;
-}
 
 
 /* SECTION HEADER */
 
 .section-header{
+max-width:900px;
+margin:50px auto 20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin:50px auto 20px;
-max-width:900px;
 }
 
 .section-header h2{
-color:#4d7ea8;
-letter-spacing:2px;
+color:#3f7fa6;
+letter-spacing:3px;
 }
 
 .section-header a{
-font-size:14px;
-color:#7aa8c4;
 text-decoration:none;
+font-size:14px;
+color:#5ca9c4;
 }
+
 
 
 /* NEWS */
@@ -530,17 +536,21 @@ gap:15px;
 }
 
 .news-card{
+display:flex;
+gap:15px;
 padding:18px;
 border-radius:12px;
+text-decoration:none;
 color:white;
-font-size:14px;
-display:flex;
-align-items:center;
-gap:15px;
+transition:0.3s;
+}
+
+.news-card:hover{
+transform:scale(1.02);
 }
 
 .news-card.yellow{
-background:#f2e56e;
+background:#f1e56a;
 color:#333;
 }
 
@@ -560,6 +570,7 @@ font-weight:bold;
 }
 
 
+
 /* SCHEDULE */
 
 .schedule-list{
@@ -575,32 +586,34 @@ background:white;
 padding:15px;
 border-radius:12px;
 display:flex;
-align-items:center;
 gap:20px;
-box-shadow:0 3px 8px rgba(0,0,0,0.08);
+text-decoration:none;
+color:#333;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.schedule-card:hover{
+transform:translateY(-3px);
 }
 
 .date-box{
 text-align:center;
-width:60px;
 border-right:1px solid #ddd;
 padding-right:10px;
+width:60px;
 }
 
 .month{
-display:block;
 font-size:14px;
 color:#888;
+display:block;
 }
 
 .day{
 font-size:24px;
 font-weight:bold;
-color:#4d7ea8;
-}
-
-.schedule-info{
-padding-left:10px;
+color:#3f7fa6;
 }
 
 .badge{
@@ -608,8 +621,8 @@ font-size:12px;
 padding:4px 8px;
 border-radius:10px;
 color:white;
-margin-bottom:5px;
 display:inline-block;
+margin-bottom:5px;
 }
 
 .badge.concert{
@@ -622,4 +635,64 @@ background:#ff8a65;
 
 .badge.event{
 background:#ff5c8a;
+}
+
+
+
+/* MEMBERS */
+
+.members{
+text-align:center;
+padding:60px 20px;
+}
+
+.member-grid{
+max-width:900px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.member-grid img{
+width:100%;
+border-radius:10px;
+transition:0.3s;
+}
+
+.member-grid img:hover{
+transform:scale(1.05);
+}
+
+.view-all{
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+color:#3f7fa6;
+}
+
+
+
+/* VIDEO */
+
+.video{
+padding:60px 20px;
+text-align:center;
+}
+
+.video-box{
+max-width:900px;
+margin:auto;
+}
+
+
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+background:#e8f6f2;
+margin-top:50px;
 }
