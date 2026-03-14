@@ -140,7 +140,7 @@ body.no-scroll { overflow: hidden; }
   max-width: 700px;
   margin: 0 auto;
   background: linear-gradient(135deg, #a8edcc 0%, #5ecfa0 40%, #2daa7a 100%);
-  padding: 10px 14px 0;
+  padding: 10px 14px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -224,19 +224,24 @@ body.no-scroll { overflow: hidden; }
   border-radius: 4px 4px 0 0;
 }
 
-/* Foto di tengah banner */
+/* Foto di dalam banner (frame hijau) */
 .hero-center-photo {
   width: 100%;
   margin-top: 10px;
-  border-radius: 8px;
-  overflow: hidden;
+  margin-bottom: 4px;
+  padding: 6px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
   position: relative;
   z-index: 2;
 }
 .hero-center-photo img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1000 / 500;
+  object-fit: cover;
+  object-position: center center;
   display: block;
+  border-radius: 6px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
