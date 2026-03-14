@@ -74,21 +74,28 @@ Anggota Generasi ke-1 MKT4X
 </div>
 
 </main>
-
+  
 <script>
+document.addEventListener("DOMContentLoaded", function() {
 
 function loadHTML(id, file) {
 fetch(file)
-.then(response => response.text())
+.then(response => {
+if(!response.ok){
+throw new Error("File tidak ditemukan: " + file);
+}
+return response.text();
+})
 .then(data => {
 document.getElementById(id).innerHTML = data;
 })
-.catch(error => console.error("Error loading:", file));
+.catch(error => console.error(error));
 }
 
-loadHTML("navbar-placeholder", "../components/navbar.html");
-loadHTML("sidebar-placeholder", "../components/sidebar.html");
+loadHTML("navbar-placeholder", "/components/navbar.html");
+loadHTML("sidebar-placeholder", "/components/sidebar.html");
 
+});
 </script>
 
 <script src="../js/main.js"></script>
