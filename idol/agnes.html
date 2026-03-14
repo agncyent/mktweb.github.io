@@ -1,88 +1,97 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agnes Profile - MKT4X</title>    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agnes Profile - MKT4X</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
-    <div id="navbar-placeholder"></div>
-    <div id="sidebar-placeholder"></div>
-  
-    <main class="content-main">
-        <div class="member-card">
-            <div class="member-img">
-                <img src="https://i.imgur.com/9iiTqah.png" alt="Agnes Member Photo">
-            </div>
-            <div class="member-info">
-                <h1>AGNES</h1>
-                <div class="badge-gen">Anggota Generasi ke-1 MKT4X</div>
+<!-- Navbar -->
+<div id="navbar-placeholder"></div>
 
-                <div class="bio-table">
-                    <div class="bio-row">
-                        <span class="bio-label">Tanggal Lahir</span>
-                        <span>8 Juni 1999</span>
-                    </div>
-                    <div class="bio-row">
-                        <span class="bio-label">Asal</span>
-                        <span>Bogor</span>
-                    </div>
-                    <div class="bio-row">
-                        <span class="bio-label">Gol. Darah</span>
-                        <span>O</span>
-                    </div>
-                </div>
+<!-- Sidebar -->
+<div id="sidebar-placeholder"></div>
 
-                <div class="member-footer">
-                    <div class="catchphrase-box">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"Dengan senyum manis dan semangat tanpa batas, aku siap membuat hari kalian lebih indah!"</p>
-                    </div>
-                    <div class="status-box">
-                        <span>Status:</span>
-                        <span class="status-tag">Aktif</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <script>
-    async function loadComponents() {
-        // Kita pakai path relatif '../../' kalau misalnya struktur foldernya lebih dalam
-        // Atau kita pakai path absolut tanpa titik di depan kalau di custom domain
-        const paths = {
-            navbar: '../components/navbar.html',
-            sidebar: '../components/sidebar.html'
-        };
+<main class="content-main">
 
-        try {
-            const navRes = await fetch(paths.navbar);
-            if(navRes.ok) {
-                document.getElementById('navbar-placeholder').innerHTML = await navRes.text();
-            } else {
-                // Kalau gagal panggil ../ coba panggil tanpa titik dua
-                const navResAlt = await fetch('/components/navbar.html');
-                document.getElementById('navbar-placeholder').innerHTML = await navResAlt.text();
-            }
+<div class="member-card">
 
-            const sideRes = await fetch(paths.sidebar);
-            if(sideRes.ok) {
-                document.getElementById('sidebar-placeholder').innerHTML = await sideRes.text();
-            } else {
-                const sideResAlt = await fetch('/components/sidebar.html');
-                document.getElementById('sidebar-placeholder').innerHTML = await sideResAlt.text();
-            }
-        } catch (err) {
-            console.error("Masalah koneksi file:", err);
-        }
-    }
-    loadComponents();
-    </script>
+<div class="member-img">
+<img src="https://i.imgur.com/9iiTqah.png" alt="Agnes Member Photo">
+</div>
 
-    <script src="../js/main.js"></script>
-</body>  
+<div class="member-info">
+
+<h1>AGNES</h1>
+
+<div class="badge-gen">
+Anggota Generasi ke-1 MKT4X
+</div>
+
+<div class="bio-table">
+
+<div class="bio-row">
+<span class="bio-label">Tanggal Lahir</span>
+<span>8 Juni 1999</span>
+</div>
+
+<div class="bio-row">
+<span class="bio-label">Asal</span>
+<span>Bogor</span>
+</div>
+
+<div class="bio-row">
+<span class="bio-label">Gol. Darah</span>
+<span>O</span>
+</div>
+
+</div>
+
+<div class="member-footer">
+
+<div class="catchphrase-box">
+<i class="fas fa-quote-left"></i>
+<p>"Dengan senyum manis dan semangat tanpa batas, aku siap membuat hari kalian lebih indah!"</p>
+</div>
+
+<div class="status-box">
+<span>Status:</span>
+<span class="status-tag">Aktif</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</main>
+
+<script>
+
+function loadHTML(id, file) {
+fetch(file)
+.then(response => response.text())
+.then(data => {
+document.getElementById(id).innerHTML = data;
+})
+.catch(error => console.error("Error loading:", file));
+}
+
+loadHTML("navbar-placeholder", "../components/navbar.html");
+loadHTML("sidebar-placeholder", "../components/sidebar.html");
+
+</script>
+
+<script src="../js/main.js"></script>
+
+</body>
 </html>
