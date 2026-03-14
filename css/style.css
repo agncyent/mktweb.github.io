@@ -454,7 +454,6 @@ grid-template-columns:repeat(3,1fr);
             font-size: 0.75rem;
         }
 /* RESET */
-
 *{
 margin:0;
 padding:0;
@@ -463,7 +462,7 @@ font-family:Arial;
 }
 
 body{
-background:#f6fffb;
+background:#f2f4f7;
 color:#333;
 }
 
@@ -471,62 +470,92 @@ color:#333;
 /* HERO */
 
 .hero{
-position:relative;
-width:100%;
-height:500px;
-overflow:hidden;
+display:flex;
+justify-content:center;
+padding:40px;
 }
 
-.hero img{
-width:100%;
-height:100%;
+.birthday-banner{
+background:white;
+padding:15px;
+border-radius:12px;
+display:flex;
+align-items:center;
+gap:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.birthday-banner img{
+width:120px;
+height:120px;
 object-fit:cover;
+border-radius:8px;
 }
 
-.hero-text{
-position:absolute;
-bottom:40px;
-left:40px;
-color:white;
-}
-
-.hero-text h1{
-font-size:50px;
-}
-
-.hero-text p{
-font-size:18px;
+.birthday-text h2{
+color:#6fa6c7;
 }
 
 
-/* SECTION */
+/* SECTION HEADER */
 
-section{
-padding:60px 10%;
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:50px auto 20px;
+max-width:900px;
 }
 
-h2{
-margin-bottom:25px;
-font-size:28px;
+.section-header h2{
+color:#4d7ea8;
+letter-spacing:2px;
+}
+
+.section-header a{
+font-size:14px;
+color:#7aa8c4;
+text-decoration:none;
 }
 
 
 /* NEWS */
 
 .news-list{
-list-style:none;
-margin-bottom:20px;
-}
-
-.news-list li{
+max-width:900px;
+margin:auto;
 display:flex;
-gap:20px;
-padding:12px 0;
-border-bottom:1px solid #ddd;
+flex-direction:column;
+gap:15px;
 }
 
-.news-list span{
-color:#00a884;
+.news-card{
+padding:18px;
+border-radius:12px;
+color:white;
+font-size:14px;
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.news-card.yellow{
+background:#f2e56e;
+color:#333;
+}
+
+.news-card.blue{
+background:#0e4f8a;
+}
+
+.tag{
+background:#ff5c8a;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+.date{
 font-weight:bold;
 }
 
@@ -534,67 +563,63 @@ font-weight:bold;
 /* SCHEDULE */
 
 .schedule-list{
+max-width:900px;
+margin:auto;
 display:flex;
-gap:20px;
-}
-
-.event{
-background:#eafff7;
-padding:20px;
-border-radius:10px;
-width:200px;
-}
-
-.event h3{
-margin-bottom:5px;
-}
-
-
-/* MEMBERS */
-
-.member-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+flex-direction:column;
 gap:15px;
-margin-bottom:20px;
 }
 
-.member-grid img{
-width:100%;
-border-radius:10px;
+.schedule-card{
+background:white;
+padding:15px;
+border-radius:12px;
+display:flex;
+align-items:center;
+gap:20px;
+box-shadow:0 3px 8px rgba(0,0,0,0.08);
 }
 
-
-/* VIDEO */
-
-.video-box{
-max-width:700px;
-}
-
-
-/* FANCLUB */
-
-.fanclub{
+.date-box{
 text-align:center;
-background:#eafff7;
+width:60px;
+border-right:1px solid #ddd;
+padding-right:10px;
 }
 
-.fanclub p{
-margin:10px 0 20px 0;
+.month{
+display:block;
+font-size:14px;
+color:#888;
 }
 
+.day{
+font-size:24px;
+font-weight:bold;
+color:#4d7ea8;
+}
 
-/* BUTTON */
+.schedule-info{
+padding-left:10px;
+}
 
-.btn{
-display:inline-block;
-padding:10px 20px;
-background:#00a884;
+.badge{
+font-size:12px;
+padding:4px 8px;
+border-radius:10px;
 color:white;
-text-decoration:none;
-border-radius:5px;
+margin-bottom:5px;
+display:inline-block;
 }
 
-.btn:hover{
-opacity:0.8;
+.badge.concert{
+background:#58c1b3;
+}
+
+.badge.media{
+background:#ff8a65;
+}
+
+.badge.event{
+background:#ff5c8a;
 }
