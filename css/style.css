@@ -513,11 +513,12 @@ a.schedule-item:hover { background: var(--mint-pale); }
 }
 .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
 .video-main { grid-column: 1; grid-row: 1 / 4; }
-.video-card {
+.video-card, a.video-card, a.video-main {
   background: #111; border-radius: 8px; overflow: hidden;
   position: relative; cursor: pointer; transition: transform .15s;
+  display: block; text-decoration: none;
 }
-.video-card:hover { transform: scale(1.02); }
+.video-card:hover, a.video-card:hover, a.video-main:hover { transform: scale(1.02); }
 .video-card .thumb {
   width: 100%; aspect-ratio: 16/9;
   background: linear-gradient(135deg, #1a1a2e, #16213e);
