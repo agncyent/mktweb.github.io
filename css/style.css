@@ -462,7 +462,7 @@ font-family:Arial;
 }
 
 body{
-background:#f3fbf8;
+background:#f2fbf8;
 color:#333;
 }
 
@@ -471,102 +471,100 @@ color:#333;
 /* HERO */
 
 .hero{
-display:flex;
-justify-content:center;
-padding:50px;
+height:400px;
+overflow:hidden;
+position:relative;
 }
 
-.birthday-banner{
-background:white;
-border-radius:15px;
-padding:20px;
-display:flex;
-gap:20px;
-align-items:center;
-text-decoration:none;
-color:#333;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+.slider{
+height:100%;
+position:relative;
 }
 
-.birthday-banner:hover{
-transform:translateY(-5px);
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+opacity:0;
+transition:0.6s;
 }
 
-.birthday-banner img{
-width:120px;
-height:120px;
+.slide.active{
+opacity:1;
+}
+
+.slide img{
+width:100%;
+height:100%;
 object-fit:cover;
-border-radius:10px;
+}
+
+.slide-text{
+position:absolute;
+bottom:40px;
+left:40px;
+color:white;
 }
 
 
 
-/* SECTION HEADER */
+/* SECTION TITLE */
 
-.section-header{
-max-width:900px;
-margin:50px auto 20px;
+.section-title{
+max-width:1000px;
+margin:60px auto 20px;
 display:flex;
 justify-content:space-between;
-align-items:center;
 }
 
-.section-header h2{
-color:#3f7fa6;
-letter-spacing:3px;
+.section-title h2{
+color:#3c7aa3;
 }
 
-.section-header a{
+.section-title a{
 text-decoration:none;
-font-size:14px;
-color:#5ca9c4;
+color:#6aa9c6;
 }
 
 
 
 /* NEWS */
 
-.news-list{
-max-width:900px;
+.news-grid{
+max-width:1000px;
 margin:auto;
-display:flex;
-flex-direction:column;
-gap:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .news-card{
-display:flex;
-gap:15px;
-padding:18px;
-border-radius:12px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.08);
 text-decoration:none;
-color:white;
+color:#333;
 transition:0.3s;
 }
 
 .news-card:hover{
-transform:scale(1.02);
+transform:translateY(-5px);
 }
 
-.news-card.yellow{
-background:#f1e56a;
-color:#333;
-}
-
-.news-card.blue{
-background:#0e4f8a;
-}
-
-.tag{
+.category{
 background:#ff5c8a;
+color:white;
 padding:4px 10px;
 border-radius:20px;
 font-size:12px;
 }
 
 .date{
-font-weight:bold;
+display:block;
+margin-top:10px;
+color:#888;
+font-size:13px;
 }
 
 
@@ -574,67 +572,52 @@ font-weight:bold;
 /* SCHEDULE */
 
 .schedule-list{
-max-width:900px;
+max-width:1000px;
 margin:auto;
 display:flex;
 flex-direction:column;
 gap:15px;
 }
 
-.schedule-card{
+.schedule-item{
 background:white;
 padding:15px;
-border-radius:12px;
+border-radius:10px;
 display:flex;
 gap:20px;
 text-decoration:none;
 color:#333;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-transition:0.3s;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-.schedule-card:hover{
-transform:translateY(-3px);
-}
-
-.date-box{
-text-align:center;
-border-right:1px solid #ddd;
-padding-right:10px;
+.date{
 width:60px;
+text-align:center;
 }
 
-.month{
+.date span{
 font-size:14px;
 color:#888;
-display:block;
 }
 
-.day{
+.date strong{
 font-size:24px;
-font-weight:bold;
-color:#3f7fa6;
+color:#3c7aa3;
 }
 
-.badge{
+.type{
 font-size:12px;
-padding:4px 8px;
+padding:3px 8px;
 border-radius:10px;
 color:white;
-display:inline-block;
-margin-bottom:5px;
 }
 
-.badge.concert{
-background:#58c1b3;
+.concert{
+background:#5bc1b1;
 }
 
-.badge.media{
+.media{
 background:#ff8a65;
-}
-
-.badge.event{
-background:#ff5c8a;
 }
 
 
@@ -647,7 +630,7 @@ padding:60px 20px;
 }
 
 .member-grid{
-max-width:900px;
+max-width:1000px;
 margin:auto;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -655,21 +638,21 @@ gap:15px;
 margin-top:20px;
 }
 
+.member-grid a{
+text-decoration:none;
+color:#333;
+}
+
 .member-grid img{
 width:100%;
 border-radius:10px;
-transition:0.3s;
 }
 
-.member-grid img:hover{
-transform:scale(1.05);
-}
-
-.view-all{
+.view-member{
 display:inline-block;
 margin-top:20px;
 text-decoration:none;
-color:#3f7fa6;
+color:#3c7aa3;
 }
 
 
@@ -677,13 +660,18 @@ color:#3f7fa6;
 /* VIDEO */
 
 .video{
-padding:60px 20px;
 text-align:center;
+padding:60px 20px;
 }
 
 .video-box{
-max-width:900px;
+max-width:800px;
 margin:auto;
+}
+
+.video-box iframe{
+width:100%;
+height:400px;
 }
 
 
@@ -691,8 +679,8 @@ margin:auto;
 /* FOOTER */
 
 footer{
-text-align:center;
+background:#e8f5f2;
 padding:30px;
-background:#e8f6f2;
-margin-top:50px;
+text-align:center;
+margin-top:40px;
 }
