@@ -69,7 +69,38 @@ body {
     display: none;
     z-index: 1500;
     backdrop-filter: blur(2px);
+/* --- FIX KHUSUS LANDING PAGE (INDEX) --- */
+
+/* Biar News & Schedule tumpuk ke bawah di HP */
+.info-grid {
+    display: flex;
+    flex-direction: column; /* Tumpuk ke bawah */
+    gap: 20px;
 }
+
+/* Biar Card Quick Access (3 biji itu) pas ukurannya */
+.quick-access {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.card {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Biar News & Schedule baru nyamping kalau di layar lebar (Laptop) */
+@media (min-width: 992px) {
+    .info-grid {
+        flex-direction: row; 
+    }
+    .news-container { flex: 1.5; }
+    .schedule-container { flex: 1; }
+}}
 
 #overlay.active { display: block; }
 
@@ -84,98 +115,6 @@ body {
 }
 #sidebar ul li a:hover { background-color: var(--papermint); }
 
-/* --- 4. LANDING PAGE LAYOUT --- */
-.main-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Banner/Slider */
-.hero-carousel {
-    position: relative;
-    margin-bottom: 25px;
-}
-.banner-img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* Quick Access (3 Kolom) */
-.quick-access {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 30px;
-}
-.card {
-    background-color: var(--papermint);
-    border: 1px solid var(--papermint-dark);
-    border-radius: 12px;
-    padding: 15px 5px;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.card h3 { font-size: 13px; margin-top: 5px; }
-
-/* Grid Info */
-.info-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 25px;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--papermint-dark);
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-}
-
-.btn-orange, .view-more {
-    background-color: var(--mkt-pink);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-/* News List Fix */
-.news-list { display: flex; flex-direction: column; gap: 10px; }
-.news-item {
-    background: white;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.news-item a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
-
-/* Schedule Fix */
-.schedule-flex { display: flex; flex-direction: column; gap: 10px; }
-.schedule-box {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    border-left: 5px solid var(--mkt-pink);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.schedule-box h4 {
-    font-size: 11px;
-    color: var(--mkt-pink);
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
 
 /* --- 5. MEMBER PAGE & RESPONSIVE --- */
 .member-grid {
