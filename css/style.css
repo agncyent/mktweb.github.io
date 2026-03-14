@@ -1,9 +1,24 @@
 /* Style Dasar */
 :root {
+    /* Warna Tema Baru */
     --papermint: #DAF7ED;
     --papermint-dark: #b8e9d8;
     --text-gray: #666;
-    --mkt-pink: #d683a3; /* Aksen warna khas idol */
+    --mkt-pink: #d683a3;
+    --white: #ffffff;
+
+    /* JEMBATAN: Menghubungkan kode lama ke warna papermint */
+    --mint-primary: var(--papermint-dark); 
+    --mint-soft: var(--papermint);         
+    --mint-accent: #5CD6C0;                
+    --mint-dark: #2F4F4F;    
+    --shadow: rgba(0, 0, 0, 0.1);
+
+    /* Sidebar & UI */
+    --primary-color: #333;
+    --accent-color: var(--mkt-pink);
+    --sidebar-bg: #ffffff;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
 }
 
 /* --- 1. NAVBAR --- */
