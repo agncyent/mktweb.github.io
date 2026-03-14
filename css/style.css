@@ -462,225 +462,179 @@ font-family:Arial;
 }
 
 body{
-background:#f2fbf8;
+background:#f2f4f7;
 color:#333;
 }
-
 
 
 /* HERO */
 
 .hero{
-height:400px;
-overflow:hidden;
-position:relative;
+display:flex;
+justify-content:center;
+padding:40px;
 }
 
-.slider{
-height:100%;
-position:relative;
+.birthday-banner{
+background:white;
+padding:15px;
+border-radius:12px;
+display:flex;
+align-items:center;
+gap:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-opacity:0;
-transition:0.6s;
-}
-
-.slide.active{
-opacity:1;
-}
-
-.slide img{
-width:100%;
-height:100%;
+.birthday-banner img{
+width:120px;
+height:120px;
 object-fit:cover;
+border-radius:8px;
 }
 
-.slide-text{
-position:absolute;
-bottom:40px;
-left:40px;
-color:white;
+.birthday-text h2{
+color:#6fa6c7;
 }
 
 
+/* SECTION HEADER */
 
-/* SECTION TITLE */
-
-.section-title{
-max-width:1000px;
-margin:60px auto 20px;
+.section-header{
 display:flex;
 justify-content:space-between;
+align-items:center;
+margin:50px auto 20px;
+max-width:900px;
 }
 
-.section-title h2{
-color:#3c7aa3;
+.section-header h2{
+color:#4d7ea8;
+letter-spacing:2px;
 }
 
-.section-title a{
+.section-header a{
+font-size:14px;
+color:#7aa8c4;
 text-decoration:none;
-color:#6aa9c6;
 }
-
 
 
 /* NEWS */
 
-.news-grid{
-max-width:1000px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.news-card{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 5px 10px rgba(0,0,0,0.08);
-text-decoration:none;
-color:#333;
-transition:0.3s;
-}
-
-.news-card:hover{
-transform:translateY(-5px);
-}
-
-.category{
-background:#ff5c8a;
-color:white;
-padding:4px 10px;
-border-radius:20px;
-font-size:12px;
-}
-
-.date{
-display:block;
-margin-top:10px;
-color:#888;
-font-size:13px;
-}
-
-
-
-/* SCHEDULE */
-
-.schedule-list{
-max-width:1000px;
+.news-list{
+max-width:900px;
 margin:auto;
 display:flex;
 flex-direction:column;
 gap:15px;
 }
 
-.schedule-item{
-background:white;
-padding:15px;
-border-radius:10px;
+.news-card{
+padding:18px;
+border-radius:12px;
+color:white;
+font-size:14px;
 display:flex;
-gap:20px;
-text-decoration:none;
+align-items:center;
+gap:15px;
+}
+
+.news-card.yellow{
+background:#f2e56e;
 color:#333;
-box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.news-card.blue{
+background:#0e4f8a;
+}
+
+.tag{
+background:#ff5c8a;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
 }
 
 .date{
-width:60px;
-text-align:center;
+font-weight:bold;
 }
 
-.date span{
+
+/* SCHEDULE */
+
+.schedule-list{
+max-width:900px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.schedule-card{
+background:white;
+padding:15px;
+border-radius:12px;
+display:flex;
+align-items:center;
+gap:20px;
+box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
+.date-box{
+text-align:center;
+width:60px;
+border-right:1px solid #ddd;
+padding-right:10px;
+}
+
+.month{
+display:block;
 font-size:14px;
 color:#888;
 }
 
-.date strong{
+.day{
 font-size:24px;
-color:#3c7aa3;
+font-weight:bold;
+color:#4d7ea8;
 }
 
-.type{
+.schedule-info{
+padding-left:10px;
+}
+
+.badge{
 font-size:12px;
-padding:3px 8px;
+padding:4px 8px;
 border-radius:10px;
 color:white;
+margin-bottom:5px;
+display:inline-block;
 }
 
-.concert{
-background:#5bc1b1;
+.badge.concert{
+background:#58c1b3;
 }
 
-.media{
+.badge.media{
 background:#ff8a65;
 }
 
-
-
-/* MEMBERS */
-
-.members{
-text-align:center;
-padding:60px 20px;
+.badge.event{
+background:#ff5c8a;
 }
-
-.member-grid{
-max-width:1000px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
-margin-top:20px;
-}
-
-.member-grid a{
+a{
 text-decoration:none;
-color:#333;
+color:inherit;
 }
 
-.member-grid img{
-width:100%;
-border-radius:10px;
+.news-card,
+.schedule-card,
+.banner-link{
+display:block;
 }
 
-.view-member{
-display:inline-block;
-margin-top:20px;
-text-decoration:none;
-color:#3c7aa3;
-}
-
-
-
-/* VIDEO */
-
-.video{
-text-align:center;
-padding:60px 20px;
-}
-
-.video-box{
-max-width:800px;
-margin:auto;
-}
-
-.video-box iframe{
-width:100%;
-height:400px;
-}
-
-
-
-/* FOOTER */
-
-footer{
-background:#e8f5f2;
-padding:30px;
-text-align:center;
-margin-top:40px;
+.news-card:hover,
+.schedule-card:hover{
+transform:scale(1.02);
 }
