@@ -20,6 +20,14 @@
     --sidebar-bg: #ffffff;
     --overlay-bg: rgba(0, 0, 0, 0.5);
 }
+/* --- 2. STYLE DASAR HALAMAN (AGAR JADI PAPERMINT) --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--papermint) !important; /* MENGUBAH LATAR PUTIH JADI PAPERMINT */
+    margin: 0;
+    padding: 0;
+    color: var(--mint-dark);
+}
 
 /* --- 1. NAVBAR --- */
 .navbar {
