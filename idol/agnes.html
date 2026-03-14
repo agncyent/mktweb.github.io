@@ -50,28 +50,37 @@
             </div>
         </div>
     </main>
-
     <script>
-        async function loadComponents() {
-            try {
-                // Ambil Navbar
-                const navRes = await fetch('../components/navbar.html');
+    async function loadComponents() {
+        // Kita pakai path relatif '../../' kalau misalnya struktur foldernya lebih dalam
+        // Atau kita pakai path absolut tanpa titik di depan kalau di custom domain
+        const paths = {
+            navbar: '../components/navbar.html',
+            sidebar: '../components/sidebar.html'
+        };
+
+        try {
+            const navRes = await fetch(paths.navbar);
+            if(navRes.ok) {
                 document.getElementById('navbar-placeholder').innerHTML = await navRes.text();
-
-                // Ambil Sidebar
-                const sideRes = await fetch('../components/sidebar.html');
-                document.getElementById('sidebar-placeholder').innerHTML = await sideRes.text();
-
-                // SETELAH navbar & sidebar muncul, kita "pancing" ulang main.js
-                // supaya tombol menu bisa mendeteksi elemen baru tersebut
-                if (typeof initMenu === "function") {
-                    initMenu(); 
-                }
-            } catch (err) {
-                console.error("Gagal load components:", err);
+            } else {
+                // Kalau gagal panggil ../ coba panggil tanpa titik dua
+                const navResAlt = await fetch('/components/navbar.html');
+                document.getElementById('navbar-placeholder').innerHTML = await navResAlt.text();
             }
+
+            const sideRes = await fetch(paths.sidebar);
+            if(sideRes.ok) {
+                document.getElementById('sidebar-placeholder').innerHTML = await sideRes.text();
+            } else {
+                const sideResAlt = await fetch('/components/sidebar.html');
+                document.getElementById('sidebar-placeholder').innerHTML = await sideResAlt.text();
+            }
+        } catch (err) {
+            console.error("Masalah koneksi file:", err);
         }
-        loadComponents();
+    }
+    loadComponents();
     </script>
 
     <script src="../js/main.js"></script>
