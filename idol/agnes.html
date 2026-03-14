@@ -55,7 +55,21 @@
         </div>
     </main>
 
-</script>  
+<script>
+    // Memanggil Navbar
+    fetch('../components/navbar.html') // Jalur diperbaiki: keluar idol, masuk components
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+
+    // Memanggil Sidebar
+    fetch('../components/sidebar.html') // Jalur diperbaiki
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('sidebar-placeholder').innerHTML = data;
+        });
+</script>
 <script src="../js/main.js"></script>
 </body>  
 </html>
