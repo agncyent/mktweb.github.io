@@ -6,7 +6,6 @@
     <title>Agnes Profile - MKT4X</title>    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -22,31 +21,57 @@
             <div class="member-info">
                 <h1>AGNES</h1>
                 <div class="badge-gen">Anggota Generasi ke-1 MKT4X</div>
+
                 <div class="bio-table">
-                    <div class="bio-row"><span>Tanggal Lahir</span><span>8 Juni 1999</span></div>
-                    <div class="bio-row"><span>Asal</span><span>Bogor</span></div>
-                    <div class="bio-row"><span>Gol. Darah</span><span>O</span></div>
+                    <div class="bio-row">
+                        <span class="bio-label">Tanggal Lahir</span>
+                        <span>8 Juni 1999</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Asal</span>
+                        <span>Bogor</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Gol. Darah</span>
+                        <span>O</span>
+                    </div>
+                </div>
+
+                <div class="member-footer">
+                    <div class="catchphrase-box">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Dengan senyum manis dan semangat tanpa batas, aku siap membuat hari kalian lebih indah!"</p>
+                    </div>
+                    <div class="status-box">
+                        <span>Status:</span>
+                        <span class="status-tag">Aktif</span>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
-        function loadComponent(id, path) {
-            fetch(path)
-                .then(response => {
-                    if (!response.ok) throw new Error('Gagal ambil file: ' + path);
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById(id).innerHTML = data;
-                })
-                .catch(err => console.error(err));
-        }
+        async function loadComponents() {
+            try {
+                // Ambil Navbar
+                const navRes = await fetch('../components/navbar.html');
+                document.getElementById('navbar-placeholder').innerHTML = await navRes.text();
 
-        // Kita panggil dengan ../ agar keluar dari folder idol
-        loadComponent('navbar-placeholder', '../components/navbar.html');
-        loadComponent('sidebar-placeholder', '../components/sidebar.html');
+                // Ambil Sidebar
+                const sideRes = await fetch('../components/sidebar.html');
+                document.getElementById('sidebar-placeholder').innerHTML = await sideRes.text();
+
+                // SETELAH navbar & sidebar muncul, kita "pancing" ulang main.js
+                // supaya tombol menu bisa mendeteksi elemen baru tersebut
+                if (typeof initMenu === "function") {
+                    initMenu(); 
+                }
+            } catch (err) {
+                console.error("Gagal load components:", err);
+            }
+        }
+        loadComponents();
     </script>
 
     <script src="../js/main.js"></script>
