@@ -11,14 +11,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../css/style.css">
+
 </head>
 
 <body>
 
-<!-- Navbar -->
 <div id="navbar-placeholder"></div>
-
-<!-- Sidebar -->
 <div id="sidebar-placeholder"></div>
 
 <main class="content-main">
@@ -74,28 +72,26 @@ Anggota Generasi ke-1 MKT4X
 </div>
 
 </main>
-  
-<script>
-document.addEventListener("DOMContentLoaded", function() {
 
-function loadHTML(id, file) {
-fetch(file)
+
+<script>
+
+function loadComponent(id, path) {
+fetch(path)
 .then(response => {
-if(!response.ok){
-throw new Error("File tidak ditemukan: " + file);
-}
+if (!response.ok) throw new Error('Gagal ambil file: ' + path);
 return response.text();
 })
 .then(data => {
 document.getElementById(id).innerHTML = data;
 })
-.catch(error => console.error(error));
+.catch(err => console.error(err));
 }
 
-loadHTML("navbar-placeholder", "/components/navbar.html");
-loadHTML("sidebar-placeholder", "/components/sidebar.html");
+// keluar dari folder idol
+loadComponent('navbar-placeholder', '../components/navbar.html');
+loadComponent('sidebar-placeholder', '../components/sidebar.html');
 
-});
 </script>
 
 <script src="../js/main.js"></script>
