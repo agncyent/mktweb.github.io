@@ -9,10 +9,12 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  
+
+<!-- NAVBAR PLACEHOLDER (opsional, kalau pakai komponen) -->
 <div id="navbar-placeholder"></div>
 <div id="sidebar-placeholder"></div>
-  
+<div id="overlay"></div>
+
 <!-- HERO BANNER -->
 <div class="hero-banner">
   <div class="deco-circle dc1"></div>
@@ -21,10 +23,10 @@
   <div class="deco-star ds2">✦</div>
   <div class="deco-heart dh1">♥</div>
 
-  <div class="single-badge">MKT4X SINGLE KE-1</div>
+  <div class="single-badge" data-key="hero_badge">MKT4X SINGLE KE-1</div>
   <div class="hero-title">STARLIGHT CONFESSION</div>
-  <div class="hero-sub">Lagu tentang bintang dan mimpi</div>
-  <!-- Foto tengah banner - ganti link imgur di bawah -->
+  <div class="hero-sub" data-key="hero_sub">Lagu tentang bintang dan mimpi</div>
+  <!-- Ganti URL di bawah dengan link imgur banner kamu -->
   <div class="hero-center-photo">
     <img src="https://i.imgur.com/placeholder.png" alt="MKT4X Group Photo"
       onload="this.style.opacity='1'"
@@ -37,13 +39,13 @@
   <!-- BERITA -->
   <div class="sw rs">
     <div class="sh">
-      <h2 class="st">Berita</h2>
+      <h2 class="st" data-key="news_title">Berita</h2>
       <div class="sl"></div>
       <div class="wd">〜〜〜</div>
     </div>
     <div class="news-sub-header">
-      <span class="nst">PEMBARUAN MKT4X</span>
-      <button class="btn-lihat">LIHAT LAGI</button>
+      <span class="nst" data-key="news_sub">PEMBARUAN MKT4X</span>
+      <button class="btn-lihat" data-key="btn_more">LIHAT LAGI</button>
     </div>
 
     <a class="news-item" href="berita1.html">
@@ -86,9 +88,9 @@
   <!-- JADWAL -->
   <div class="sw2">
     <div class="sh">
-      <h2 class="st">Jadwal</h2>
+      <h2 class="st" data-key="sch_title">Jadwal</h2>
       <div class="sl"></div>
-      <button class="btn-lihat">LIHAT LAGI</button>
+      <button class="btn-lihat" data-key="btn_more">LIHAT LAGI</button>
     </div>
 
     <a class="schedule-item" href="jadwal1.html">
@@ -116,16 +118,16 @@
   <!-- RILIS -->
   <div class="sw rs">
     <div class="sh">
-      <h2 class="st">Rilis</h2>
+      <h2 class="st" data-key="release_title">Rilis</h2>
       <div class="sl"></div>
       <div class="wd">〜〜〜</div>
     </div>
     <div class="release-header">
       <div class="yt-badge">
         <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-        YOUTUBE RESMI
+        <span data-key="yt_label">YOUTUBE RESMI</span>
       </div>
-      <button class="yt-official-btn">YOUTUBE RESMI</button>
+      <button class="yt-official-btn" data-key="yt_label">YOUTUBE RESMI</button>
     </div>
     <div class="video-grid">
       <div class="video-main video-card">
@@ -161,7 +163,7 @@
   <div class="sw2" style="position:relative;">
     <div class="pink-diamond"></div>
     <div class="sh">
-      <h2 class="st">Member</h2>
+      <h2 class="st" data-key="member_title">Member</h2>
       <div class="sl"></div>
       <div class="wd">〜〜〜</div>
     </div>
@@ -180,15 +182,14 @@
       </a>
     </div>
     <div style="text-align:center;margin-top:14px;">
-      <a href="member.html" class="btn-all-member">Lihat Semua Member →</a>
+      <a href="member.html" class="btn-all-member" data-key="btn_all_member">Lihat Semua Member →</a>
     </div>
   </div>
 
 </div>
 
 <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-  
+
 <script src="js/main.js"></script>
-  
 </body>
 </html>
