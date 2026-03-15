@@ -64,16 +64,14 @@
                 <label class="oshi-item"><input type="radio" name="oshi" value="Melisha"><img src="https://i.imgur.com/LgfDdI7.png" alt="Melisha"><p>Melisha</p><span class="gen-tag">GENERASI 1</span></label>
             </div>
 
-            <!-- TOMBOL DAFTAR -->
             <button type="button" class="btn-submit" id="btnRequest" onclick="requestOTP()">Daftar</button>
 
-            <!-- SUDAH PUNYA AKUN -->
             <div class="btn-login-link">
-                Sudah punya akun? <a href="#" onclick="openLoginModal()">Login di sini</a>
+                Sudah punya akun? <a href="#" onclick="openLoginModal(); return false;">Login di sini</a>
             </div>
         </form>
 
-        <div id="otpSection">
+        <div id="otpSection" style="display:none;">
             <p id="lblOtpTitle" style="font-weight:bold;color:#1B5E20;font-size:0.8rem;">KODE VERIFIKASI ANDA:</p>
             <h2 id="generatedOTP">------</h2>
             <div class="form-group">
@@ -99,9 +97,22 @@
     </div>
 </div>
 
+<!-- BRIDGE: supaya onclick bisa akses fungsi dari JS module -->
+<script>
+function requestOTP()      { if(window.requestOTP)      window.requestOTP();      }
+function verifyOTP()       { if(window.verifyOTP)       window.verifyOTP();       }
+function openLoginModal()  { if(window.openLoginModal)  window.openLoginModal();  }
+function closeLoginModal() { if(window.closeLoginModal) window.closeLoginModal(); }
+function submitLogin()     { if(window.submitLogin)     window.submitLogin();     }
+function toggleMenu()      { if(window.toggleMenu)      window.toggleMenu();      }
+function translatePage()   { if(window.translatePage)   window.translatePage();   }
+function editProfile()     { if(window.editProfile)     window.editProfile();     }
+</script>
+
 <script type="module" src="js/firebase.js"></script>
 <script type="module" src="js/auth.js"></script>
 <script type="module" src="js/fanclub-register.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 </html>
