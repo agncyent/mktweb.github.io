@@ -1,0 +1,232 @@
+/* =====================
+   fanclub-register.css
+   ===================== */
+
+:root {
+    --mint-primary: #A8E6CF;
+    --mint-soft: #E8FFF8;
+    --mint-accent: #5CD6C0;
+    --mint-dark: #2F4F4F;
+    --white: #ffffff;
+    --shadow: rgba(92, 214, 192, 0.3);
+    --premium-green: #2E7D32;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #E8FFF8 0%, #ffffff 100%);
+    color: var(--mint-dark);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* NAVBAR & SIDEBAR - sudah dihandle di components/navbar.html & components/sidebar.html */
+
+/* FORM CARD */
+.container { padding: 25px 5%; display: flex; justify-content: center; }
+.fc-card {
+    background: #fff;
+    width: 100%; max-width: 480px;
+    border-radius: 40px;
+    padding: 35px 25px;
+    border: 2px solid var(--mint-primary);
+    box-shadow: 0 10px 30px var(--shadow);
+    text-align: center;
+}
+.fc-header h2 {
+    color: var(--premium-green);
+    font-weight: 800;
+    margin: 0;
+    font-size: 2rem;
+    border-bottom: 3px solid var(--mint-primary);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.badge-main {
+    background: var(--premium-green);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    display: inline-block;
+    margin: 15px 0;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.form-group { text-align: left; margin-bottom: 15px; }
+.form-group label { display: block; font-weight: bold; font-size: 0.85rem; color: var(--premium-green); margin-bottom: 6px; }
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1.5px solid #E0E0E0;
+    border-radius: 12px;
+    outline: none;
+    background: #F9FFF9;
+    font-family: inherit;
+}
+.form-group input:focus { border-color: var(--mint-accent); }
+
+/* OSHI GRID */
+.oshi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 25px 0; }
+.oshi-item {
+    border: 1.5px solid #E8FFF8;
+    border-radius: 20px;
+    padding: 15px;
+    background: #F9FFF9;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+.oshi-item img {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.oshi-item p { margin: 0; font-weight: 800; font-size: 0.95rem; color: #2E7D32; }
+.gen-tag {
+    font-size: 0.6rem;
+    background: #C8E6C9;
+    color: #1B5E20;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 5px;
+}
+.oshi-item input { position: absolute; opacity: 0; }
+.oshi-item.selected {
+    border-color: var(--premium-green);
+    background: #E8F5E9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+/* BUTTONS */
+.btn-submit {
+    width: 100%;
+    background: var(--premium-green);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 35px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.btn-submit:hover { opacity: 0.9; }
+
+/* TOMBOL LOGIN */
+.btn-login-link {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+}
+.btn-login-link a {
+    color: var(--premium-green);
+    font-weight: 700;
+    text-decoration: none;
+}
+.btn-login-link a:hover { text-decoration: underline; }
+
+/* OTP SECTION */
+#otpSection {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    border: 2px dashed var(--premium-green);
+    border-radius: 20px;
+    background: #F1F8E9;
+}
+#generatedOTP {
+    font-size: 2.2rem;
+    letter-spacing: 8px;
+    color: var(--premium-green);
+    margin: 15px 0;
+    font-weight: 800;
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(168,230,207,0.4);
+    backdrop-filter: blur(4px);
+    display: none;
+    z-index: 9998;
+}
+.overlay.active { display: block; }
+
+/* LOGIN MODAL */
+.login-modal-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    display: none;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+.login-modal-bg.active { display: flex; }
+.login-modal {
+    background: #fff;
+    border-radius: 24px;
+    padding: 35px 28px;
+    max-width: 340px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.login-modal h3 {
+    color: var(--premium-green);
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+.login-modal p { font-size: 0.82rem; color: #888; margin-bottom: 20px; }
+.login-modal input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1.5px solid #E0E0E0;
+    border-radius: 12px;
+    outline: none;
+    background: #F9FFF9;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+.login-modal input:focus { border-color: var(--mint-accent); }
+.login-modal .btn-submit { margin-top: 0; }
+.login-modal .btn-cancel {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.82rem;
+    color: #aaa;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: center;
+    width: 100%;
+}
+.login-modal .btn-cancel:hover { color: #888; }
+.login-error {
+    font-size: 0.8rem;
+    color: #D32F2F;
+    margin-top: -6px;
+    margin-bottom: 10px;
+    display: none;
+}
+
