@@ -5,34 +5,31 @@
         <img src="https://i.imgur.com/yq2JRbl.png" alt="MKT4X Logo">
     </div>
 
-    <!-- PROFIL (hanya muncul kalau sudah login) -->
-    <div id="profileContainer" style="display:none;">
-        <img src="assets/default-avatar.png" id="profilePic" alt="Profile"/>
-        <div id="profileName">-</div>
-        <div id="verifiedBadge" style="display:none;">
-            ✅ <span>Verified</span>
-        </div>
-        <div id="user-status"></div>
-        <button onclick="editProfile()">Edit Profil</button>
-    </div>
-    
     <ul id="menuList">
         <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
         <li><a href="news.html"><i class="fas fa-newspaper"></i> <span>Berita</span></a></li>
         <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> <span>Jadwal</span></a></li>
         <li><a href="member.html"><i class="fas fa-users"></i> <span>Member</span></a></li>
         <li><a href="release.html"><i class="fas fa-compact-disc"></i> <span>Release</span></a></li>
-        
+
         <hr style="opacity:0.1; margin:20px 0; border:none; border-top:1px solid #eee;">
-        
+
         <li><a href="fanclub.html" class="fc-link"><i class="fas fa-heart"></i> <span>Fanclub</span></a></li>
         <li>
             <a href="fanclub-register.html" id="authBtn">
-                <i class="fas fa-sign-in-alt"></i>
+                <i class="fas fa-sign-in-alt" id="authIcon"></i>
                 <span id="authText">Masuk</span>
             </a>
         </li>
     </ul>
+
+    <!-- PROFILE DISPLAY - muncul setelah login -->
+    <div id="profileContainer">
+        <img id="profilePic" src="" alt="Profil">
+        <p id="profileName"></p>
+        <div id="verifiedBadge" style="display:none;">✅ <span>Verified</span></div>
+        <p id="user-status"></p>
+        <button onclick="editProfile()">Edit Profil</button>
+    </div>
+
 </div>
-
-
