@@ -4,6 +4,17 @@
     <div class="sidebar-logo">
         <img src="https://i.imgur.com/yq2JRbl.png" alt="MKT4X Logo">
     </div>
+
+    <!-- PROFIL (hanya muncul kalau sudah login) -->
+    <div id="profileContainer" style="display:none;">
+        <img src="assets/default-avatar.png" id="profilePic" alt="Profile"/>
+        <div id="profileName">-</div>
+        <div id="verifiedBadge" style="display:none;">
+            ✅ <span>Verified</span>
+        </div>
+        <div id="user-status"></div>
+        <button onclick="editProfile()">Edit Profil</button>
+    </div>
     
     <ul id="menuList">
         <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
@@ -12,7 +23,7 @@
         <li><a href="member.html"><i class="fas fa-users"></i> <span>Member</span></a></li>
         <li><a href="release.html"><i class="fas fa-compact-disc"></i> <span>Release</span></a></li>
         
-        <hr style="opacity:0.1; margin:20px 0; border: none; border-top: 1px solid #eee;">
+        <hr style="opacity:0.1; margin:20px 0; border:none; border-top:1px solid #eee;">
         
         <li><a href="upgrade.html" class="fc-link"><i class="fas fa-heart"></i> <span>Fanclub</span></a></li>
         <li>
@@ -25,27 +36,22 @@
 </div>
 
 <style>
-/* SIDEBAR FIX POSISI KANAN */
+/* SIDEBAR */
 .sidebar {
     position: fixed;
     top: 0;
-    /* Kita matikan kiri, pindah ke kanan */
-    right: -280px; 
-    left: auto !important; 
-    
+    right: -280px;
+    left: auto !important;
     width: 280px;
     height: 100%;
     background: #ffffff;
-    /* Border sekarang di sisi kiri sidebar */
-    border-left: 3px solid #AAF0D1; 
+    border-left: 3px solid #AAF0D1;
     z-index: 2000;
     transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 25px 20px;
     overflow-y: auto;
     box-shadow: -5px 0 15px rgba(0,0,0,0.05);
 }
-
-/* Aktif = Masuk dari kanan ke posisi 0 */
 .sidebar.active {
     right: 0 !important;
     left: auto !important;
@@ -53,24 +59,64 @@
 
 .sidebar-logo {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     padding: 10px;
 }
+.sidebar-logo img { width: 140px; height: auto; }
 
-.sidebar-logo img {
-    width: 140px;
-    height: auto;
+/* PROFILE SECTION */
+#profileContainer {
+    background: #f0fff9;
+    border: 2px dashed #AAF0D1;
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 20px;
 }
-
-#menuList {
-    list-style: none;
-    padding: 0;
+#profilePic {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #AAF0D1;
+    margin: 0 auto 8px;
+    display: block;
 }
-
-#menuList li {
-    margin-bottom: 8px;
+#profileName {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #2F4F4F;
+    margin-bottom: 4px;
 }
+#verifiedBadge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #2E7D32;
+    margin-bottom: 4px;
+}
+#verifiedBadge span { vertical-align: middle; }
+#user-status {
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+    min-height: 16px;
+}
+#profileContainer button {
+    background: #4db6ac;
+    color: white;
+    border: none;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: inherit;
+    transition: 0.2s;
+}
+#profileContainer button:hover { background: #2E7D32; }
 
+/* MENU */
+#menuList { list-style: none; padding: 0; }
+#menuList li { margin-bottom: 8px; }
 #menuList li a {
     text-decoration: none;
     color: #333;
@@ -83,38 +129,19 @@
     transition: 0.3s;
     font-size: 14px;
 }
+#menuList li a i { width: 20px; color: #4db6ac; }
+#menuList li a:hover { background: #f0fff9; color: #4db6ac; }
+.fc-link { color: #4db6ac !important; }
 
-#menuList li a i {
-    width: 20px;
-    color: #4db6ac;
-}
-
-#menuList li a:hover {
-    background: #f0fff9;
-    color: #4db6ac;
-}
-
-#menuList li a:hover i {
-    color: #4db6ac;
-}
-
-.fc-link {
-    color: #4db6ac !important;
-}
-
+/* OVERLAY */
 .overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
     display: none;
     z-index: 1500;
     backdrop-filter: blur(2px);
 }
-
-.overlay.active {
-    display: block;
-}
+.overlay.active { display: block; }
 </style>
