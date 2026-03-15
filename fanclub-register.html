@@ -92,9 +92,56 @@
     </div>
 </div>
 
+<!-- DEBUG LOGGER -->
+<div id="dbg" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#0f0;font-size:11px;padding:6px;max-height:120px;overflow-y:auto;z-index:99999;"></div>
+
 <script src="js/main.js"></script>
 <script type="module" src="js/firebase.js"></script>
 <script type="module" src="js/auth.js"></script>
 <script type="module" src="js/fanclub-register.js"></script>
+
+<script>
+var dbgEl = document.getElementById('dbg');
+function dbg(msg) {
+    var p = document.createElement('p');
+    p.style.margin = '1px 0';
+    p.innerText = '> ' + msg;
+    dbgEl.appendChild(p);
+    dbgEl.scrollTop = dbgEl.scrollHeight;
+}
+
+// Cek error global
+window.onerror = function(msg, src, line) {
+    dbg('ERR: ' + msg + ' L:' + line);
+    return false;
+};
+
+// Cek setelah DOM siap
+document.addEventListener('DOMContentLoaded', function() {
+    dbg('DOM ready');
+    dbg('btnRequest: ' + (document.getElementById('btnRequest') ? 'OK' : 'NULL'));
+    dbg('oshi count: ' + document.querySelectorAll('.oshi-item').length);
+    dbg('loginModal: ' + (document.getElementById('loginModalBg') ? 'OK' : 'NULL'));
+
+    // Cek apakah module sudah ikat event
+    setTimeout(function() {
+        var btn = document.getElementById('btnRequest');
+        dbg('btn ada listener: ' + (btn ? 'cek klik' : 'NULL'));
+    }, 2000);
+});
+
+// Cek klik tombol Daftar
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'btnRequest') {
+        dbg('btnRequest DIKLIK');
+    }
+    if (e.target.id === 'btnOpenLogin') {
+        dbg('btnOpenLogin DIKLIK');
+    }
+    if (e.target.closest && e.target.closest('.oshi-item')) {
+        dbg('oshi DIKLIK: ' + (e.target.closest('.oshi-item').querySelector('p')?.innerText || '?'));
+    }
+});
+</script>
 </body>
 </html>
