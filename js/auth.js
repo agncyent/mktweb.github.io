@@ -76,18 +76,27 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     // --- USER SUDAH LOGIN ---
     if (photo)     { photo.src = user.photoURL; photo.style.display = "block"; }
-    if (username)  username.innerText = user.displayName;
-    // Badge verified di bawah nama
-    const existingBadge = document.getElementById('verifiedBadge');
-    if (!existingBadge && username) {
-        const badge = document.createElement('div');
-        badge.id = 'verifiedBadge';
-        badge.innerHTML = '✅ <span style="font-size:0.75rem;font-weight:700;color:#2E7D32;">Verified</span>';
-        badge.style.cssText = 'margin-top:4px;font-size:0.75rem;';
-        username.insertAdjacentElement('afterend', badge);
-    }
+    if (username)  username.innerText = user.displayName || user.email;
+
+    // Badge verified
+    const verifiedBadge = document.getElementById('verifiedBadge');
+    if (verifiedBadge) verifiedBadge.style.display = 'block';
+
+    // Tampilkan profile container
+    const profileContainer = document.getElementById('profileContainer');
+    if (profileContainer) profileContainer.style.display = 'block';
+
     if (btnLogin)  btnLogin.style.display  = "none";
     if (btnLogout) btnLogout.style.display = "block";
+
+    // Ganti icon & teks authBtn jadi Keluar
+    const authBtn  = document.getElementById('authBtn');
+    const authText = document.getElementById('authText');
+    if (authText) authText.innerText = 'Keluar';
+    if (authBtn)  {
+      authBtn.onclick = (e) => { e.preventDefault(); window.logout(); };
+      authBtn.querySelector('i').className = 'fas fa-sign-out-alt';
+    }
 
     // Ambil status premium dari Firestore
     try {
@@ -107,8 +116,27 @@ onAuthStateChanged(auth, async (user) => {
     if (photo)     { photo.src = "assets/default-avatar.png"; }
     if (username)  username.innerText = "Guest";
     if (status)    status.innerText   = "";
+
+    // Sembunyikan profile container
+    const profileContainer = document.getElementById('profileContainer');
+    if (profileContainer) profileContainer.style.display = 'none';
+
+    // Badge verified disembunyikan
+    const verifiedBadge = document.getElementById('verifiedBadge');
+    if (verifiedBadge) verifiedBadge.style.display = 'none';
+
     if (btnLogin)  btnLogin.style.display  = "block";
     if (btnLogout) btnLogout.style.display = "none";
+
+    // Kembalikan authBtn ke Masuk
+    const authBtn  = document.getElementById('authBtn');
+    const authText = document.getElementById('authText');
+    if (authText) authText.innerText = 'Masuk';
+    if (authBtn)  {
+      authBtn.onclick = () => window.location.href = 'login.html';
+      const icon = authBtn.querySelector('i');
+      if (icon) icon.className = 'fas fa-sign-in-alt';
+    }
 
     // Kalau halaman ini butuh login, redirect ke login page
     if (requireAuth) {
