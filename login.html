@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - MKT4X</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .login-wrap {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: var(--papermint);
+    }
+    .login-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(61,186,135,0.15);
+    }
+    .login-logo {
+      font-family: 'Nunito', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--mint-main);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .login-logo img { width: 60px; height: auto; margin-bottom: 8px; display: block; margin: 0 auto 10px; }
+    .login-subtitle { font-size: 13px; color: var(--text-light); margin-bottom: 30px; }
+    .login-divider {
+      font-size: 11px; color: #ccc; margin: 20px 0;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .login-divider::before, .login-divider::after {
+      content: ''; flex: 1; height: 1px; background: #eee;
+    }
+    .btn-google {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; padding: 12px 20px;
+      background: #fff; border: 2px solid #e0e0e0; border-radius: 12px;
+      font-size: 14px; font-weight: 600; color: #333;
+      cursor: pointer; font-family: 'Poppins', sans-serif; transition: all 0.2s;
+    }
+    .btn-google:hover {
+      border-color: var(--mint-main);
+      box-shadow: 0 4px 12px rgba(61,186,135,0.2);
+      transform: translateY(-1px);
+    }
+    .btn-google img { width: 22px; height: 22px; }
+    .login-note { font-size: 10px; color: #bbb; margin-top: 20px; line-height: 1.6; }
+    .back-link {
+      display: block; margin-top: 20px; font-size: 12px;
+      color: var(--mint-main); text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR & SIDEBAR dari components -->
+<div id="navbar-placeholder"></div>
+<div id="sidebar-placeholder"></div>
+
+<div class="login-wrap">
+  <div class="login-card">
+    <img src="https://i.imgur.com/yq2JRbl.png" alt="MKT4X Logo"/>
+    <div class="login-logo">MKT4X</div>
+    <div class="login-subtitle">Masuk untuk akses Fanclub & semua fitur</div>
+
+    <button class="btn-google" onclick="loginGoogle()">
+      <img src="https://www.google.com/favicon.ico" alt="Google"/>
+      Masuk dengan Google
+    </button>
+
+    <div class="login-divider">atau</div>
+    <div style="font-size:12px;color:#aaa;">Fitur login lain segera hadir</div>
+
+    <p class="login-note">
+      Dengan masuk, kamu setuju dengan syarat & ketentuan MKT4X Fanclub.
+    </p>
+    <a class="back-link" href="index.html">← Kembali ke Beranda</a>
+  </div>
+</div>
+
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
