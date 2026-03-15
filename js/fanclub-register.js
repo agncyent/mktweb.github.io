@@ -62,7 +62,43 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Enter') submitLogin();
     });
 
+    // --- TRANSLATE ---
+    const langSelect = document.getElementById('langSelect');
+    if (langSelect) langSelect.addEventListener('change', window.translatePage);
+
+    // Apply bahasa tersimpan
+    const savedLang = localStorage.getItem('selectedLang') || 'id';
+    if (langSelect) { langSelect.value = savedLang; window.translatePage && window.translatePage(); }
+
 });
+
+// =====================
+// TRANSLATE
+// =====================
+const dict = {
+    id: { sub: "Premium Fanclub", lblUser: "Username", lblName: "Nama Lengkap", lblBirth: "Tanggal Lahir", lblCity: "Kota", lblOshi: "✨ Pilih Oshi-mu ✨", btnDaftar: "Daftar", otpTitle: "KODE VERIFIKASI ANDA:", btnVerify: "Verifikasi & Upgrade", list: ["Home","Berita","Jadwal","Member","Setlist","Fanclub","Masuk"] },
+    en: { sub: "Premium Fanclub", lblUser: "Username", lblName: "Full Name", lblBirth: "Date of Birth", lblCity: "City", lblOshi: "✨ Pick Your Oshi ✨", btnDaftar: "Register", otpTitle: "YOUR VERIFICATION CODE:", btnVerify: "Verify & Upgrade", list: ["Home","News","Schedule","Member","Setlist","Fanclub","Login"] },
+    jp: { sub: "プレミアムファンクラブ", lblUser: "ユーザー名", lblName: "氏名", lblBirth: "生年月日", lblCity: "都市", lblOshi: "推しを選んでください", btnDaftar: "登録", otpTitle: "認証コード", btnVerify: "認証", list: ["Home","ニュース","スケジュール","メンバー","セットリスト","ファンクラブ","ログイン"] },
+    my: { sub: "Kelab Peminat Premium", lblUser: "Nama Pengguna", lblName: "Nama Penuh", lblBirth: "Tarikh Lahir", lblCity: "Bandar", lblOshi: "Pilih Oshi Anda", btnDaftar: "Daftar", otpTitle: "KOD PENGESAHAN", btnVerify: "Sahkan", list: ["Home","Berita","Jadual","Ahli","Senarai Lagu","Kelab Peminat","Masuk"] }
+};
+
+window.translatePage = function () {
+    const langSelect = document.getElementById('langSelect');
+    if (!langSelect) return;
+    const l = langSelect.value;
+    localStorage.setItem('selectedLang', l);
+    document.getElementById('subTitle').innerText    = dict[l].sub;
+    document.getElementById('lblUser').innerText     = dict[l].lblUser;
+    document.getElementById('lblName').innerText     = dict[l].lblName;
+    document.getElementById('lblBirth').innerText    = dict[l].lblBirth;
+    document.getElementById('lblCity').innerText     = dict[l].lblCity;
+    document.getElementById('lblOshi').innerText     = dict[l].lblOshi;
+    document.getElementById('btnRequest').innerText  = dict[l].btnDaftar;
+    document.getElementById('lblOtpTitle').innerText = dict[l].otpTitle;
+    document.getElementById('btnVerify').innerText   = dict[l].btnVerify;
+    const spans = document.querySelectorAll('#menuList span');
+    dict[l].list.forEach((teks, i) => { if (spans[i]) spans[i].innerText = teks; });
+};
 
 // =====================
 // REQUEST OTP / DAFTAR
