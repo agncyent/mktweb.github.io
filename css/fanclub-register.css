@@ -24,6 +24,12 @@ body {
 
 /* NAVBAR & SIDEBAR - sudah dihandle di components/navbar.html & components/sidebar.html */
 
+/* Variabel khusus halaman fanclub-register (tidak ada di style.css) */
+:root {
+    --premium-green: #2E7D32;
+    --shadow: rgba(92, 214, 192, 0.3); /* override shadow khusus halaman ini */
+}
+
 /* FORM CARD */
 .container { padding: 25px 5%; display: flex; justify-content: center; }
 .fc-card {
@@ -31,7 +37,7 @@ body {
     width: 100%; max-width: 480px;
     border-radius: 40px;
     padding: 35px 25px;
-    border: 2px solid var(--mint-primary);
+    border: 2px solid var(--mint-mid);
     box-shadow: 0 10px 30px var(--shadow);
     text-align: center;
 }
@@ -40,7 +46,7 @@ body {
     font-weight: 800;
     margin: 0;
     font-size: 2rem;
-    border-bottom: 3px solid var(--mint-primary);
+    border-bottom: 3px solid var(--mint-mid);
     display: inline-block;
     padding-bottom: 5px;
 }
@@ -229,4 +235,3 @@ body {
     margin-bottom: 10px;
     display: none;
 }
-
