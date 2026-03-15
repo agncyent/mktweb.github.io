@@ -62,13 +62,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Enter') submitLogin();
     });
 
-    // --- TRANSLATE ---
-    const langSelect = document.getElementById('langSelect');
-    if (langSelect) langSelect.addEventListener('change', window.translatePage);
-
-    // Apply bahasa tersimpan
-    const savedLang = localStorage.getItem('selectedLang') || 'id';
-    if (langSelect) { langSelect.value = savedLang; window.translatePage && window.translatePage(); }
+    // --- TRANSLATE --- (tunggu navbar loaded dulu)
+    document.addEventListener('sidebarLoaded', function() {
+        const langSelect = document.getElementById('langSelect');
+        if (langSelect) {
+            langSelect.addEventListener('change', window.translatePage);
+            const savedLang = localStorage.getItem('selectedLang') || 'id';
+            langSelect.value = savedLang;
+            window.translatePage();
+        }
+    });
 
 });
 
@@ -188,8 +191,9 @@ async function verifyOTP() {
             }, { merge: true });
         }
 
-        alert('Selamat! Kamu sekarang Member PREMIUM MKT4X.');
-        window.location.href = 'fanclub.html';
+        alert('Pendaftaran berhasil! Silakan login dengan Google untuk masuk ke Fanclub.');
+        localStorage.setItem('redirectAfterLogin', 'fanclub.html');
+        window.location.href = 'login.html';
 
     } catch (e) {
         console.error('Gagal simpan data:', e);
@@ -228,22 +232,9 @@ async function submitLogin() {
         return;
     }
 
-    try {
-        const q    = query(collection(db, 'users'), where('email', '==', email));
-        const snap = await getDocs(q);
-
-        if (snap.empty) {
-            errEl.innerText = 'Email belum terdaftar. Silakan daftar dulu!';
-            errEl.style.display = 'block';
-        } else {
-            closeLoginModal();
-            window.location.href = 'login.html';
-        }
-    } catch (e) {
-        console.error(e);
-        errEl.innerText = 'Terjadi kesalahan. Coba lagi.';
-        errEl.style.display = 'block';
-    }
+    // Langsung redirect ke login.html — Google yang handle autentikasi
+    closeLoginModal();
+    window.location.href = 'login.html';
 }
 
 // =====================
