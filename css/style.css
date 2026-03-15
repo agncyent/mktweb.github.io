@@ -133,6 +133,21 @@ a { text-decoration: none; color: inherit; }
 body.no-scroll { overflow: hidden; }
 
 /* =====================
+   SIDEBAR LOGO
+   ===================== */
+.sidebar-logo{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo img{
+  width: 100px;   /* ukuran logo */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* =====================
    HERO BANNER (homepage)
    ===================== */
 .hero-banner {
