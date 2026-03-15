@@ -9,22 +9,17 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fanclub-register.css">
 </head>
-
 <body>
+
 <div class="overlay" id="overlay"></div>
-
-<!-- NAVBAR dari components/navbar.html -->
 <div id="navbar-placeholder"></div>
-
-<!-- SIDEBAR dari components/sidebar.html -->
 <div id="sidebar-placeholder"></div>
 
-<!-- MAIN FORM -->
 <main class="container">
     <div class="fc-card">
         <div class="fc-header">
             <h2>MKT4X</h2>
-            <div style="margin: 15px 0;">
+            <div style="margin:15px 0;">
                 <img src="https://i.imgur.com/TDUfxDZ.png" alt="MKT4X Logo" style="width:70px;height:auto;">
             </div>
             <p id="subTitle" style="font-weight:800;color:#2E7D32;margin:0;font-size:1.5rem;">Premium Fanclub</p>
@@ -64,10 +59,10 @@
                 <label class="oshi-item"><input type="radio" name="oshi" value="Melisha"><img src="https://i.imgur.com/LgfDdI7.png" alt="Melisha"><p>Melisha</p><span class="gen-tag">GENERASI 1</span></label>
             </div>
 
-            <button type="button" class="btn-submit" id="btnRequest" onclick="requestOTP()">Daftar</button>
+            <button type="button" class="btn-submit" id="btnRequest">Daftar</button>
 
             <div class="btn-login-link">
-                Sudah punya akun? <a href="#" onclick="openLoginModal(); return false;">Login di sini</a>
+                Sudah punya akun? <a href="#" id="btnOpenLogin">Login di sini</a>
             </div>
         </form>
 
@@ -77,7 +72,7 @@
             <div class="form-group">
                 <input type="text" id="inputOTP" placeholder="Masukkan 6 digit kode" style="text-align:center;font-weight:bold;font-size:1.2rem;">
             </div>
-            <button class="btn-submit" id="btnVerify" onclick="verifyOTP()">Verifikasi & Upgrade</button>
+            <button type="button" class="btn-submit" id="btnVerify">Verifikasi & Upgrade</button>
             <p id="timer" style="color:#D32F2F;font-size:0.85rem;margin-top:10px;font-weight:bold;">Sisa waktu: 60 detik</p>
         </div>
 
@@ -92,27 +87,14 @@
         <p>Masukkan email yang terdaftar di MKT4X Fanclub</p>
         <input type="email" id="loginEmailInput" placeholder="fans@email.com"/>
         <div class="login-error" id="loginError"></div>
-        <button class="btn-submit" onclick="submitLogin()">Login</button>
-        <button class="btn-cancel" onclick="closeLoginModal()">Batal</button>
+        <button type="button" class="btn-submit" id="btnSubmitLogin">Login</button>
+        <button type="button" class="btn-cancel" id="btnCloseLogin">Batal</button>
     </div>
 </div>
 
-<!-- BRIDGE: supaya onclick bisa akses fungsi dari JS module -->
-<script>
-function requestOTP()      { if(window.requestOTP)      window.requestOTP();      }
-function verifyOTP()       { if(window.verifyOTP)       window.verifyOTP();       }
-function openLoginModal()  { if(window.openLoginModal)  window.openLoginModal();  }
-function closeLoginModal() { if(window.closeLoginModal) window.closeLoginModal(); }
-function submitLogin()     { if(window.submitLogin)     window.submitLogin();     }
-function toggleMenu()      { if(window.toggleMenu)      window.toggleMenu();      }
-function translatePage()   { if(window.translatePage)   window.translatePage();   }
-function editProfile()     { if(window.editProfile)     window.editProfile();     }
-</script>
-
+<script src="js/main.js"></script>
 <script type="module" src="js/firebase.js"></script>
 <script type="module" src="js/auth.js"></script>
 <script type="module" src="js/fanclub-register.js"></script>
-<script src="js/main.js"></script>
-
 </body>
 </html>
