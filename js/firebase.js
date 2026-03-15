@@ -1,7 +1,7 @@
 // =====================
 // firebase.js
 // =====================
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
@@ -15,15 +15,8 @@ const firebaseConfig = {
   measurementId: "G-75M09B9HDE"
 };
 
-// Inisialisasi Firebase (cegah double init)
-let app;
-try {
-  app = initializeApp(firebaseConfig);
-} catch (e) {
-  // Sudah diinisialisasi sebelumnya
-  import { getApps } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  app = getApps()[0];
-}
+// Cegah double init
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
 export const auth = getAuth(app);
 export const db   = getFirestore(app);
