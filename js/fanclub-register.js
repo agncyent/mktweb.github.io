@@ -18,18 +18,26 @@ let otpTimer;
 document.addEventListener('DOMContentLoaded', function () {
 
     // --- OSHI SELECTION ---
-    document.querySelectorAll('.oshi-item').forEach(item => {
-        item.addEventListener('click', function () {
-            document.querySelectorAll('.oshi-item').forEach(i => i.classList.remove('selected'));
-            this.classList.add('selected');
-            const radio = this.querySelector('input[type="radio"]');
-            if (radio) radio.checked = true;
+    // Pastikan di HTML ada class "oshi-item"
+    const oshiItems = document.querySelectorAll('.oshi-item');
+    if (oshiItems.length > 0) {
+        oshiItems.forEach(item => {
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.oshi-item').forEach(i => i.classList.remove('selected'));
+                this.classList.add('selected');
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) radio.checked = true;
+            });
         });
-    });
+    }
 
     // --- TOMBOL DAFTAR ---
     const btnRequest = document.getElementById('btnRequest');
-    if (btnRequest) btnRequest.addEventListener('click', requestOTP);
+    if (btnRequest) {
+        btnRequest.addEventListener('click', requestOTP);
+    } else {
+        console.warn("ID 'btnRequest' tidak ditemukan di HTML");
+    }
 
     // --- TOMBOL VERIFIKASI ---
     const btnVerify = document.getElementById('btnVerify');
@@ -37,10 +45,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- BUKA LOGIN MODAL ---
     const btnOpenLogin = document.getElementById('btnOpenLogin');
-    if (btnOpenLogin) btnOpenLogin.addEventListener('click', function(e) {
-        e.preventDefault();
-        openLoginModal();
-    });
+    if (btnOpenLogin) {
+        btnOpenLogin.addEventListener('click', function(e) {
+            e.preventDefault();
+            openLoginModal();
+        });
+    }
 
     // --- TUTUP LOGIN MODAL ---
     const btnCloseLogin = document.getElementById('btnCloseLogin');
@@ -68,7 +78,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Apply bahasa tersimpan
     const savedLang = localStorage.getItem('selectedLang') || 'id';
-    if (langSelect) { langSelect.value = savedLang; window.translatePage && window.translatePage(); }
+    if (langSelect) { 
+        langSelect.value = savedLang; 
+        if (typeof window.translatePage === 'function') window.translatePage(); 
+    }
 
 });
 
@@ -76,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // TRANSLATE
 // =====================
 const dict = {
-    id: { sub: "Premium Fanclub", lblUser: "Username", lblName: "Nama Lengkap", lblBirth: "Tanggal Lahir", lblCity: "Kota", lblOshi: "✨ Pilih Oshi-mu ✨", btnDaftar: "Daftar", otpTitle: "KODE VERIFIKASI ANDA:", btnVerify: "Verifikasi & Upgrade", list: ["Home","Berita","Jadwal","Member","Setlist","Fanclub","Masuk"] },
+    id: { sub: "Premium Fanclub", lblUser: "Username", lblName: "Nama Lengkap", lblBirth: "Tanggal Larir", lblCity: "Kota", lblOshi: "✨ Pilih Oshi-mu ✨", btnDaftar: "Daftar", otpTitle: "KODE VERIFIKASI ANDA:", btnVerify: "Verifikasi & Upgrade", list: ["Home","Berita","Jadwal","Member","Setlist","Fanclub","Masuk"] },
     en: { sub: "Premium Fanclub", lblUser: "Username", lblName: "Full Name", lblBirth: "Date of Birth", lblCity: "City", lblOshi: "✨ Pick Your Oshi ✨", btnDaftar: "Register", otpTitle: "YOUR VERIFICATION CODE:", btnVerify: "Verify & Upgrade", list: ["Home","News","Schedule","Member","Setlist","Fanclub","Login"] },
     jp: { sub: "プレミアムファンクラブ", lblUser: "ユーザー名", lblName: "氏名", lblBirth: "生年月日", lblCity: "都市", lblOshi: "推しを選んでください", btnDaftar: "登録", otpTitle: "認証コード", btnVerify: "認証", list: ["Home","ニュース","スケジュール","メンバー","セットリスト","ファンクラブ","ログイン"] },
     my: { sub: "Kelab Peminat Premium", lblUser: "Nama Pengguna", lblName: "Nama Penuh", lblBirth: "Tarikh Lahir", lblCity: "Bandar", lblOshi: "Pilih Oshi Anda", btnDaftar: "Daftar", otpTitle: "KOD PENGESAHAN", btnVerify: "Sahkan", list: ["Home","Berita","Jadual","Ahli","Senarai Lagu","Kelab Peminat","Masuk"] }
@@ -87,15 +100,19 @@ window.translatePage = function () {
     if (!langSelect) return;
     const l = langSelect.value;
     localStorage.setItem('selectedLang', l);
-    document.getElementById('subTitle').innerText    = dict[l].sub;
-    document.getElementById('lblUser').innerText     = dict[l].lblUser;
-    document.getElementById('lblName').innerText     = dict[l].lblName;
-    document.getElementById('lblBirth').innerText    = dict[l].lblBirth;
-    document.getElementById('lblCity').innerText     = dict[l].lblCity;
-    document.getElementById('lblOshi').innerText     = dict[l].lblOshi;
-    document.getElementById('btnRequest').innerText  = dict[l].btnDaftar;
-    document.getElementById('lblOtpTitle').innerText = dict[l].otpTitle;
-    document.getElementById('btnVerify').innerText   = dict[l].btnVerify;
+
+    // Cek satu per satu agar tidak error jika ID tidak ada
+    const elIds = ['subTitle', 'lblUser', 'lblName', 'lblBirth', 'lblCity', 'lblOshi', 'btnRequest', 'lblOtpTitle', 'btnVerify'];
+    elIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            // Mapping khusus untuk button karena pakai dict property berbeda
+            if (id === 'btnRequest') el.innerText = dict[l].btnDaftar;
+            else if (id === 'lblOtpTitle') el.innerText = dict[l].otpTitle;
+            else el.innerText = dict[l][id.replace('lbl', 'lbl').replace('subTitle', 'sub')];
+        }
+    });
+
     const spans = document.querySelectorAll('#menuList span');
     dict[l].list.forEach((teks, i) => { if (spans[i]) spans[i].innerText = teks; });
 };
@@ -104,23 +121,37 @@ window.translatePage = function () {
 // REQUEST OTP / DAFTAR
 // =====================
 function requestOTP() {
+    // List ID input yang harus ada di HTML
     const fields = ['username', 'fullname', 'birthdate', 'city', 'email'];
-    const isFormValid = fields.every(id => {
+    
+    // Validasi Field dengan Alert (Biar ketahuan mana yang kosong/salah ID)
+    for (let id of fields) {
         const el = document.getElementById(id);
-        return el && el.value.trim() !== '';
-    });
-    const isOshiSelected = document.querySelector('input[name="oshi"]:checked');
+        if (!el) {
+            alert(`Error: Elemen input dengan ID "${id}" tidak ditemukan di HTML kamu!`);
+            return;
+        }
+        if (el.value.trim() === '') {
+            alert(`Harap isi kolom ${id} terlebih dahulu.`);
+            return;
+        }
+    }
 
-    if (!isFormValid || !isOshiSelected) {
-        alert('Isi dulu semua form dan pilih oshi kamu!');
+    const isOshiSelected = document.querySelector('input[name="oshi"]:checked');
+    if (!isOshiSelected) {
+        alert('Silakan pilih salah satu Oshi kamu!');
         return;
     }
 
-    document.getElementById('btnRequest').style.display  = 'none';
-    document.getElementById('otpSection').style.display  = 'block';
+    const btnReq = document.getElementById('btnRequest');
+    const otpSec = document.getElementById('otpSection');
+    
+    if (btnReq) btnReq.style.display = 'none';
+    if (otpSec) otpSec.style.display = 'block';
 
     const code = Math.floor(100000 + Math.random() * 900000);
-    document.getElementById('generatedOTP').innerText = code;
+    const genOTP = document.getElementById('generatedOTP');
+    if (genOTP) genOTP.innerText = code;
 
     let seconds = 60;
     const timerEl = document.getElementById('timer');
@@ -145,6 +176,11 @@ function verifyOTP() {
     const input   = document.getElementById('inputOTP')?.value.trim();
     const correct = document.getElementById('generatedOTP')?.innerText.trim();
 
+    if (!input) {
+        alert('Masukkan kode OTP dulu!');
+        return;
+    }
+
     if (input === correct) {
         clearInterval(otpTimer);
         alert('Selamat! Kamu sekarang Member PREMIUM MKT4X.');
@@ -161,7 +197,7 @@ function openLoginModal() {
     const modal = document.getElementById('loginModalBg');
     const input = document.getElementById('loginEmailInput');
     const err   = document.getElementById('loginError');
-    if (modal) modal.classList.add('active');
+    if (modal) modal.classList.add('active'); else alert("ID 'loginModalBg' tidak ditemukan.");
     if (input) input.value = '';
     if (err)   err.style.display = 'none';
 }
@@ -194,10 +230,12 @@ async function submitLogin() {
             errEl.style.display = 'block';
         } else {
             closeLoginModal();
+            // Simpan status login sederhana jika perlu
             window.location.href = 'login.html';
         }
     } catch (e) {
         console.error(e);
+        alert("Firebase Error: " + e.message);
         errEl.innerText = 'Terjadi kesalahan. Coba lagi.';
         errEl.style.display = 'block';
     }
@@ -216,7 +254,7 @@ onAuthStateChanged(auth, async (user) => {
 
     if (user) {
         if (authText)  authText.innerText  = 'Keluar';
-        if (authBtn)   authBtn.onclick = (e) => { e.preventDefault(); window.logout && window.logout(); };
+        if (authBtn)   authBtn.onclick = (e) => { e.preventDefault(); alert("Proses Logout..."); }; 
         if (profilePic)  profilePic.src          = user.photoURL || 'assets/default-avatar.png';
         if (profileName) profileName.innerText    = user.displayName || user.email;
         if (verifiedBadge) verifiedBadge.style.display = 'block';
@@ -234,7 +272,7 @@ onAuthStateChanged(auth, async (user) => {
 
     } else {
         if (authText)  authText.innerText  = 'Masuk';
-        if (authBtn)   authBtn.removeAttribute('onclick');
+        if (authBtn)   authBtn.onclick = (e) => { e.preventDefault(); openLoginModal(); };
         if (verifiedBadge)    verifiedBadge.style.display    = 'none';
         if (profileContainer) profileContainer.style.display = 'none';
     }
