@@ -27,15 +27,20 @@
       text-align: center;
       box-shadow: 0 8px 30px rgba(61,186,135,0.15);
     }
+    .login-logo-img {
+      width: 60px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
     .login-logo {
       font-family: 'Nunito', sans-serif;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
       color: var(--mint-main);
       letter-spacing: 2px;
       margin-bottom: 6px;
     }
-    .login-logo img { width: 60px; height: auto; margin-bottom: 8px; display: block; margin: 0 auto 10px; }
     .login-subtitle { font-size: 13px; color: var(--text-light); margin-bottom: 30px; }
     .login-divider {
       font-size: 11px; color: #ccc; margin: 20px 0;
@@ -67,13 +72,12 @@
 </head>
 <body>
 
-<!-- NAVBAR & SIDEBAR dari components -->
 <div id="navbar-placeholder"></div>
 <div id="sidebar-placeholder"></div>
 
 <div class="login-wrap">
   <div class="login-card">
-    <img src="https://i.imgur.com/yq2JRbl.png" alt="MKT4X Logo"/>
+    <img class="login-logo-img" src="https://i.imgur.com/yq2JRbl.png" alt="MKT4X Logo"/>
     <div class="login-logo">MKT4X</div>
     <div class="login-subtitle">Masuk untuk akses Fanclub & semua fitur</div>
 
@@ -91,9 +95,9 @@
     <a class="back-link" href="index.html">← Kembali ke Beranda</a>
   </div>
 </div>
-<script type="module" src="js/fanclub-register.js"></script>
+
+<script src="js/main.js"></script>
 <script type="module" src="js/firebase.js"></script>
 <script type="module" src="js/auth.js"></script>
-<script src="js/main.js"></script>
 </body>
 </html>
