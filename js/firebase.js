@@ -1,9 +1,7 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-
+// firebase.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAyVMw8qzDKUgWyLdAPzXS6h2T9lBanMHI",
@@ -15,8 +13,9 @@ const firebaseConfig = {
   measurementId: "G-75M09B9HDE"
 };
 
+// Inisialisasi Firebase
 const app = initializeApp(firebaseConfig);
 
+// Export agar bisa dipakai di auth.js
 export const auth = getAuth(app);
-
 export const db = getFirestore(app);
