@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Fanclub | MKT4X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/fanclub-register.css">
+</head>
+
+<body>
+<div class="overlay" id="overlay"></div>
+
+<!-- NAVBAR dari components/navbar.html -->
+<div id="navbar-placeholder"></div>
+
+<!-- SIDEBAR dari components/sidebar.html -->
+<div id="sidebar-placeholder"></div>
+
+<!-- MAIN FORM -->
+<main class="container">
+    <div class="fc-card">
+        <div class="fc-header">
+            <h2>MKT4X</h2>
+            <div style="margin: 15px 0;">
+                <img src="https://i.imgur.com/TDUfxDZ.png" alt="MKT4X Logo" style="width:70px;height:auto;">
+            </div>
+            <p id="subTitle" style="font-weight:800;color:#2E7D32;margin:0;font-size:1.5rem;">Premium Fanclub</p>
+            <p style="font-size:0.8rem;color:#666;margin-top:5px;">Generasi 1 • MKT4X Entertainment</p>
+            <div class="badge-main">GENERASI 1</div>
+        </div>
+
+        <form id="premiumForm" style="margin-top:20px;">
+            <div class="form-group">
+                <label id="lblUser">Username</label>
+                <input type="text" id="username" placeholder="Contoh: kiara_fans" required>
+            </div>
+            <div class="form-group">
+                <label id="lblName">Nama Lengkap</label>
+                <input type="text" id="fullname" placeholder="Sesuai KTP/ID" required>
+            </div>
+            <div class="form-group">
+                <label id="lblBirth">Tanggal Lahir</label>
+                <input type="date" id="birthdate" required>
+            </div>
+            <div class="form-group">
+                <label id="lblCity">Kota</label>
+                <input type="text" id="city" placeholder="Kota domisili" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Contoh: fans@email.com" required>
+            </div>
+
+            <p id="lblOshi" style="font-weight:bold;color:var(--premium-green);margin:25px 0 10px;">✨ Pilih Oshi-mu ✨</p>
+            <div class="oshi-grid">
+                <label class="oshi-item"><input type="radio" name="oshi" value="Kiara"><img src="https://i.imgur.com/KjU8YTn.png" alt="Kiara"><p>Kiara</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Agnes"><img src="https://i.imgur.com/9iiTqah.png" alt="Agnes"><p>Agnes</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Thea"><img src="https://i.imgur.com/hmsc4g6.png" alt="Thea"><p>Thea</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Khen"><img src="https://i.imgur.com/EGuBLUf.png" alt="Khen"><p>Khen</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Chalista"><img src="https://i.imgur.com/1m6d2ml.png" alt="Chalista"><p>Chalista</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Melisha"><img src="https://i.imgur.com/LgfDdI7.png" alt="Melisha"><p>Melisha</p><span class="gen-tag">GENERASI 1</span></label>
+            </div>
+
+            <!-- TOMBOL DAFTAR -->
+            <button type="button" class="btn-submit" id="btnRequest" onclick="requestOTP()">Daftar</button>
+
+            <!-- SUDAH PUNYA AKUN -->
+            <div class="btn-login-link">
+                Sudah punya akun? <a href="#" onclick="openLoginModal()">Login di sini</a>
+            </div>
+        </form>
+
+        <div id="otpSection">
+            <p id="lblOtpTitle" style="font-weight:bold;color:#1B5E20;font-size:0.8rem;">KODE VERIFIKASI ANDA:</p>
+            <h2 id="generatedOTP">------</h2>
+            <div class="form-group">
+                <input type="text" id="inputOTP" placeholder="Masukkan 6 digit kode" style="text-align:center;font-weight:bold;font-size:1.2rem;">
+            </div>
+            <button class="btn-submit" id="btnVerify" onclick="verifyOTP()">Verifikasi & Upgrade</button>
+            <p id="timer" style="color:#D32F2F;font-size:0.85rem;margin-top:10px;font-weight:bold;">Sisa waktu: 60 detik</p>
+        </div>
+
+        <p style="font-size:0.7rem;color:#bbb;margin-top:30px;letter-spacing:1px;">MKT4X ENTERTAINMENT • SINCE 2024</p>
+    </div>
+</main>
+
+<!-- LOGIN MODAL -->
+<div class="login-modal-bg" id="loginModalBg">
+    <div class="login-modal">
+        <h3>Login Fanclub</h3>
+        <p>Masukkan email yang terdaftar di MKT4X Fanclub</p>
+        <input type="email" id="loginEmailInput" placeholder="fans@email.com"/>
+        <div class="login-error" id="loginError"></div>
+        <button class="btn-submit" onclick="submitLogin()">Login</button>
+        <button class="btn-cancel" onclick="closeLoginModal()">Batal</button>
+    </div>
+</div>
+
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/fanclub-register.js"></script>
+</body>
+</html>
