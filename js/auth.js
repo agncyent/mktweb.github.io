@@ -75,6 +75,11 @@ onAuthStateChanged(auth, async (user) => {
 
   if (user) {
     // --- USER SUDAH LOGIN ---
+    // Sembunyikan access-denied, tampilkan fanclub-content
+    const accessDenied = document.getElementById('access-denied');
+    const fanclubContent = document.getElementById('fanclub-content');
+    if (accessDenied) accessDenied.style.display = 'none';
+    if (fanclubContent) fanclubContent.style.display = 'block';
     if (photo)     { photo.src = user.photoURL; photo.style.display = "block"; }
     if (username)  username.innerText = user.displayName || user.email;
 
@@ -113,6 +118,11 @@ onAuthStateChanged(auth, async (user) => {
 
   } else {
     // --- USER BELUM LOGIN ---
+    // Tampilkan access-denied, sembunyikan fanclub-content
+    const accessDenied = document.getElementById('access-denied');
+    const fanclubContent = document.getElementById('fanclub-content');
+    if (accessDenied) accessDenied.style.display = 'block';
+    if (fanclubContent) fanclubContent.style.display = 'none';
     if (photo)     { photo.src = "assets/default-avatar.png"; }
     if (username)  username.innerText = "Guest";
     if (status)    status.innerText   = "";
@@ -128,12 +138,13 @@ onAuthStateChanged(auth, async (user) => {
     if (btnLogin)  btnLogin.style.display  = "block";
     if (btnLogout) btnLogout.style.display = "none";
 
-    // Kembalikan authBtn ke Masuk
+    // authBtn href sudah diset di sidebar.html → fanclub-register.html
+    // Cukup update teks & icon saja
     const authBtn  = document.getElementById('authBtn');
     const authText = document.getElementById('authText');
     if (authText) authText.innerText = 'Masuk';
-    if (authBtn)  {
-      authBtn.onclick = () => window.location.href = 'login.html';
+    if (authBtn) {
+      authBtn.removeAttribute('onclick');
       const icon = authBtn.querySelector('i');
       if (icon) icon.className = 'fas fa-sign-in-alt';
     }
