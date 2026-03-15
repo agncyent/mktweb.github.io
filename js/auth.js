@@ -77,6 +77,15 @@ onAuthStateChanged(auth, async (user) => {
     // --- USER SUDAH LOGIN ---
     if (photo)     { photo.src = user.photoURL; photo.style.display = "block"; }
     if (username)  username.innerText = user.displayName;
+    // Badge verified di bawah nama
+    const existingBadge = document.getElementById('verifiedBadge');
+    if (!existingBadge && username) {
+        const badge = document.createElement('div');
+        badge.id = 'verifiedBadge';
+        badge.innerHTML = '✅ <span style="font-size:0.75rem;font-weight:700;color:#2E7D32;">Verified</span>';
+        badge.style.cssText = 'margin-top:4px;font-size:0.75rem;';
+        username.insertAdjacentElement('afterend', badge);
+    }
     if (btnLogin)  btnLogin.style.display  = "none";
     if (btnLogout) btnLogout.style.display = "block";
 
