@@ -8,15 +8,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fanclub-register.css">
+    <style>
+        /* Style tambahan untuk memastikan tombol terlihat */
+        .btn-submit {
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 10;
+        }
+        .oshi-item {
+            cursor: pointer !important;
+        }
+        #btnRequest, #btnVerify, #btnOpenLogin {
+            cursor: pointer !important;
+        }
+    </style>
 </head>
 
 <body>
 <div class="overlay" id="overlay"></div>
 
+<!-- NAVBAR dari components/navbar.html -->
 <div id="navbar-placeholder"></div>
 
+<!-- SIDEBAR dari components/sidebar.html -->
 <div id="sidebar-placeholder"></div>
 
+<!-- MAIN FORM -->
 <main class="container">
     <div class="fc-card">
         <div class="fc-header">
@@ -47,28 +65,30 @@
                 <input type="text" id="city" placeholder="Kota domisili" required>
             </div>
             <div class="form-group">
-                <label id="lblEmail">Email</label>
+                <label>Email</label>
                 <input type="email" id="email" placeholder="Contoh: fans@email.com" required>
             </div>
 
             <p id="lblOshi" style="font-weight:bold;color:var(--premium-green);margin:25px 0 10px;">✨ Pilih Oshi-mu ✨</p>
             <div class="oshi-grid">
-                <label class="oshi-item"><input type="radio" name="oshi" value="Kiara" style="display:none;"><img src="https://i.imgur.com/KjU8YTn.png" alt="Kiara"><p>Kiara</p><span class="gen-tag">GENERASI 1</span></label>
-                <label class="oshi-item"><input type="radio" name="oshi" value="Agnes" style="display:none;"><img src="https://i.imgur.com/9iiTqah.png" alt="Agnes"><p>Agnes</p><span class="gen-tag">GENERASI 1</span></label>
-                <label class="oshi-item"><input type="radio" name="oshi" value="Thea" style="display:none;"><img src="https://i.imgur.com/hmsc4g6.png" alt="Thea"><p>Thea</p><span class="gen-tag">GENERASI 1</span></label>
-                <label class="oshi-item"><input type="radio" name="oshi" value="Khen" style="display:none;"><img src="https://i.imgur.com/EGuBLUf.png" alt="Khen"><p>Khen</p><span class="gen-tag">GENERASI 1</span></label>
-                <label class="oshi-item"><input type="radio" name="oshi" value="Chalista" style="display:none;"><img src="https://i.imgur.com/1m6d2ml.png" alt="Chalista"><p>Chalista</p><span class="gen-tag">GENERASI 1</span></label>
-                <label class="oshi-item"><input type="radio" name="oshi" value="Melisha" style="display:none;"><img src="https://i.imgur.com/LgfDdI7.png" alt="Melisha"><p>Melisha</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Kiara"><img src="https://i.imgur.com/KjU8YTn.png" alt="Kiara"><p>Kiara</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Agnes"><img src="https://i.imgur.com/9iiTqah.png" alt="Agnes"><p>Agnes</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Thea"><img src="https://i.imgur.com/hmsc4g6.png" alt="Thea"><p>Thea</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Khen"><img src="https://i.imgur.com/EGuBLUf.png" alt="Khen"><p>Khen</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Chalista"><img src="https://i.imgur.com/1m6d2ml.png" alt="Chalista"><p>Chalista</p><span class="gen-tag">GENERASI 1</span></label>
+                <label class="oshi-item"><input type="radio" name="oshi" value="Melisha"><img src="https://i.imgur.com/LgfDdI7.png" alt="Melisha"><p>Melisha</p><span class="gen-tag">GENERASI 1</span></label>
             </div>
 
+            <!-- TOMBOL DAFTAR - HAPUS onclick, biar JS yang handle -->
             <button type="button" class="btn-submit" id="btnRequest">Daftar</button>
 
+            <!-- SUDAH PUNYA AKUN - HAPUS onclick, tambah ID -->
             <div class="btn-login-link">
                 Sudah punya akun? <a href="#" id="btnOpenLogin">Login di sini</a>
             </div>
         </form>
 
-        <div id="otpSection" style="display:none;">
+        <div id="otpSection" style="display: none;">
             <p id="lblOtpTitle" style="font-weight:bold;color:#1B5E20;font-size:0.8rem;">KODE VERIFIKASI ANDA:</p>
             <h2 id="generatedOTP">------</h2>
             <div class="form-group">
@@ -82,6 +102,7 @@
     </div>
 </main>
 
+<!-- LOGIN MODAL -->
 <div class="login-modal-bg" id="loginModalBg">
     <div class="login-modal">
         <h3>Login Fanclub</h3>
@@ -97,5 +118,29 @@
 <script type="module" src="js/auth.js"></script>
 <script type="module" src="js/fanclub-register.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+    // Emergency fallback - kalau module gagal, ini akan jalan
+    window.requestOTP = function() {
+        console.log('Fallback requestOTP - cek module');
+        alert('Pastikan fanclub-register.js termuat dengan benar');
+    };
+    window.verifyOTP = function() {
+        console.log('Fallback verifyOTP - cek module');
+        alert('Pastikan fanclub-register.js termuat dengan benar');
+    };
+    window.openLoginModal = function() {
+        console.log('Fallback openLoginModal - cek module');
+        alert('Pastikan fanclub-register.js termuat dengan benar');
+    };
+    window.closeLoginModal = function() {
+        console.log('Fallback closeLoginModal');
+        document.getElementById('loginModalBg')?.classList.remove('active');
+    };
+    window.submitLogin = function() {
+        console.log('Fallback submitLogin');
+        alert('Pastikan fanclub-register.js termuat dengan benar');
+    };
+</script>
 </body>
 </html>
