@@ -142,7 +142,7 @@ body.no-scroll { overflow: hidden; }
 }
 
 .sidebar-logo img{
-  width: 140px;   /* ukuran logo lebih besar */
+  width: 250px;   /* ukuran logo lebih besar */
   height: auto;
   display: block;
   margin: 0 auto;
