@@ -14,10 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(sideHtml => {
             const sidePlaceholder = document.getElementById('sidebar-placeholder');
             if(sidePlaceholder) sidePlaceholder.innerHTML = sideHtml;
+
+            // ← Beritahu auth.js bahwa sidebar sudah siap di DOM
+            document.dispatchEvent(new Event('sidebarLoaded'));
+
             startMKT4X();
         })
         .catch(err => {
-            // Kalau tidak ada komponen, tetap jalankan
+            console.error("Gagal muat komponen:", err);
             startMKT4X();
         });
 
@@ -42,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // 2. KAMUS BAHASA
         const dict = {
             id: {
-                // Navbar & Sidebar
                 menu_home:    "Beranda",
                 menu_news:    "Berita",
                 menu_sch:     "Jadwal",
@@ -50,10 +53,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 menu_release: "Rilis",
                 menu_fanclub: "Fanclub",
                 menu_login:   "Masuk",
-                // Halaman Member
                 txt_member_title: "MEMBER",
                 txt_gen:          "Member MKT4X Generasi ke-1",
-                // Homepage
                 news_title:    "BERITA",
                 news_sub:      "PEMBARUAN MKT4X",
                 btn_more:      "LIHAT LAGI",
@@ -62,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 yt_label:      "YOUTUBE RESMI",
                 member_title:  "MEMBER",
                 btn_all_member:"Lihat Semua Member →",
-                // Hero
                 hero_badge:    "MKT4X SINGLE KE-1",
                 hero_sub:      "Lagu tentang bintang dan mimpi",
             },
@@ -142,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         };
 
-        // Inisialisasi Pilihan Bahasa
         if (langSelect) {
             langSelect.onchange = function() {
                 applyLanguage(this.value);
@@ -151,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function() {
             langSelect.value = savedLang;
             applyLanguage(savedLang);
         } else {
-            // Tetap apply bahasa tersimpan walau tanpa langSelect
             const savedLang = localStorage.getItem('selectedLang') || 'id';
             applyLanguage(savedLang);
         }
