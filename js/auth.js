@@ -45,6 +45,19 @@ window.loginGoogle = async function () {
 };
 
 // =====================
+// EDIT PROFILE
+// =====================
+window.editProfile = function () {
+    const nameEl = document.getElementById('profileName');
+    if (!nameEl) return;
+    const newName = prompt("Masukkan nama baru:", nameEl.innerText);
+    if (newName) {
+        nameEl.innerText = newName;
+        alert("Nama berhasil diperbarui!");
+    }
+};
+
+// =====================
 // LOGOUT
 // =====================
 window.logout = function () {
