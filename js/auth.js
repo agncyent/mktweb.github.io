@@ -9,7 +9,7 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import {
-  doc, setDoc, getDoc
+  doc, setDoc, getDoc, collection, query, where, getDocs
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const requireAuth = document.querySelector('meta[name="require-auth"]');
@@ -85,7 +85,7 @@ window.logout = function () {
 // =====================
 // UPDATE UI SIDEBAR
 // =====================
-function updateSidebarUI(user, premiumData, userData) {
+async function updateSidebarUI(user, premiumData, userData) {
   const profileContainer = document.getElementById('profileContainer');
   const profilePic       = document.getElementById('profilePic');
   const profileName      = document.getElementById('profileName');
@@ -142,7 +142,6 @@ function updateSidebarUI(user, premiumData, userData) {
       // Kalau belum ada di users, ambil dari fanclub_members
       if (!userData.oshi || !userData.city) {
         try {
-          const { collection, query, where, getDocs } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
           const q = query(collection(db, 'fanclub_members'), where('email', '==', user.email));
           const snap = await getDocs(q);
           if (!snap.empty) {
@@ -150,8 +149,6 @@ function updateSidebarUI(user, premiumData, userData) {
             if (oshiName) oshiName.innerText = fdata.oshi || '-';
             if (oshiVal)  oshiVal.innerText  = fdata.oshi || '-';
             if (cityVal)  cityVal.innerText  = fdata.city || '-';
-
-            // Simpan ke users biar lain kali tidak perlu query lagi
             await setDoc(doc(db, 'users', user.uid), {
               oshi: fdata.oshi, city: fdata.city
             }, { merge: true });
