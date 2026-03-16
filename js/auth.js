@@ -69,7 +69,7 @@ window.logout = function () {
 // =====================
 // UPDATE UI SIDEBAR
 // =====================
-function updateSidebarUI(user, premiumData) {
+function updateSidebarUI(user, premiumData, userData) {
   const profileContainer = document.getElementById('profileContainer');
   const profilePic       = document.getElementById('profilePic');
   const profileName      = document.getElementById('profileName');
@@ -101,6 +101,21 @@ function updateSidebarUI(user, premiumData) {
       userStatus.innerHTML = premiumData
         ? "<span style='color:gold;font-weight:700;'>★ Premium Member</span>"
         : "<span style='color:#7abf9a;'>Basic Fan</span>";
+    }
+
+    // Update fanclub profile card
+    if (userData) {
+      const oshiName = document.getElementById('fc-oshi-name');
+      const oshiVal  = document.getElementById('fc-oshi-val');
+      const cityVal  = document.getElementById('fc-city-val');
+      const fcIdVal  = document.getElementById('fc-id-val');
+      if (oshiName) oshiName.innerText = userData.oshi || '-';
+      if (oshiVal)  oshiVal.innerText  = userData.oshi || '-';
+      if (cityVal)  cityVal.innerText  = userData.city || '-';
+      if (fcIdVal) {
+        const rawId = user.uid.replace(/\D/g,'').slice(-4) || Math.floor(1000+Math.random()*9000);
+        fcIdVal.innerText = '#F' + rawId;
+      }
     }
 
     // Fanclub page
@@ -138,19 +153,23 @@ function updateSidebarUI(user, premiumData) {
 // =====================
 onAuthStateChanged(auth, async (user) => {
   let premiumData = null;
+  let userData = null;
 
   if (user) {
     try {
       const snap = await getDoc(doc(db, "users", user.uid));
-      if (snap.exists()) premiumData = snap.data().premium || false;
+      if (snap.exists()) {
+        userData    = snap.data();
+        premiumData = userData.premium || false;
+      }
     } catch (e) { console.error(e); }
   }
 
   // Simpan state
-  currentUserState = { user, premiumData };
+  currentUserState = { user, premiumData, userData };
 
   // Update UI sekarang (kalau sidebar sudah ada)
-  updateSidebarUI(user, premiumData);
+  updateSidebarUI(user, premiumData, userData);
 });
 
 // =====================
@@ -159,6 +178,6 @@ onAuthStateChanged(auth, async (user) => {
 // =====================
 document.addEventListener('sidebarLoaded', function () {
   if (currentUserState !== null) {
-    updateSidebarUI(currentUserState.user, currentUserState.premiumData);
+    updateSidebarUI(currentUserState.user, currentUserState.premiumData, currentUserState.userData);
   }
 });
