@@ -102,10 +102,11 @@
         <div class="fc-oshi-row">⭐ <span id="fc-oshi-name">-</span></div>
       </div>
       <button class="fc-logout-btn" id="btn-logout" onclick="logout()" style="display:none;">
-        <span data-key="fc_logout">Keluar</span> <i class="fas fa-sign-out-alt"></i>
+        <span data-key="fc_logout">Keluar</span> <i class="fas fa-chevron-right"></i>
       </button>
     </div>
 
+    <!-- INFO ROW: Oshi | Lokasi | ID -->
     <div class="fc-info-row">
       <div class="fc-info-box">
         <span class="fc-info-icon">🎯</span>
@@ -122,123 +123,118 @@
         </div>
       </div>
       <div class="fc-info-box fc-info-box-id">
-        <span class="fc-info-icon">🆔</span>
+        <span class="fc-info-icon">🪪</span>
         <div>
           <div class="fc-info-label" data-key="fc_label_id">ID Fanclub</div>
           <div class="fc-info-val" id="fc-id-val">-</div>
         </div>
       </div>
     </div>
-
-    <div class="fc-stats-row">
-      <div class="fc-stat-box">
-        <span class="fc-stat-icon">⭐</span>
-        <div class="fc-stat-val">Silver</div>
-        <div class="fc-stat-label" data-key="fc_stat_level">Fan Level</div>
-      </div>
-      <div class="fc-stat-box">
-        <span class="fc-stat-icon">💎</span>
-        <div class="fc-stat-val" id="fc-points">120</div>
-        <div class="fc-stat-label" data-key="fc_stat_points">Points</div>
-      </div>
-      <div class="fc-stat-box">
-        <span class="fc-stat-icon">👑</span>
-        <div class="fc-stat-val" id="fc-rank">#12</div>
-        <div class="fc-stat-label" data-key="fc_stat_rank">Rank</div>
-      </div>
-    </div>
-
-    <div class="fc-progress-wrap">
-      <div class="fc-progress-label">
-        <span data-key="fc_progress">Fan Level Progress</span>
-        <span>70%</span>
-      </div>
-      <div class="fc-progress-bar">
-        <div class="fc-progress-fill" style="width:70%"></div>
-      </div>
-    </div>
   </div>
 
-  <!-- TWO COL: MENU + TOP FANS -->
+  <!-- ROW 1: MENU FANCLUB + SURAT DARI MEMBER -->
   <div class="fc-two-col">
+
+    <!-- MENU FANCLUB -->
     <div class="fc-card">
       <div class="fc-card-title" data-key="fc_menu_title">🗂️ Menu Fanclub</div>
       <div class="fc-menu-grid">
         <a href="sosmed.html" class="fc-menu-item">
-          <span class="fc-menu-item-icon">📱</span><span data-key="fc_menu_feed">MKT4X Feed</span>
+          <span class="fc-menu-item-icon">📢</span>
+          <span data-key="fc_menu_feed">MKT4X Feed</span>
         </a>
         <a href="exclusive.html" class="fc-menu-item">
-          <span class="fc-menu-item-icon">🔒</span><span data-key="fc_menu_exclusive">Konten Eksklusif</span>
+          <span class="fc-menu-item-icon">🔒</span>
+          <span data-key="fc_menu_exclusive">Konten Eksklusif</span>
         </a>
         <a href="profile.html" class="fc-menu-item">
-          <span class="fc-menu-item-icon">👤</span><span data-key="fc_menu_profile">Profil Saya</span>
+          <span class="fc-menu-item-icon">👤</span>
+          <span data-key="fc_menu_profile">Profil Saya</span>
         </a>
         <a href="event.html" class="fc-menu-item">
-          <span class="fc-menu-item-icon">🎪</span><span data-key="fc_menu_event">Event</span>
+          <span class="fc-menu-item-icon">🔥</span>
+          <span data-key="fc_menu_event">Event</span>
         </a>
         <a href="gallery.html" class="fc-menu-item">
-          <span class="fc-menu-item-icon">🖼️</span><span data-key="fc_menu_gallery">Galeri</span>
+          <span class="fc-menu-item-icon">🖼️</span>
+          <span data-key="fc_menu_gallery">Galeri</span>
         </a>
         <a href="#" class="fc-menu-item">
-          <span class="fc-menu-item-icon">⚙️</span><span data-key="fc_menu_settings">Pengaturan</span>
+          <span class="fc-menu-item-icon">⚙️</span>
+          <span data-key="fc_menu_settings">Pengaturan</span>
         </a>
       </div>
     </div>
 
-    <div class="fc-card">
-      <div class="fc-card-title" data-key="fc_topfans_title">🏆 Top Fans</div>
-      <div class="fc-topfan-item">
-        <div class="fc-topfan-rank">1</div>
-        <img class="fc-topfan-avatar" src="https://i.imgur.com/KjU8YTn.png" alt=""/>
-        <span class="fc-topfan-name">Farhan</span>
-        <span class="fc-topfan-badge">⭐</span>
+    <!-- SURAT DARI MEMBER -->
+    <div class="fc-card fc-letter-card">
+      <div class="fc-card-title" data-key="fc_letter_title">💌 Surat dari Member</div>
+      <div class="fc-letter-body">
+        <div class="fc-letter-heading" data-key="fc_letter_heading">Halo Fans!</div>
+        <p class="fc-letter-text" data-key="fc_letter_text">
+          Terima kasih sudah mendukung MKT4X. Kami sedang menyiapkan lagu baru, tunggu ya!
+        </p>
+        <div class="fc-letter-sign">Love,<br><strong>MKT4X 🩷</strong></div>
       </div>
-      <div class="fc-topfan-item">
-        <div class="fc-topfan-rank">2</div>
-        <img class="fc-topfan-avatar" src="https://i.imgur.com/9iiTqah.png" alt=""/>
-        <span class="fc-topfan-name">Rina</span>
-      </div>
-      <div class="fc-topfan-item">
-        <div class="fc-topfan-rank">3</div>
-        <img class="fc-topfan-avatar" src="https://i.imgur.com/hmsc4g6.png" alt=""/>
-        <span class="fc-topfan-name">Kevin</span>
-      </div>
-      <div class="fc-topfan-item">
-        <div class="fc-topfan-rank">4</div>
-        <img class="fc-topfan-avatar" src="https://i.imgur.com/EGuBLUf.png" alt=""/>
-        <span class="fc-topfan-name">Maya</span>
+      <div class="fc-letter-like">
+        🤍 <span data-key="fc_letter_like">120 fans menyukai pesan ini</span>
       </div>
     </div>
+
   </div>
 
-  <!-- FEED PREVIEW -->
-  <div class="fc-card">
-    <div class="fc-card-title">
-      📱 MKT4X Feed <span class="fc-badge-new" data-key="fc_new">BARU</span>
-      <a href="sosmed.html" data-key="fc_see_all">Lihat Semua ›</a>
-    </div>
-    <div class="fc-feed-item">
-      <div class="fc-feed-icon">📸</div>
-      <div class="fc-feed-body">
-        <div class="fc-feed-title" data-key="fc_feed1_title">New Photo Added</div>
-        <div class="fc-feed-desc" data-key="fc_feed1_desc">Exclusive photo baru sudah di-upload!</div>
+  <!-- ROW 2: LATEST UPDATE + KONTEN EKSKLUSIF -->
+  <div class="fc-two-col">
+
+    <!-- LATEST UPDATE -->
+    <div class="fc-card">
+      <div class="fc-card-title" data-key="fc_update_title">📱 Latest Update</div>
+
+      <div class="fc-feed-item">
+        <div class="fc-feed-icon">📸</div>
+        <div class="fc-feed-body">
+          <div class="fc-feed-title" data-key="fc_feed1_title">Foto baru diupload</div>
+          <div class="fc-feed-desc" data-key="fc_feed1_desc">Exclusive photo baru sudah di-upload!</div>
+        </div>
+        <span class="fc-feed-time">2 jam</span>
       </div>
-      <span class="fc-feed-time">2 jam</span>
-    </div>
-    <div class="fc-feed-item">
-      <div class="fc-feed-icon">🎤</div>
-      <div class="fc-feed-body">
-        <div class="fc-feed-title" data-key="fc_feed2_title">Event Announcement</div>
-        <div class="fc-feed-desc" data-key="fc_feed2_desc">Fan Meeting Online • 5 Mei 2026</div>
+
+      <div class="fc-feed-item">
+        <div class="fc-feed-icon">🎤</div>
+        <div class="fc-feed-body">
+          <div class="fc-feed-title" data-key="fc_feed2_title">Event Online</div>
+          <div class="fc-feed-desc" data-key="fc_feed2_desc">Fan meeting minggu ini • SJP / 25 Mei</div>
+        </div>
+        <span class="fc-feed-new" data-key="fc_new">BARU</span>
       </div>
-      <span class="fc-feed-new" data-key="fc_new">Baru</span>
+
+      <a href="sosmed.html" class="fc-see-all-btn" data-key="fc_see_all">Lihat Semua ›</a>
     </div>
+
+    <!-- KONTEN EKSKLUSIF -->
+    <div class="fc-card">
+      <div class="fc-card-title" data-key="fc_exclusive_title">🔒 Konten Eksklusif</div>
+      <div class="fc-exclusive-item">
+        <span>⭐</span>
+        <span data-key="fc_ex1">Photo Pack Mei</span>
+      </div>
+      <div class="fc-exclusive-item">
+        <span>⭐</span>
+        <span data-key="fc_ex2">Behind The Scene</span>
+      </div>
+      <div class="fc-exclusive-item">
+        <span>⭐</span>
+        <span data-key="fc_ex3">Video Message</span>
+      </div>
+      <a href="exclusive.html" class="fc-see-all-btn" data-key="fc_see_all">Lihat Semua ›</a>
+    </div>
+
   </div>
 
   <!-- GALLERY -->
   <div class="fc-card">
     <div class="fc-card-title">
-      🔒 <span data-key="fc_gallery_title">Exclusive Gallery</span>
+      📷 <span data-key="fc_gallery_title">Gallery</span>
       <a href="gallery.html" data-key="fc_see_all">Lihat Semua ›</a>
     </div>
     <div class="fc-gallery-grid">
