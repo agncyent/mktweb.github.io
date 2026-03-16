@@ -33,6 +33,22 @@ window.loginGoogle = async function () {
       lastLogin: new Date().toISOString()
     }, { merge: true });
 
+    // Kalau ada data pendaftaran fanclub di localStorage, simpan ke users
+    const fcOshi     = localStorage.getItem('fc_oshi');
+    const fcCity     = localStorage.getItem('fc_city');
+    const fcUsername = localStorage.getItem('fc_username');
+    if (fcOshi || fcCity) {
+      await setDoc(doc(db, "users", user.uid), {
+        oshi: fcOshi || '',
+        city: fcCity || '',
+        username: fcUsername || '',
+        premium: true
+      }, { merge: true });
+      localStorage.removeItem('fc_oshi');
+      localStorage.removeItem('fc_city');
+      localStorage.removeItem('fc_username');
+    }
+
     const redirectTo = localStorage.getItem("redirectAfterLogin") || "fanclub.html";
     localStorage.removeItem("redirectAfterLogin");
     window.location.href = redirectTo;
@@ -109,12 +125,38 @@ function updateSidebarUI(user, premiumData, userData) {
       const oshiVal  = document.getElementById('fc-oshi-val');
       const cityVal  = document.getElementById('fc-city-val');
       const fcIdVal  = document.getElementById('fc-id-val');
-      if (oshiName) oshiName.innerText = userData.oshi || '-';
-      if (oshiVal)  oshiVal.innerText  = userData.oshi || '-';
-      if (cityVal)  cityVal.innerText  = userData.city || '-';
       if (fcIdVal) {
         const rawId = user.uid.replace(/\D/g,'').slice(-4) || Math.floor(1000+Math.random()*9000);
         fcIdVal.innerText = '#F' + rawId;
+      }
+
+      // Coba ambil dari users dulu
+      if (userData.oshi) {
+        if (oshiName) oshiName.innerText = userData.oshi;
+        if (oshiVal)  oshiVal.innerText  = userData.oshi;
+      }
+      if (userData.city) {
+        if (cityVal) cityVal.innerText = userData.city;
+      }
+
+      // Kalau belum ada di users, ambil dari fanclub_members
+      if (!userData.oshi || !userData.city) {
+        try {
+          const { collection, query, where, getDocs } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+          const q = query(collection(db, 'fanclub_members'), where('email', '==', user.email));
+          const snap = await getDocs(q);
+          if (!snap.empty) {
+            const fdata = snap.docs[0].data();
+            if (oshiName) oshiName.innerText = fdata.oshi || '-';
+            if (oshiVal)  oshiVal.innerText  = fdata.oshi || '-';
+            if (cityVal)  cityVal.innerText  = fdata.city || '-';
+
+            // Simpan ke users biar lain kali tidak perlu query lagi
+            await setDoc(doc(db, 'users', user.uid), {
+              oshi: fdata.oshi, city: fdata.city
+            }, { merge: true });
+          }
+        } catch(e) { console.error('fanclub_members fetch:', e); }
       }
     }
 
