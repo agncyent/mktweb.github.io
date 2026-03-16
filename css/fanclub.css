@@ -227,3 +227,30 @@
 .fc-info-icon { font-size: 18px; flex-shrink: 0; }
 .fc-info-label { font-size: 9px; color: #7abf9a; font-weight: 600; text-transform: uppercase; }
 .fc-info-val { font-size: 12px; font-weight: 800; color: #1a3028; }
+
+/* SURAT DARI MEMBER */
+.fc-letter-card { display: flex; flex-direction: column; }
+.fc-letter-body { flex: 1; margin-bottom: 12px; }
+.fc-letter-heading { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 900; color: #1a3028; margin-bottom: 8px; }
+.fc-letter-text { font-size: 13px; color: #4a7a65; line-height: 1.6; margin-bottom: 10px; }
+.fc-letter-sign { font-size: 13px; color: #1a3028; }
+.fc-letter-like { font-size: 12px; color: #aaa; padding-top: 10px; border-top: 1px solid #f0fdf8; }
+
+/* KONTEN EKSKLUSIF */
+.fc-exclusive-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid #f0fdf8;
+  font-weight: 700; font-size: 13px; color: #1a3028;
+}
+.fc-exclusive-item:last-of-type { border-bottom: none; }
+
+/* SEE ALL BUTTON */
+.fc-see-all-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 10px;
+  background: #f0fdf8; border-radius: 10px;
+  text-decoration: none; font-size: 13px; font-weight: 700;
+  color: #3dba87; margin-top: 12px; transition: background 0.2s;
+  border: 1px solid #d0f0e4;
+}
+.fc-see-all-btn:hover { background: #d0f0e4; }
