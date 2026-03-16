@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const isSub = window.location.pathname.includes('/members/') || window.location.pathname.includes('/news/');
+    const isSub = window.location.pathname.includes('/members/');
     const prefix = isSub ? '../' : '';
 
     // 1. LOAD KOMPONEN (NAVBAR & SIDEBAR)
