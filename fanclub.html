@@ -89,25 +89,62 @@
     <a href="fanclub-register.html" class="btn-join-fanclub" data-key="fc_join_fanclub">Join Fanclub 💚</a>
   </div>
 
-</div>
+</div><!-- end access-denied -->
 
-<!-- ===== KONTEN MEMBER (sudah login) ===== -->
+<!-- ===== DASHBOARD MEMBER (sudah login) ===== -->
 <div id="fanclub-content">
+<div class="fc-dashboard">
 
-  <div class="fc-user-card-wrap">
-    <div class="fc-user-info-box">
-      <img id="user-photo" src="assets/default-avatar.png" alt="Foto"/>
+  <!-- PROFILE CARD -->
+  <div class="fc-profile-card">
+    <div class="fc-profile-top">
+      <img id="user-photo" class="fc-profile-avatar" src="assets/default-avatar.png" alt="Foto"/>
       <div>
-        <div id="username">Memuat...</div>
-        <div id="user-status"></div>
+        <div id="username" class="fc-profile-name">Memuat...</div>
+        <div id="user-status" class="fc-profile-status"></div>
       </div>
-      <button class="fc-btn-logout" id="btn-logout" onclick="logout()" style="display:none;">Keluar</button>
+      <button class="fc-logout-btn" id="btn-logout" onclick="logout()" style="display:none;">
+        Keluar <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+
+    <!-- STATS -->
+    <div class="fc-stats-row">
+      <div class="fc-stat-box">
+        <span class="fc-stat-icon">⭐</span>
+        <div class="fc-stat-val">Silver</div>
+        <div class="fc-stat-label">Fan Level</div>
+      </div>
+      <div class="fc-stat-box">
+        <span class="fc-stat-icon">💎</span>
+        <div class="fc-stat-val" id="fc-points">120</div>
+        <div class="fc-stat-label">Points</div>
+      </div>
+      <div class="fc-stat-box">
+        <span class="fc-stat-icon">👑</span>
+        <div class="fc-stat-val" id="fc-rank">#12</div>
+        <div class="fc-stat-label">Rank</div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="fc-progress-wrap">
+      <div class="fc-progress-label">
+        <span>Fan Level Progress</span>
+        <span>70%</span>
+      </div>
+      <div class="fc-progress-bar">
+        <div class="fc-progress-fill" style="width:70%"></div>
+      </div>
     </div>
   </div>
 
-  <div class="fc-menu-wrap">
-    <div class="fc-menu-box">
-      <div class="fc-menu-box-title">🌟 Menu Fanclub</div>
+  <!-- TWO COL: MENU + TOP FANS -->
+  <div class="fc-two-col">
+
+    <!-- MENU FANCLUB -->
+    <div class="fc-card">
+      <div class="fc-card-title">🗂️ Menu Fanclub</div>
       <div class="fc-menu-grid">
         <a href="sosmed.html" class="fc-menu-item">
           <span class="fc-menu-item-icon">📱</span>MKT4X Feed
@@ -130,20 +167,79 @@
       </div>
     </div>
 
-    <div class="fc-menu-box">
-      <div class="fc-menu-box-title">
-        📱 MKT4X Feed <span class="fc-badge-new">BARU</span>
+    <!-- TOP FANS -->
+    <div class="fc-card">
+      <div class="fc-card-title">🏆 Top Fans</div>
+      <div class="fc-topfan-item">
+        <div class="fc-topfan-rank">1</div>
+        <img class="fc-topfan-avatar" src="https://i.imgur.com/KjU8YTn.png" alt=""/>
+        <span class="fc-topfan-name">Farhan</span>
+        <span class="fc-topfan-badge">⭐</span>
       </div>
-      <div class="fc-coming-soon">🚧 Segera hadir!</div>
+      <div class="fc-topfan-item">
+        <div class="fc-topfan-rank">2</div>
+        <img class="fc-topfan-avatar" src="https://i.imgur.com/9iiTqah.png" alt=""/>
+        <span class="fc-topfan-name">Rina</span>
+      </div>
+      <div class="fc-topfan-item">
+        <div class="fc-topfan-rank">3</div>
+        <img class="fc-topfan-avatar" src="https://i.imgur.com/hmsc4g6.png" alt=""/>
+        <span class="fc-topfan-name">Kevin</span>
+      </div>
+      <div class="fc-topfan-item">
+        <div class="fc-topfan-rank">4</div>
+        <img class="fc-topfan-avatar" src="https://i.imgur.com/EGuBLUf.png" alt=""/>
+        <span class="fc-topfan-name">Maya</span>
+      </div>
     </div>
 
-    <div class="fc-menu-box">
-      <div class="fc-menu-box-title">🔒 Konten Eksklusif</div>
-      <div class="fc-coming-soon">✨ Segera hadir untuk Premium Member!</div>
+  </div><!-- end two-col -->
+
+  <!-- MKT4X FEED PREVIEW -->
+  <div class="fc-card">
+    <div class="fc-card-title">
+      📱 MKT4X Feed <span class="fc-badge-new">BARU</span>
+      <a href="sosmed.html">Lihat Semua ›</a>
+    </div>
+    <div class="fc-feed-item">
+      <div class="fc-feed-icon">📸</div>
+      <div class="fc-feed-body">
+        <div class="fc-feed-title">New Photo Added</div>
+        <div class="fc-feed-desc">Exclusive photo baru sudah di-upload!</div>
+      </div>
+      <span class="fc-feed-time">2 jam</span>
+    </div>
+    <div class="fc-feed-item">
+      <div class="fc-feed-icon">🎤</div>
+      <div class="fc-feed-body">
+        <div class="fc-feed-title">Event Announcement</div>
+        <div class="fc-feed-desc">Fan Meeting Online • 5 Mei 2026</div>
+      </div>
+      <span class="fc-feed-new">Baru</span>
+    </div>
+  </div>
+
+  <!-- EXCLUSIVE GALLERY -->
+  <div class="fc-card">
+    <div class="fc-card-title">
+      🔒 Exclusive Gallery
+      <a href="gallery.html">Lihat Semua ›</a>
+    </div>
+    <div class="fc-gallery-grid">
+      <div class="fc-gallery-item">
+        <img src="https://i.imgur.com/KjU8YTn.png" alt="Gallery 1"/>
+      </div>
+      <div class="fc-gallery-item">
+        <img src="https://i.imgur.com/9iiTqah.png" alt="Gallery 2"/>
+      </div>
+      <div class="fc-gallery-item">
+        <img src="https://i.imgur.com/hmsc4g6.png" alt="Gallery 3"/>
+      </div>
     </div>
   </div>
 
 </div>
+</div><!-- end fanclub-content -->
 
 <script src="js/main.js"></script>
 <script src="js/fanclub.js"></script>
