@@ -263,6 +263,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 fc_ex1:          "フォトパック5月",
                 fc_ex2:          "ビハインドザシーン",
                 fc_ex3:          "ビデオメッセージ",
+                fc_discord_title:"公式Discord",
+                fc_discord_desc: "MKT4X公式Discordサーバーに参加しよう！",
+                fc_discord_online:"120 オンライン",
+                fc_discord_members:"1.4K メンバー",
+                fc_discord_join: "サーバーに参加 ›",
             },
             my: {
                 menu_home:    "Utama",
