@@ -4,8 +4,7 @@
 import { auth, db } from "./firebase.js";
 import {
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -17,17 +16,13 @@ const requireAuth = document.querySelector('meta[name="require-auth"]');
 let currentUserState = null;
 
 // =====================
-// CEK HASIL REDIRECT LOGIN (hanya di login.html)
+// LOGIN GOOGLE
 // =====================
-if (window.location.pathname.includes('login')) {
-  getRedirectResult(auth).then(async (result) => {
-    console.log('redirectResult:', result);
-    if (!result || !result.user) {
-      console.log('No redirect result');
-      return;
-    }
-    const user = result.user;
-    console.log('Logged in:', user.email);
+window.loginGoogle = async function () {
+  try {
+    const provider = new GoogleAuthProvider();
+    const result   = await signInWithPopup(auth, provider);
+    const user     = result.user;
 
     await setDoc(doc(db, "users", user.uid), {
       name:      user.displayName,
@@ -53,20 +48,10 @@ if (window.location.pathname.includes('login')) {
     localStorage.removeItem("redirectAfterLogin");
     window.location.href = redirectTo;
 
-  }).catch((error) => {
-    console.error("Redirect result error:", error);
-  });
-}
-
-// =====================
-// LOGIN GOOGLE
-// =====================
-window.loginGoogle = async function () {
-  try {
-    const provider = new GoogleAuthProvider();
-    await signInWithRedirect(auth, provider);
   } catch (error) {
-    alert("Gagal Login: " + error.message);
+    if (error.code !== "auth/popup-closed-by-user") {
+      alert("Gagal Login: " + error.message);
+    }
   }
 };
 
@@ -212,15 +197,7 @@ onAuthStateChanged(auth, async (user) => {
         premiumData = userData.premium || false;
       }
     } catch (e) { console.error(e); }
-
-    // Kalau ada redirect target atau lagi di login.html → redirect
-    const redirectTo = localStorage.getItem("redirectAfterLogin");
-    const onLoginPage = window.location.href.includes('login');
-    if (redirectTo || onLoginPage) {
-      localStorage.removeItem("redirectAfterLogin");
-      window.location.href = redirectTo || "fanclub.html";
-      return;
-    }  }
+  }
 
   // Simpan state
   currentUserState = { user, premiumData, userData };
