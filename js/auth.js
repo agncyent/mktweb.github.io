@@ -21,8 +21,13 @@ let currentUserState = null;
 // =====================
 if (window.location.pathname.includes('login')) {
   getRedirectResult(auth).then(async (result) => {
-    if (!result) return;
+    console.log('redirectResult:', result);
+    if (!result || !result.user) {
+      console.log('No redirect result');
+      return;
+    }
     const user = result.user;
+    console.log('Logged in:', user.email);
 
     await setDoc(doc(db, "users", user.uid), {
       name:      user.displayName,
@@ -207,6 +212,26 @@ onAuthStateChanged(auth, async (user) => {
         premiumData = userData.premium || false;
       }
     } catch (e) { console.error(e); }
+
+    // Kalau di login.html dan sudah login → redirect
+    if (window.location.pathname.includes('login')) {
+      const fcOshi     = localStorage.getItem('fc_oshi');
+      const fcCity     = localStorage.getItem('fc_city');
+      const fcUsername = localStorage.getItem('fc_username');
+      if (fcOshi || fcCity) {
+        await setDoc(doc(db, "users", user.uid), {
+          oshi: fcOshi || '', city: fcCity || '',
+          username: fcUsername || '', premium: true
+        }, { merge: true });
+        localStorage.removeItem('fc_oshi');
+        localStorage.removeItem('fc_city');
+        localStorage.removeItem('fc_username');
+      }
+      const redirectTo = localStorage.getItem("redirectAfterLogin") || "fanclub.html";
+      localStorage.removeItem("redirectAfterLogin");
+      window.location.href = redirectTo;
+      return;
+    }
   }
 
   // Simpan state
