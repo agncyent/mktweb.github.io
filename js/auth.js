@@ -220,8 +220,7 @@ onAuthStateChanged(auth, async (user) => {
       localStorage.removeItem("redirectAfterLogin");
       window.location.href = redirectTo || "fanclub.html";
       return;
-    }
-  }
+    }  }
 
   // Simpan state
   currentUserState = { user, premiumData, userData };
