@@ -191,6 +191,11 @@ async function verifyOTP() {
             }, { merge: true });
         }
 
+        // Simpan oshi & city ke localStorage buat dipakai setelah login
+        localStorage.setItem('fc_oshi', oshi);
+        localStorage.setItem('fc_city', city);
+        localStorage.setItem('fc_username', username);
+
         alert('Pendaftaran berhasil! Silakan login dengan Google untuk masuk ke Fanclub.');
         localStorage.setItem('redirectAfterLogin', 'fanclub.html');
         window.location.href = 'login.html';
