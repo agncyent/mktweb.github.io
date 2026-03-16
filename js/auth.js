@@ -4,7 +4,8 @@
 import { auth, db } from "./firebase.js";
 import {
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -13,18 +14,15 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const requireAuth = document.querySelector('meta[name="require-auth"]');
-
-// Simpan state user biar bisa dipakai setelah sidebar load
 let currentUserState = null;
 
 // =====================
-// LOGIN GOOGLE
+// CEK HASIL REDIRECT LOGIN (hanya di login.html)
 // =====================
-window.loginGoogle = async function () {
-  try {
-    const provider = new GoogleAuthProvider();
-    const result   = await signInWithPopup(auth, provider);
-    const user     = result.user;
+if (window.location.pathname.includes('login')) {
+  getRedirectResult(auth).then(async (result) => {
+    if (!result) return;
+    const user = result.user;
 
     await setDoc(doc(db, "users", user.uid), {
       name:      user.displayName,
@@ -33,16 +31,13 @@ window.loginGoogle = async function () {
       lastLogin: new Date().toISOString()
     }, { merge: true });
 
-    // Kalau ada data pendaftaran fanclub di localStorage, simpan ke users
     const fcOshi     = localStorage.getItem('fc_oshi');
     const fcCity     = localStorage.getItem('fc_city');
     const fcUsername = localStorage.getItem('fc_username');
     if (fcOshi || fcCity) {
       await setDoc(doc(db, "users", user.uid), {
-        oshi: fcOshi || '',
-        city: fcCity || '',
-        username: fcUsername || '',
-        premium: true
+        oshi: fcOshi || '', city: fcCity || '',
+        username: fcUsername || '', premium: true
       }, { merge: true });
       localStorage.removeItem('fc_oshi');
       localStorage.removeItem('fc_city');
@@ -53,10 +48,20 @@ window.loginGoogle = async function () {
     localStorage.removeItem("redirectAfterLogin");
     window.location.href = redirectTo;
 
+  }).catch((error) => {
+    console.error("Redirect result error:", error);
+  });
+}
+
+// =====================
+// LOGIN GOOGLE
+// =====================
+window.loginGoogle = async function () {
+  try {
+    const provider = new GoogleAuthProvider();
+    await signInWithRedirect(auth, provider);
   } catch (error) {
-    if (error.code !== "auth/popup-closed-by-user") {
-      alert("Gagal Login: " + error.message);
-    }
+    alert("Gagal Login: " + error.message);
   }
 };
 
