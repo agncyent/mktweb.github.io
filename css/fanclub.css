@@ -230,11 +230,50 @@
 
 /* SURAT DARI MEMBER */
 .fc-letter-card { display: flex; flex-direction: column; }
-.fc-letter-body { flex: 1; margin-bottom: 12px; }
-.fc-letter-heading { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 900; color: #1a3028; margin-bottom: 8px; }
-.fc-letter-text { font-size: 13px; color: #4a7a65; line-height: 1.6; margin-bottom: 10px; }
-.fc-letter-sign { font-size: 13px; color: #1a3028; }
-.fc-letter-like { font-size: 12px; color: #aaa; padding-top: 10px; border-top: 1px solid #f0fdf8; }
+.fc-letter-body {
+  flex: 1;
+  background: linear-gradient(135deg, #f0fdf8, #e8f8f2);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px dashed #7dd9b0;
+  position: relative;
+}
+.fc-letter-body::before {
+  content: '💌';
+  position: absolute;
+  top: -12px; left: 14px;
+  font-size: 20px;
+}
+.fc-letter-heading {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px; font-weight: 900;
+  color: #1a3028; margin-bottom: 8px;
+  margin-top: 4px;
+}
+.fc-letter-text {
+  font-size: 12px; color: #4a7a65;
+  line-height: 1.7; margin-bottom: 10px;
+}
+.fc-letter-sign {
+  font-size: 12px; color: #1a3028;
+  text-align: right;
+}
+.fc-letter-like-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #f0fdf8;
+}
+.fc-letter-like-count { font-size: 12px; color: #aaa; }
+.fc-like-btn {
+  background: none; border: 1.5px solid #d0f0e4;
+  border-radius: 20px; padding: 5px 14px;
+  font-size: 12px; font-weight: 600; color: #4a7a65;
+  cursor: pointer; font-family: 'Poppins', sans-serif;
+  transition: all 0.2s; display: flex; align-items: center; gap: 5px;
+}
+.fc-like-btn:hover { background: #d0f0e4; }
+.fc-like-btn.liked { background: #ff6b6b22; border-color: #ff6b6b; color: #ff6b6b; }
 
 /* KONTEN EKSKLUSIF */
 .fc-exclusive-item {
@@ -254,3 +293,51 @@
   border: 1px solid #d0f0e4;
 }
 .fc-see-all-btn:hover { background: #d0f0e4; }
+
+/* DISCORD CARD */
+.fc-discord-card {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+}
+.fc-discord-logo {
+  width: 64px; height: 64px;
+  background: #5865F2;
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+  color: #fff;
+  padding: 12px;
+  box-shadow: 0 4px 14px rgba(88,101,242,0.3);
+}
+.fc-discord-logo svg { width: 100%; height: 100%; }
+.fc-discord-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px; font-weight: 900;
+  color: #1a3028; margin-bottom: 6px;
+}
+.fc-discord-desc {
+  font-size: 11px; color: #4a7a65;
+  line-height: 1.5; margin-bottom: 14px;
+}
+.fc-discord-stats {
+  display: flex; gap: 14px;
+  margin-bottom: 16px;
+}
+.fc-discord-stat {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 600; color: #4a7a65;
+}
+.fc-discord-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+.fc-discord-dot.online   { background: #23a559; }
+.fc-discord-dot.members  { background: #5865F2; }
+.fc-discord-btn {
+  display: block; width: 100%;
+  background: #5865F2; color: #fff;
+  border-radius: 12px; padding: 10px;
+  text-decoration: none; font-size: 13px; font-weight: 700;
+  transition: all 0.2s; text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+.fc-discord-btn:hover { background: #4752c4; transform: translateY(-2px); }
