@@ -1,0 +1,53 @@
+/* =======================================
+   CSS KHUSUS SECTION MEMBER (BAWAH)
+   ======================================= */
+
+/* Container utama kartu member */
+.member-list {
+  display: grid !important;
+  /* Membagi layar jadi 3 kolom sama besar */
+  grid-template-columns: repeat(3, 1fr) !important; 
+  gap: 10px !important; /* Jarak antar kartu */
+  padding: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Kartu masing-masing member */
+.member-card {
+  width: 100% !important; /* Supaya lebarnya nurut ke pembagi grid di atas */
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+/* Gambar member di dalam kartu */
+.member-card img {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* Nama member di bawah foto */
+.member-name {
+  font-size: 11px !important; /* Ukuran teks diperkecil supaya gak menabrak */
+  text-align: center;
+  padding: 8px 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+}
+
+/* Garis pemisah "MEMBER" (Opsional) */
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2fb193; /* Warna hijau khas MKT4X */
+  border-bottom: 2px solid #2fb193;
+  margin: 20px 10px 10px 10px;
+  padding-bottom: 5px;
+  display: block;
+}
+
