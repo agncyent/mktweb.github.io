@@ -5,12 +5,14 @@
 const footer = document.getElementById("footer-placeholder");
 
 if (footer) {
-  // jika HTML ada di folder /pages/ → pakai ../components/
-  // jika HTML di root → pakai components/
+  // path dinamis: root atau subfolder
   let path = location.pathname.includes("/pages/") ? "../components/footer.html" : "components/footer.html";
 
   fetch(path)
-    .then(res => res.text())
+    .then(res => {
+      if (!res.ok) throw new Error("Gagal load footer");
+      return res.text();
+    })
     .then(data => footer.innerHTML = data)
-    .catch(err => console.error("Gagal load footer:", err));
+    .catch(err => console.error(err));
 }
