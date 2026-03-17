@@ -752,3 +752,27 @@
     margin: 4px 0;
     display: none;
 }
+
+/* =====================
+   FIX FOOTER NGAMBANG
+===================== */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}
