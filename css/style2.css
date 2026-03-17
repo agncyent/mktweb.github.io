@@ -756,6 +756,7 @@
 /* =====================
    FIX FOOTER NGAMBANG
 ===================== */
+/* layout dasar */
 html, body {
   height: 100%;
   margin: 0;
@@ -764,15 +765,14 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
+/* ini cukup */
 .content-main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
-.container {
-  flex: 1;
+/* ini kunci biar footer nempel bawah */
+footer {
+  margin-top: auto;
 }
