@@ -1,52 +1,73 @@
 /* =====================
-   FOOTER MKT4X
+   LAYOUT UTAMA (PASTIKAN ADA)
+   Ini untuk memaksa footer ke bawah
 ===================== */
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
-.footer{
-  background:#2f2f2f;
-  color:#ccc;
-  text-align:center;
-  padding:25px 10px;
-  font-size:14px;
-  border-top:1px solid #444;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Tinggi minimal seukuran layar */
+}
+
+/* Ganti .main-content dengan class pembungkus 
+   kartu profil Thea Anda */
+.main-content { 
+  flex: 1; 
+}
+
+/* =====================
+   FOOTER MKT4X (KODE ANDA)
+===================== */
+.footer {
+  background: #2f2f2f;
+  color: #ccc;
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 14px;
+  border-top: 1px solid #444;
+  width: 100%; /* Memastikan lebar penuh */
 }
 
 /* MENU */
-.footer-menu{
-  margin-bottom:15px;
-  line-height:1.8;
+.footer-menu {
+  margin-bottom: 15px;
+  line-height: 1.8;
 }
 
-.footer-menu a{
-  color:#ccc;
-  text-decoration:none;
-  margin:0 6px;
-  transition:0.3s;
+.footer-menu a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 6px;
+  transition: 0.3s;
 }
 
-.footer-menu a:hover{
-  color:#ffffff;
+.footer-menu a:hover {
+  color: #ffffff;
 }
 
 /* SOCIAL */
-.footer-social{
-  margin-bottom:15px;
+.footer-social {
+  margin-bottom: 15px;
 }
 
-.footer-social a{
-  color:#ccc;
-  font-size:20px;
-  margin:0 10px;
-  transition:0.3s;
+.footer-social a {
+  color: #ccc;
+  font-size: 20px;
+  margin: 0 10px;
+  transition: 0.3s;
 }
 
-.footer-social a:hover{
-  color:#ffffff;
-  transform:scale(1.2);
+.footer-social a:hover {
+  color: #ffffff;
+  transform: scale(1.2);
 }
 
 /* COPYRIGHT */
-.footer-copy{
-  font-size:13px;
-  color:#aaa;
+.footer-copy {
+  font-size: 13px;
+  color: #aaa;
 }
