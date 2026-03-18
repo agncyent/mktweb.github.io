@@ -1,100 +1,104 @@
 /* =====================
-   NEWS PAGE ONLY
+   HALAMAN KHUSUS NEWS
    ===================== */
+.news-page{
+margin:0;
+font-family:Arial, sans-serif;
 
-/* BACKGROUND KHUSUS HALAMAN NEWS */
-.news-page {
-  margin: 0;
-  font-family: Arial, sans-serif;
+/* BACKGROUND PEPPERMINT */
+background:
+repeating-linear-gradient(
+45deg,
+#ffffff,
+#ffffff 20px,
+#dff7ef 20px,
+#dff7ef 40px
+);
 
-  background:
-  repeating-linear-gradient(
-    45deg,
-    #ffffff,
-    #ffffff 20px,
-    #dff7ef 20px,
-    #dff7ef 40px
-  );
-
-  min-height: 100vh;
+min-height:100vh;
 }
 
-/* CONTAINER KHUSUS NEWS */
-.news-page .news-container {
-  position: relative;
-  padding: 80px 20px;
-  display: flex;
-  justify-content: center;
+/* CONTAINER */
+.news-page .container{
+position:relative;
+padding:80px 20px;
+display:flex;
+justify-content:center;
 }
 
 /* CARD */
-.news-page .news {
-  max-width: 600px;
-  width: 100%;
-  background: white;
-  padding: 50px 40px;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  z-index: 2;
+.news-page .news{
+max-width:600px;
+width:100%;
+background:white;
+padding:50px 40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+z-index:2;
 }
 
 /* LOGO */
-.news-page .logo {
-  width: 80px;
-  margin-bottom: 20px;
+.news-page .logo{
+width:80px;
+margin-bottom:20px;
 }
 
 /* TITLE */
-.news-page .title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 30px;
+.news-page .title{
+font-size:24px;
+font-weight:600;
+margin-bottom:30px;
 }
 
 /* TEXT */
-.news-page .text {
-  color: #555;
-  line-height: 1.8;
-  font-size: 16px;
+.news-page .text{
+color:#555;
+line-height:1.8;
+font-size:16px;
 }
 
 /* SIGN */
-.news-page .sign {
-  margin-top: 40px;
-  font-weight: 600;
+.news-page .sign{
+margin-top:40px;
+font-weight:600;
 }
 
-/* LEAF CONTAINER */
-.news-page .leaf-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
+/* =====================
+   ANIMASI DAUN (FIX)
+   ===================== */
+
+/* container animasi */
+.news-page .leaf-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:1;
 }
 
-/* LEAF */
-.news-page .leaf {
-  position: absolute;
-  top: -40px;
-  width: 14px;
-  height: 14px;
-  background: #4CAF50;
-  border-radius: 0 100% 0 100%;
-  opacity: 0.6;
-  transform: rotate(45deg);
-  animation: fall linear infinite;
+/* daun */
+.news-page .leaf{
+position:absolute;
+top:-40px;
+width:14px;
+height:14px;
+background:#4CAF50;
+border-radius:0 100% 0 100%;
+opacity:0.6;
+transform:rotate(45deg);
+animation:fall linear infinite;
 }
 
-@keyframes fall {
-  0% {
-    transform: translateY(-40px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(120vh) rotate(360deg);
-  }
+/* animasi jatuh */
+@keyframes fall{
+0%{
+transform:translateY(-40px) rotate(0deg);
+}
+100%{
+transform:translateY(120vh) rotate(360deg);
+}
 }
