@@ -1,133 +1,100 @@
 /* =====================
-   HALAMAN NEWS
+   SCOPED (BIAR GAK NGERUSAK NAVBAR)
    ===================== */
 .news-page{
 margin:0;
-font-family:Arial, sans-serif;
+font-family:'Poppins', 'Nunito', sans-serif;
+min-height:100vh;
 
-/* BACKGROUND PEPPERMINT */
+/* PEPPERMINT SOFT */
 background:
 repeating-linear-gradient(
 45deg,
 #ffffff,
-#ffffff 20px,
-#dff7ef 20px,
-#dff7ef 40px
+#ffffff 25px,
+#e8fbf5 25px,
+#e8fbf5 50px
 );
-
-min-height:100vh;
 }
 
-/* CONTAINER */
-.news-page .container{
-position:relative;
-padding:80px 20px;
+/* =====================
+   WRAPPER
+   ===================== */
+.news-page .news-wrapper{
 display:flex;
 justify-content:center;
+align-items:center;
+padding:110px 20px 60px;
 }
 
-/* CARD BERITA */
-.news-page .news{
-max-width:650px;
+/* =====================
+   CARD
+   ===================== */
+.news-page .news-card{
 width:100%;
-background:white;
-padding:50px 40px;
-border-radius:25px;
+max-width:600px;
+background:#fff;
+padding:60px 40px;
+border-radius:28px;
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,0.15);
-z-index:2;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* LOGO */
-.news-page .logo{
-width:80px;
-margin-bottom:20px;
+/* =====================
+   LOGO
+   ===================== */
+.news-page .news-logo{
+width:90px;
+display:block;
+margin:0 auto 20px;
 }
 
-/* JUDUL */
-.news-page .title{
-font-size:26px;
+/* =====================
+   TITLE
+   ===================== */
+.news-page .news-title{
+font-size:22px;
 font-weight:700;
-margin-bottom:10px;
+color:#222;
+margin-bottom:5px;
 }
 
-/* DATE (opsional, kalau mau tambah nanti) */
-.news-page .date{
-font-size:14px;
+/* =====================
+   DATE
+   ===================== */
+.news-page .news-date{
+font-size:13px;
 color:#888;
 margin-bottom:25px;
 }
 
-/* TEXT BERITA */
-.news-page .text{
-color:#555;
-line-height:1.8;
-font-size:16px;
-text-align:left;
+/* =====================
+   TEXT
+   ===================== */
+.news-page .news-text{
+font-size:15px;
+color:#444;
+line-height:1.9;
 }
 
-/* PARAGRAF */
-.news-page .text p{
-margin-bottom:15px;
-}
-
-/* PENUTUP */
-.news-page .sign{
-margin-top:40px;
-font-weight:600;
-text-align:right;
+.news-page .news-text p{
+margin-bottom:18px;
 }
 
 /* =====================
-   ANIMASI DAUN
+   SIGN
    ===================== */
-
-/* CONTAINER */
-.news-page .leaf-container{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-z-index:1;
+.news-page .news-sign{
+margin-top:40px;
+font-weight:700;
+color:#000;
 }
 
-/* DAUN */
-.news-page .leaf{
-position:absolute;
-top:-40px;
-width:14px;
-height:14px;
-background:#4CAF50;
-border-radius:0 100% 0 100%;
-opacity:0.6;
-transform:rotate(45deg);
-animation:fall linear infinite;
-}
-
-/* VARIASI BIAR GAK MONOTON */
-.news-page .leaf:nth-child(2){
-width:10px;
-height:10px;
-opacity:0.5;
-}
-.news-page .leaf:nth-child(3){
-width:16px;
-height:16px;
-opacity:0.7;
-}
-
-/* ANIMASI */
-@keyframes fall{
-0%{
-transform:translateY(-40px) translateX(0) rotate(0deg);
-}
-50%{
-transform:translateY(50vh) translateX(20px) rotate(180deg);
-}
-100%{
-transform:translateY(120vh) translateX(-20px) rotate(360deg);
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media(max-width:600px){
+.news-page .news-card{
+padding:40px 25px;
 }
 }
