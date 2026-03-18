@@ -1,35 +1,26 @@
-/* ===== NAVBAR OVERRIDE - samain dengan halaman lain ===== */
-*, *::before, *::after { box-sizing: border-box; }
+/* =====================
+   NEWS PAGE ONLY
+   ===================== */
 
-.navbar {
-  padding: 10px 20px !important;
-  height: auto !important;
-}
-.logo img {
-  height: 35px !important;
-  width: auto !important;
-}
-
-/* ===== NEWS.CSS ===== */
-body {
+/* BACKGROUND KHUSUS HALAMAN NEWS */
+.news-page {
   margin: 0;
   font-family: Arial, sans-serif;
 
-  /* BACKGROUND PEPPERMINT */
   background:
-    repeating-linear-gradient(
-      45deg,
-      #ffffff,
-      #ffffff 20px,
-      #dff7ef 20px,
-      #dff7ef 40px
-    );
+  repeating-linear-gradient(
+    45deg,
+    #ffffff,
+    #ffffff 20px,
+    #dff7ef 20px,
+    #dff7ef 40px
+  );
 
   min-height: 100vh;
 }
 
-/* CONTAINER */
-.container {
+/* CONTAINER KHUSUS NEWS */
+.news-page .news-container {
   position: relative;
   padding: 80px 20px;
   display: flex;
@@ -37,7 +28,7 @@ body {
 }
 
 /* CARD */
-.news {
+.news-page .news {
   max-width: 600px;
   width: 100%;
   background: white;
@@ -49,33 +40,33 @@ body {
 }
 
 /* LOGO */
-.logo {
+.news-page .logo {
   width: 80px;
   margin-bottom: 20px;
 }
 
 /* TITLE */
-.title {
+.news-page .title {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 30px;
 }
 
 /* TEXT */
-.text {
+.news-page .text {
   color: #555;
   line-height: 1.8;
   font-size: 16px;
 }
 
 /* SIGN */
-.sign {
+.news-page .sign {
   margin-top: 40px;
   font-weight: 600;
 }
 
 /* LEAF CONTAINER */
-.leaf-container {
+.news-page .leaf-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -87,7 +78,7 @@ body {
 }
 
 /* LEAF */
-.leaf {
+.news-page .leaf {
   position: absolute;
   top: -40px;
   width: 14px;
