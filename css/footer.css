@@ -1,89 +1,102 @@
-/* =====================
-   LAYOUT UTAMA (ANTI NGAMBANG)
-===================== */
-html, body {
-  height: 100%;
-  margin: 0;
-}
+/* ===== NEWS.CSS ===== */
 
+/* FIX FOOTER NGAMBANG */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #ffffff,
+      #ffffff 20px,
+      #dff7ef 20px,
+      #dff7ef 40px
+    );
 }
 
-.content-main {
+.news-wrapper {
   flex: 1;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-/* =====================
-   FOOTER MINI MKT4X
-===================== */
-.footer {
-  background: #2f2f2f;
-  color: #ccc;
-  text-align: center;
-  padding: 15px 10px; /* diperkecil */
-  font-size: 13px;
-  border-top: 1px solid #444;
+/* CARD */
+.news-card {
+  max-width: 600px;
   width: 100%;
+  background: white;
+  padding: 50px 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  z-index: 2;
 }
 
-/* MENU */
-.footer-menu {
-  margin-bottom: 10px;
-  line-height: 1.6;
+/* LOGO */
+.news-logo {
+  width: 80px;
+  margin-bottom: 20px;
 }
 
-.footer-menu a {
-  color: #bbb;
-  text-decoration: none;
-  margin: 0 5px;
-  font-size: 12px;
-  transition: 0.3s;
+/* TITLE */
+.news-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
-.footer-menu a:hover {
-  color: #ffffff;
-}
-
-/* SOCIAL */
-.footer-social {
-  margin-bottom: 10px;
-}
-
-.footer-social a {
-  color: #bbb;
-  font-size: 16px; /* diperkecil */
-  margin: 0 8px;
-  transition: 0.3s;
-}
-
-.footer-social a:hover {
-  color: #ffffff;
-  transform: scale(1.15);
-}
-
-/* COPYRIGHT */
-.footer-copy {
-  font-size: 11px;
+/* DATE */
+.news-date {
+  font-size: 13px;
   color: #999;
+  margin-bottom: 24px;
 }
 
-/* =====================
-   RESPONSIVE (HP)
-===================== */
-@media (max-width: 600px) {
-  .footer {
-    padding: 12px 5px;
-  }
+/* TEXT */
+.news-text {
+  color: #555;
+  line-height: 1.8;
+  font-size: 15px;
+  text-align: left;
+}
 
-  .footer-menu a {
-    display: inline-block;
-    margin: 3px 4px;
-  }
+.news-text p {
+  margin-bottom: 14px;
+}
 
-  .footer-social a {
-    font-size: 15px;
-  }
+/* SIGN */
+.news-sign {
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* LEAF */
+.leaf-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.leaf {
+  position: absolute;
+  top: -40px;
+  width: 14px; height: 14px;
+  background: #4CAF50;
+  border-radius: 0 100% 0 100%;
+  opacity: 0.6;
+  transform: rotate(45deg);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0%   { transform: translateY(-40px) rotate(0deg); }
+  100% { transform: translateY(120vh) rotate(360deg); }
 }
