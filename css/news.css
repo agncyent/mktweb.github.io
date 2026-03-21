@@ -25,6 +25,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 padding:110px 20px 60px;
+flex:1;
 }
 
 /* =====================
@@ -53,7 +54,7 @@ margin:0 auto 20px;
    TITLE
    ===================== */
 .news-page .news-title{
-font-size:22px;
+font-size:22px !important;
 font-weight:700;
 color:#222;
 margin-bottom:5px;
@@ -63,7 +64,7 @@ margin-bottom:5px;
    DATE
    ===================== */
 .news-page .news-date{
-font-size:13px;
+font-size:13px !important;
 color:#888;
 margin-bottom:25px;
 }
@@ -72,13 +73,14 @@ margin-bottom:25px;
    TEXT
    ===================== */
 .news-page .news-text{
-font-size:15px;
-color:#444;
-line-height:1.9;
+font-size:15px !important;
+color:#444 !important;
+line-height:1.9 !important;
 }
 
 .news-page .news-text p{
 margin-bottom:18px;
+font-size:15px !important;
 }
 
 /* =====================
@@ -88,6 +90,7 @@ margin-bottom:18px;
 margin-top:40px;
 font-weight:700;
 color:#000;
+font-size:15px !important;
 }
 
 /* =====================
