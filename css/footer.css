@@ -12,7 +12,8 @@ body {
   min-height: 100vh;
 }
 
-.content-main {
+.content-main,
+.news-wrapper {
   flex: 1;
 }
 
@@ -23,7 +24,7 @@ body {
   background: #2f2f2f;
   color: #ccc;
   text-align: center;
-  padding: 15px 10px; /* diperkecil */
+  padding: 15px 10px;
   font-size: 13px;
   border-top: 1px solid #444;
   width: 100%;
@@ -54,7 +55,7 @@ body {
 
 .footer-social a {
   color: #bbb;
-  font-size: 16px; /* diperkecil */
+  font-size: 16px;
   margin: 0 8px;
   transition: 0.3s;
 }
