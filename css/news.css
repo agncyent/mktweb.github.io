@@ -23,8 +23,8 @@ repeating-linear-gradient(
 .news-page .news-wrapper{
 display:flex;
 justify-content:center;
-align-items:center;
-padding:110px 20px 60px;
+align-items:flex-start;
+padding:20px 20px 60px;
 flex:1;
 }
 
@@ -33,9 +33,9 @@ flex:1;
    ===================== */
 .news-page .news-card{
 width:100%;
-max-width:600px;
+max-width:700px;
 background:#fff;
-padding:60px 40px;
+padding:40px 30px;
 border-radius:28px;
 text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
@@ -45,7 +45,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.08);
    LOGO
    ===================== */
 .news-page .news-logo{
-width:90px;
+width:120px;
 display:block;
 margin:0 auto 20px;
 }
