@@ -231,8 +231,8 @@ onAuthStateChanged(auth, async (user) => {
   let userData = null;
 
   if (user) {
+    window._currentSettingsUser = user;
     try {
-      const snap = await getDoc(doc(db, "users", user.uid));
       if (snap.exists()) {
         userData    = snap.data();
         premiumData = userData.premium || false;
