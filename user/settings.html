@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengaturan - MKT4X Fanclub</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style2.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/settings.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+<div id="sidebar-placeholder"></div>
+
+<div class="settings-wrapper">
+
+  <div class="settings-header">
+    <a href="../fanclub.html" class="settings-back-btn">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <div class="settings-header-title" data-key="st_title">Pengaturan</div>
+  </div>
+
+  <!-- ACCOUNT SETTINGS -->
+  <div class="settings-group">
+    <div class="settings-group-title" data-key="st_account">Account Settings</div>
+
+    <div class="settings-item" id="item-email">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#e8f4ff;color:#4a90d9;">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div>
+          <div class="settings-item-label" data-key="st_email">Gmail</div>
+          <div class="settings-item-value" id="st-email-val">-</div>
+        </div>
+      </div>
+      <button class="settings-edit-btn" id="btn-edit-email" data-key="st_edit">Edit</button>
+    </div>
+
+    <div class="settings-item" id="item-phone">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#e8fff4;color:#3dba87;">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div>
+          <div class="settings-item-label" data-key="st_phone">No. Telepon</div>
+          <div class="settings-item-value" id="st-phone-val" data-key="st_not_set">Belum diisi</div>
+        </div>
+      </div>
+      <button class="settings-edit-btn" id="btn-edit-phone" data-key="st_edit">Edit</button>
+    </div>
+
+    <div class="settings-item" id="btn-logout" style="cursor:pointer;">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#fff8e8;color:#f0a500;">
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+        <div>
+          <div class="settings-item-label" data-key="st_logout">Log Out</div>
+          <div class="settings-item-sub" data-key="st_logout_sub">Keluar dari akun ini</div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-right settings-chevron"></i>
+    </div>
+
+    <div class="settings-item" id="btn-switch" style="cursor:pointer;">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#f0e8ff;color:#9b59b6;">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div>
+          <div class="settings-item-label" data-key="st_switch">Ganti Akun</div>
+          <div class="settings-item-sub" data-key="st_switch_sub">Login dengan akun Google lain</div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-right settings-chevron"></i>
+    </div>
+  </div>
+
+  <!-- SUPPORT -->
+  <div class="settings-group">
+    <div class="settings-group-title" data-key="st_support_title">Support</div>
+
+    <a class="settings-item" href="mailto:support.fortyex.web.id" style="text-decoration:none;">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#fff0f0;color:#e05555;">
+          <i class="fas fa-headset"></i>
+        </div>
+        <div>
+          <div class="settings-item-label" data-key="st_support">Hubungi Support</div>
+          <div class="settings-item-sub">support.fortyex.web.id</div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-right settings-chevron"></i>
+    </a>
+
+    <div class="settings-item" id="btn-about" style="cursor:pointer;">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#f0fdf8;color:#3dba87;">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <div>
+          <div class="settings-item-label" data-key="st_about">Tentang Website</div>
+          <div class="settings-item-sub" data-key="st_about_sub">Versi & informasi MKT4X</div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-right settings-chevron"></i>
+    </div>
+
+    <div class="settings-item" id="btn-privacy" style="cursor:pointer;">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#f0f4ff;color:#4a70d9;">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div>
+          <div class="settings-item-label" data-key="st_privacy">Kebijakan Privasi</div>
+          <div class="settings-item-sub" data-key="st_privacy_sub">Cara kami melindungi data kamu</div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-right settings-chevron"></i>
+    </div>
+  </div>
+
+  <!-- DANGER -->
+  <div class="settings-group settings-group-danger">
+    <div class="settings-group-title danger-title" data-key="st_danger">Danger Zone</div>
+    <div class="settings-item" id="btn-delete" style="cursor:pointer;">
+      <div class="settings-item-left">
+        <div class="settings-item-icon" style="background:#ffe8e8;color:#e03333;">
+          <i class="fas fa-trash-alt"></i>
+        </div>
+        <div>
+          <div class="settings-item-label danger-label" data-key="st_delete">Hapus Akun</div>
+          <div class="settings-item-sub" data-key="st_delete_sub">Hapus semua data fanclub kamu</div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-right settings-chevron" style="color:#e03333;"></i>
+    </div>
+  </div>
+
+  <div class="settings-version">MKT4X Virtual+ &nbsp;·&nbsp; v1.0.0</div>
+
+</div>
+
+<!-- MODAL EDIT -->
+<div id="edit-modal" class="settings-modal" style="display:none;">
+  <div class="settings-modal-box">
+    <div class="settings-modal-title" id="modal-title">Edit</div>
+    <input type="text" id="modal-input" class="settings-modal-input"/>
+    <div class="settings-modal-btns">
+      <button class="settings-modal-cancel" id="btn-modal-cancel" data-key="st_cancel">Batal</button>
+      <button class="settings-modal-save" id="btn-modal-save" data-key="st_save">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ABOUT -->
+<div id="about-modal" class="settings-modal" style="display:none;">
+  <div class="settings-modal-box">
+    <img src="https://i.imgur.com/TDUfxDZ.png" style="width:70px;display:block;margin:0 auto 12px;"/>
+    <div class="settings-modal-title" data-key="st_about">Tentang Website</div>
+    <p class="settings-about-text" data-key="st_about_text">MKT4X Virtual+ adalah website resmi fanclub MKT4X.</p>
+    <div class="settings-about-version">v1.0.0 · 2026</div>
+    <button class="settings-modal-save" id="btn-close-about" data-key="st_close">Tutup</button>
+  </div>
+</div>
+
+<!-- MODAL DELETE STEP 1 -->
+<div id="delete-modal-1" class="settings-modal" style="display:none;">
+  <div class="settings-modal-box">
+    <div class="delete-modal-icon">⚠️</div>
+    <div class="settings-modal-title" data-key="st_del1_title">Apakah Anda Akan Menghapus Akun Ini?</div>
+    <p class="settings-about-text" data-key="st_del1_sub">Aksi ini akan menghapus semua data fanclub kamu secara permanen.</p>
+    <div class="settings-modal-btns">
+      <button class="settings-modal-cancel" id="btn-del1-no" data-key="st_no">Tidak</button>
+      <button class="settings-modal-save delete-btn" id="btn-del1-yes" data-key="st_yes">Ya</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DELETE STEP 2 -->
+<div id="delete-modal-2" class="settings-modal" style="display:none;">
+  <div class="settings-modal-box">
+    <div class="delete-modal-icon">🚨</div>
+    <div class="settings-modal-title" data-key="st_del2_title">Semua Data Akan Hilang!</div>
+    <p class="settings-about-text" data-key="st_del2_sub">Foto, oshi, kota, dan semua data fanclub kamu akan terhapus permanen. Tetap hapus akun?</p>
+    <div class="settings-modal-btns">
+      <button class="settings-modal-cancel" id="btn-del2-no" data-key="st_no">Tidak</button>
+      <button class="settings-modal-save delete-btn" id="btn-del2-yes" data-key="st_yes">Ya</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DELETE STEP 3 -->
+<div id="delete-modal-3" class="settings-modal" style="display:none;">
+  <div class="settings-modal-box">
+    <div class="delete-modal-icon">🔐</div>
+    <div class="settings-modal-title" data-key="st_del3_title">Buktikan Ini Benar-Benar Anda!</div>
+    <p class="settings-about-text" data-key="st_del3_sub">Centang kotak di bawah untuk membuktikan bahwa ini benar-benar kamu.</p>
+    <label class="delete-confirm-check">
+      <input type="checkbox" id="delete-confirm-cb"/>
+      <span data-key="st_del3_check">Saya benar-benar ingin menghapus akun ini</span>
+    </label>
+    <div class="settings-modal-btns" style="margin-top:16px;">
+      <button class="settings-modal-cancel" id="btn-del3-cancel" data-key="st_cancel_del">Batalkan</button>
+      <button class="settings-modal-save delete-btn" id="btn-del3-confirm" data-key="st_delete_final">Hapus Akun</button>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="../js/user.js"></script>
+<script src="../js/footer.js"></script>
+<script type="module" src="../js/firebase.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="../js/settings.js"></script>
+
+</body>
+</html>
