@@ -8,6 +8,50 @@ import { doc, getDoc, setDoc, deleteDoc } from "https://www.gstatic.com/firebase
 let currentUser = null;
 let editingField = null;
 
+// =====================
+// BIND EVENTS
+// =====================
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Edit buttons
+  document.getElementById('btn-edit-email')?.addEventListener('click', () => editField('email'));
+  document.getElementById('btn-edit-phone')?.addEventListener('click', () => editField('phone'));
+
+  // Modal edit
+  document.getElementById('btn-modal-cancel')?.addEventListener('click', closeModal);
+  document.getElementById('btn-modal-save')?.addEventListener('click', saveField);
+
+  // Logout & switch
+  document.getElementById('btn-logout')?.addEventListener('click', doLogout);
+  document.getElementById('btn-switch')?.addEventListener('click', switchAccount);
+
+  // About & privacy
+  document.getElementById('btn-about')?.addEventListener('click', showAbout);
+  document.getElementById('btn-close-about')?.addEventListener('click', closeAbout);
+  document.getElementById('btn-privacy')?.addEventListener('click', showPrivacy);
+
+  // Delete
+  document.getElementById('btn-delete')?.addEventListener('click', () => {
+    document.getElementById('delete-modal-1').style.display = 'flex';
+  });
+  document.getElementById('btn-del1-no')?.addEventListener('click', closeDeleteModals);
+  document.getElementById('btn-del1-yes')?.addEventListener('click', () => {
+    document.getElementById('delete-modal-1').style.display = 'none';
+    document.getElementById('delete-modal-2').style.display = 'flex';
+  });
+  document.getElementById('btn-del2-no')?.addEventListener('click', closeDeleteModals);
+  document.getElementById('btn-del2-yes')?.addEventListener('click', () => {
+    document.getElementById('delete-modal-2').style.display = 'none';
+    document.getElementById('delete-confirm-cb').checked = false;
+    document.getElementById('delete-modal-3').style.display = 'flex';
+  });
+  document.getElementById('btn-del3-cancel')?.addEventListener('click', closeDeleteModals);
+  document.getElementById('btn-del3-confirm')?.addEventListener('click', deleteFinal);
+});
+
+// =====================
+// AUTH
+// =====================
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = '../login.html';
@@ -15,11 +59,9 @@ onAuthStateChanged(auth, async (user) => {
   }
   currentUser = user;
 
-  // Set email dari Google
   const emailEl = document.getElementById('st-email-val');
   if (emailEl) emailEl.innerText = user.email || '-';
 
-  // Ambil data dari Firestore
   try {
     const snap = await getDoc(doc(db, 'users', user.uid));
     if (snap.exists()) {
@@ -29,14 +71,15 @@ onAuthStateChanged(auth, async (user) => {
         phoneEl.innerText = data.phone;
         phoneEl.removeAttribute('data-key');
       }
-      // Kalau ada email custom
       if (data.email && emailEl) emailEl.innerText = data.email;
     }
   } catch(e) { console.error(e); }
 });
 
+// =====================
 // EDIT FIELD
-window.editField = function(field) {
+// =====================
+function editField(field) {
   editingField = field;
   const modal = document.getElementById('edit-modal');
   const title = document.getElementById('modal-title');
@@ -57,14 +100,14 @@ window.editField = function(field) {
 
   modal.style.display = 'flex';
   setTimeout(() => input.focus(), 100);
-};
+}
 
-window.closeModal = function() {
+function closeModal() {
   document.getElementById('edit-modal').style.display = 'none';
   editingField = null;
-};
+}
 
-window.saveField = async function() {
+async function saveField() {
   if (!currentUser || !editingField) return;
   const input = document.getElementById('modal-input');
   const value = input.value.trim();
@@ -84,71 +127,54 @@ window.saveField = async function() {
   } catch(e) {
     alert('Gagal menyimpan, coba lagi!');
   }
-};
+}
 
-// LOGOUT
-window.doLogout = function() {
+// =====================
+// LOGOUT & SWITCH
+// =====================
+function doLogout() {
   if (confirm('Yakin mau keluar?')) {
-    signOut(auth).then(() => {
-      window.location.href = '../index.html';
-    });
+    signOut(auth).then(() => window.location.href = '../index.html');
   }
-};
+}
 
-// SWITCH ACCOUNT
-window.switchAccount = function() {
+function switchAccount() {
   if (confirm('Keluar dan ganti akun Google?')) {
-    signOut(auth).then(() => {
-      window.location.href = '../login.html';
-    });
+    signOut(auth).then(() => window.location.href = '../login.html');
   }
-};
+}
 
-// ABOUT
-window.showAbout = function() {
+// =====================
+// ABOUT & PRIVACY
+// =====================
+function showAbout() {
   document.getElementById('about-modal').style.display = 'flex';
-};
-window.closeAbout = function() {
+}
+function closeAbout() {
   document.getElementById('about-modal').style.display = 'none';
-};
+}
+function showPrivacy() {
+  alert('Kebijakan Privasi MKT4X:\n\nData kamu disimpan secara aman di Firebase dan tidak dibagikan ke pihak ketiga.');
+}
 
-// PRIVACY
-window.showPrivacy = function() {
-  alert('Kebijakan Privasi MKT4X:\n\nData kamu disimpan secara aman di Firebase dan tidak dibagikan ke pihak ketiga. Data yang disimpan meliputi: nama, email, oshi, kota, dan tanggal lahir.');
-};
-
-// DELETE ACCOUNT - 3 STEP
-window.deleteAccount = function() {
-  document.getElementById('delete-modal-1').style.display = 'flex';
-};
-
-window.deleteStep2 = function() {
-  document.getElementById('delete-modal-1').style.display = 'none';
-  document.getElementById('delete-modal-2').style.display = 'flex';
-};
-
-window.deleteStep3 = function() {
-  document.getElementById('delete-modal-2').style.display = 'none';
-  document.getElementById('delete-confirm-cb').checked = false;
-  document.getElementById('delete-modal-3').style.display = 'flex';
-};
-
-window.closeDeleteModals = function() {
+// =====================
+// DELETE - CLOSE ALL
+// =====================
+function closeDeleteModals() {
   document.getElementById('delete-modal-1').style.display = 'none';
   document.getElementById('delete-modal-2').style.display = 'none';
   document.getElementById('delete-modal-3').style.display = 'none';
-};
+}
 
-window.deleteFinal = async function() {
+async function deleteFinal() {
   const cb = document.getElementById('delete-confirm-cb');
   if (!cb.checked) {
-    cb.parentElement.style.border = '1.5px solid #e03333';
-    cb.parentElement.style.animation = 'none';
-    setTimeout(() => cb.parentElement.style.border = '1.5px solid #ffcdd2', 1000);
+    cb.parentElement.style.borderColor = '#e03333';
+    setTimeout(() => cb.parentElement.style.borderColor = '#ffcdd2', 1000);
     return;
   }
 
-  const btn = document.getElementById('delete-final-btn');
+  const btn = document.getElementById('btn-del3-confirm');
   btn.disabled = true;
   btn.innerText = 'Menghapus...';
 
@@ -162,4 +188,4 @@ window.deleteFinal = async function() {
     btn.disabled = false;
     btn.innerText = 'Hapus Akun';
   }
-};
+}
