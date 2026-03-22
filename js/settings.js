@@ -11,28 +11,18 @@ let editingField = null;
 // =====================
 // BIND EVENTS
 // =====================
-document.addEventListener('DOMContentLoaded', function() {
-
-  // Support email
+function bindEvents() {
   const btnSupport = document.getElementById('btn-support');
   if (btnSupport) btnSupport.href = 'mailto:' + 'support@fortyex.web.id';
   document.getElementById('btn-edit-email')?.addEventListener('click', () => editField('email'));
   document.getElementById('btn-edit-phone')?.addEventListener('click', () => editField('phone'));
-
-  // Modal edit
   document.getElementById('btn-modal-cancel')?.addEventListener('click', closeModal);
   document.getElementById('btn-modal-save')?.addEventListener('click', saveField);
-
-  // Logout & switch
   document.getElementById('btn-logout')?.addEventListener('click', doLogout);
   document.getElementById('btn-switch')?.addEventListener('click', switchAccount);
-
-  // About & privacy
   document.getElementById('btn-about')?.addEventListener('click', showAbout);
   document.getElementById('btn-close-about')?.addEventListener('click', closeAbout);
   document.getElementById('btn-privacy')?.addEventListener('click', showPrivacy);
-
-  // Delete
   document.getElementById('btn-delete')?.addEventListener('click', () => {
     document.getElementById('delete-modal-1').style.display = 'flex';
   });
@@ -49,6 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   document.getElementById('btn-del3-cancel')?.addEventListener('click', closeDeleteModals);
   document.getElementById('btn-del3-confirm')?.addEventListener('click', deleteFinal);
+}
+
+document.addEventListener('DOMContentLoaded', () => setTimeout(bindEvents, 300));
 });
 
 // =====================
