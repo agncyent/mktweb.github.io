@@ -5,6 +5,8 @@ import { auth, db } from "./firebase.js";
 import {
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -15,24 +17,20 @@ import {
 const requireAuth = document.querySelector('meta[name="require-auth"]');
 let currentUserState = null;
 
-// =====================
-// LOGIN GOOGLE
-// =====================
-window.loginGoogle = async function () {
-  try {
-    const provider = new GoogleAuthProvider();
-    const result   = await signInWithPopup(auth, provider);
-    const user     = result.user;
+// Handle hasil redirect login (mobile)
+if (localStorage.getItem('pendingLogin')) {
+  getRedirectResult(auth).then(async (result) => {
+    if (!result || !result.user) return;
+    localStorage.removeItem('pendingLogin');
+    const user = result.user;
 
     await setDoc(doc(db, "users", user.uid), {
-      name:      user.displayName,
-      email:     user.email,
-      photo:     user.photoURL,
-      lastLogin: new Date().toISOString()
+      name: user.displayName, email: user.email,
+      photo: user.photoURL, lastLogin: new Date().toISOString()
     }, { merge: true });
 
-    const fcOshi     = localStorage.getItem('fc_oshi');
-    const fcCity     = localStorage.getItem('fc_city');
+    const fcOshi = localStorage.getItem('fc_oshi');
+    const fcCity = localStorage.getItem('fc_city');
     const fcUsername = localStorage.getItem('fc_username');
     if (fcOshi || fcCity) {
       await setDoc(doc(db, "users", user.uid), {
@@ -47,7 +45,50 @@ window.loginGoogle = async function () {
     const redirectTo = localStorage.getItem("redirectAfterLogin") || "fanclub.html";
     localStorage.removeItem("redirectAfterLogin");
     window.location.href = redirectTo;
+  }).catch(e => console.error(e));
+}
 
+// =====================
+// LOGIN GOOGLE
+// =====================
+window.loginGoogle = async function () {
+  try {
+    const provider = new GoogleAuthProvider();
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Mobile: pakai redirect
+      localStorage.setItem('pendingLogin', '1');
+      await signInWithRedirect(auth, provider);
+    } else {
+      // Desktop: pakai popup
+      const result = await signInWithPopup(auth, provider);
+      const user   = result.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        name:      user.displayName,
+        email:     user.email,
+        photo:     user.photoURL,
+        lastLogin: new Date().toISOString()
+      }, { merge: true });
+
+      const fcOshi     = localStorage.getItem('fc_oshi');
+      const fcCity     = localStorage.getItem('fc_city');
+      const fcUsername = localStorage.getItem('fc_username');
+      if (fcOshi || fcCity) {
+        await setDoc(doc(db, "users", user.uid), {
+          oshi: fcOshi || '', city: fcCity || '',
+          username: fcUsername || '', premium: true
+        }, { merge: true });
+        localStorage.removeItem('fc_oshi');
+        localStorage.removeItem('fc_city');
+        localStorage.removeItem('fc_username');
+      }
+
+      const redirectTo = localStorage.getItem("redirectAfterLogin") || "fanclub.html";
+      localStorage.removeItem("redirectAfterLogin");
+      window.location.href = redirectTo;
+    }
   } catch (error) {
     if (error.code !== "auth/popup-closed-by-user") {
       alert("Gagal Login: " + error.message);
@@ -127,7 +168,7 @@ async function updateSidebarUI(user, premiumData, userData) {
 
       // Coba ambil dari users dulu
       if (userData.oshi) {
-        if (oshiName) oshiName.innerText = userData.oshi;
+        if (oshiName) oshiName.innerText = userData.username || userData.oshi || '-';
         if (oshiVal)  oshiVal.innerText  = userData.oshi;
       }
       if (userData.city) {
