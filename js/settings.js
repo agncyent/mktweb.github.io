@@ -90,12 +90,11 @@ function saveField() {
   var field = window._editingField;
   var value = document.getElementById('modal-input').value.trim();
   if (!value || !field) return;
-  var user = window._currentSettingsUser;
-  if (!user) return;
 
-  import('./firebase.js').then(function(fb) {
-    var firestoreModule = 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
-    import(firestoreModule).then(function(fs) {
+  import('../js/firebase.js').then(function(fb) {
+    var user = fb.auth.currentUser;
+    if (!user) return;
+    import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js').then(function(fs) {
       var data = {};
       data[field === 'email' ? 'email' : 'phone'] = value;
       fs.setDoc(fs.doc(fb.db, 'users', user.uid), data, { merge: true }).then(function() {
@@ -114,7 +113,7 @@ function saveField() {
 function doLogout() {
   if (!confirm('Yakin mau keluar?')) return;
   import('https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js').then(function(fa) {
-    import('./firebase.js').then(function(fb) {
+    import('../js/firebase.js').then(function(fb) {
       fa.signOut(fb.auth).then(function() { window.location.href = '../index.html'; });
     });
   });
@@ -123,7 +122,7 @@ function doLogout() {
 function switchAccount() {
   if (!confirm('Keluar dan ganti akun Google?')) return;
   import('https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js').then(function(fa) {
-    import('./firebase.js').then(function(fb) {
+    import('../js/firebase.js').then(function(fb) {
       fa.signOut(fb.auth).then(function() { window.location.href = '../login.html'; });
     });
   });
@@ -149,15 +148,15 @@ function deleteFinal() {
   var btn = document.getElementById('btn-del3-confirm');
   btn.disabled = true;
   btn.innerText = 'Menghapus...';
-  var user = window._currentSettingsUser;
-  if (!user) return;
 
   Promise.all([
     import('https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js'),
     import('https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js'),
-    import('./firebase.js')
+    import('../js/firebase.js')
   ]).then(function(modules) {
     var fa = modules[0], fs = modules[1], fb = modules[2];
+    var user = fb.auth.currentUser;
+    if (!user) return;
     fs.deleteDoc(fs.doc(fb.db, 'users', user.uid)).then(function() {
       fa.signOut(fb.auth).then(function() {
         alert('Akun berhasil dihapus.');
