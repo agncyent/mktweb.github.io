@@ -13,7 +13,7 @@ body {
 }
 
 .content-main,
-.news-wrapper {
+.news-wrapper,
 .fc-dashboard {
   flex: 1;
 }
