@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Saya - MKT4X Fanclub</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style2.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+<div id="sidebar-placeholder"></div>
+
+<div class="profile-wrapper">
+
+  <!-- HEADER -->
+  <div class="profile-header">
+    <a href="../fanclub.html" class="profile-back-btn">
+      <i class="fas fa-arrow-left"></i> <span data-key="pf_back">Kembali</span>
+    </a>
+    <div class="profile-header-title" data-key="pf_title">Profil Saya</div>
+  </div>
+
+  <!-- AVATAR CARD -->
+  <div class="profile-avatar-card">
+    <img id="pf-photo" src="../assets/default-avatar.png" class="profile-avatar-img" alt="foto"/>
+    <div class="profile-avatar-info">
+      <div id="pf-name" class="profile-name">-</div>
+      <div id="pf-email" class="profile-email">-</div>
+      <div class="profile-id-badge">🆔 <span id="pf-id">-</span></div>
+    </div>
+  </div>
+
+  <!-- FORM EDIT -->
+  <div class="profile-form-card">
+    <div class="profile-form-title" data-key="pf_edit_title">✏️ Edit Profil</div>
+
+    <!-- NAMA -->
+    <div class="profile-field">
+      <label class="profile-label" data-key="pf_label_name">👤 Nama</label>
+      <input type="text" id="pf-name-input" class="profile-input" placeholder="Masukkan nama kamu"/>
+    </div>
+
+    <!-- OSHI -->
+    <div class="profile-field">
+      <label class="profile-label" data-key="pf_label_oshi">🎯 Oshi</label>
+      <div class="profile-oshi-grid" id="oshi-grid">
+        <label class="oshi-option">
+          <input type="radio" name="oshi" value="Kiara">
+          <div class="oshi-card">
+            <img src="https://i.imgur.com/KjU8YTn.png" alt="Kiara"/>
+            <span>Kiara</span>
+          </div>
+        </label>
+        <label class="oshi-option">
+          <input type="radio" name="oshi" value="Agnes">
+          <div class="oshi-card">
+            <img src="https://i.imgur.com/9iiTqah.png" alt="Agnes"/>
+            <span>Agnes</span>
+          </div>
+        </label>
+        <label class="oshi-option">
+          <input type="radio" name="oshi" value="Thea">
+          <div class="oshi-card">
+            <img src="https://i.imgur.com/hmsc4g6.png" alt="Thea"/>
+            <span>Thea</span>
+          </div>
+        </label>
+        <label class="oshi-option">
+          <input type="radio" name="oshi" value="Khen">
+          <div class="oshi-card">
+            <img src="https://i.imgur.com/EGuBLUf.png" alt="Khen"/>
+            <span>Khen</span>
+          </div>
+        </label>
+        <label class="oshi-option">
+          <input type="radio" name="oshi" value="Chalista">
+          <div class="oshi-card">
+            <img src="https://i.imgur.com/1m6d2ml.png" alt="Chalista"/>
+            <span>Chalista</span>
+          </div>
+        </label>
+        <label class="oshi-option">
+          <input type="radio" name="oshi" value="Melisha">
+          <div class="oshi-card">
+            <img src="https://i.imgur.com/LgfDdI7.png" alt="Melisha"/>
+            <span>Melisha</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- KOTA -->
+    <div class="profile-field">
+      <label class="profile-label" data-key="pf_label_city">📍 Kota</label>
+      <input type="text" id="pf-city" class="profile-input" placeholder="Masukkan kota kamu"/>
+    </div>
+
+    <!-- TANGGAL LAHIR -->
+    <div class="profile-field">
+      <label class="profile-label" data-key="pf_label_birth">🎂 Tanggal Lahir</label>
+      <input type="date" id="pf-birth" class="profile-input"/>
+    </div>
+
+    <!-- TOMBOL SIMPAN -->
+    <button class="profile-save-btn" id="pf-save-btn" onclick="saveProfile()">
+      <i class="fas fa-save"></i> <span data-key="pf_save">Simpan Perubahan</span>
+    </button>
+
+    <div id="pf-msg" class="profile-msg"></div>
+  </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="../js/user.js"></script>
+<script src="../js/footer.js"></script>
+<script type="module" src="../js/firebase.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script type="module" src="../js/profile.js"></script>
+
+</body>
+</html>
