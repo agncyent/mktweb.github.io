@@ -13,7 +13,9 @@ let editingField = null;
 // =====================
 document.addEventListener('DOMContentLoaded', function() {
 
-  // Edit buttons
+  // Support email
+  const btnSupport = document.getElementById('btn-support');
+  if (btnSupport) btnSupport.href = 'mailto:' + 'support@fortyex.web.id';
   document.getElementById('btn-edit-email')?.addEventListener('click', () => editField('email'));
   document.getElementById('btn-edit-phone')?.addEventListener('click', () => editField('phone'));
 
