@@ -212,3 +212,38 @@
   margin-bottom: 16px;
 }
 
+/* DELETE MODALS */
+.delete-modal-icon {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.delete-btn {
+  background: #e03333 !important;
+}
+.delete-btn:hover { background: #c02020 !important; }
+
+.delete-confirm-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fff5f5;
+  border: 1.5px solid #ffcdd2;
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.delete-confirm-check input[type="checkbox"] {
+  width: 18px; height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #e03333;
+  cursor: pointer;
+}
+.delete-confirm-check span {
+  font-size: 13px;
+  color: #c0392b;
+  font-weight: 600;
+  line-height: 1.5;
+}
