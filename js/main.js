@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 member_title:  "MEMBER",
                 btn_all_member:"Lihat Semua Member →",
                 hero_badge:    "MKT4X SINGLE KE-5",
-                hero_sub:      "Lagu tentang bintang dan mimpi",
+                hero_sub:      "lagu tentang buah buahan nusantara",
             },
             en: {
                 menu_home:    "Home",
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 member_title:  "Member",
                 btn_all_member:"See All Members →",
                 hero_badge:    "MKT4X 5ST SINGLE",
-                hero_sub:      "A song about stars and dreams",
+                hero_sub:      "songs about Indonesian fruits",
             },
             jp: {
                 menu_home:    "ホーム",
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 member_title:  "メンバー",
                 btn_all_member:"全メンバーを見る →",
                 hero_badge:    "MKT4X シングル第5弾",
-                hero_sub:      "星と夢についての歌",
+                hero_sub:      "インドネシアの果物についての歌",
             },
             my: {
                 menu_home:    "Utama",
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 member_title:  "Ahli",
                 btn_all_member:"Lihat Semua Ahli →",
                 hero_badge:    "SINGLE KELIMA MKT4X",
-                hero_sub:      "Lagu tentang bintang dan mimpi",
+                hero_sub:      "lagu tentang buah-buahan Indonesia",
             }
         };
 
