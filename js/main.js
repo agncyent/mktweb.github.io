@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 yt_label:      "YOUTUBE RESMI",
                 member_title:  "MEMBER",
                 btn_all_member:"Lihat Semua Member →",
-                hero_badge:    "MKT4X SINGLE KE-1",
+                hero_badge:    "MKT4X SINGLE KE-5",
                 hero_sub:      "Lagu tentang bintang dan mimpi",
             },
             en: {
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 yt_label:      "OFFICIAL YOUTUBE",
                 member_title:  "Member",
                 btn_all_member:"See All Members →",
-                hero_badge:    "MKT4X 1ST SINGLE",
+                hero_badge:    "MKT4X 5ST SINGLE",
                 hero_sub:      "A song about stars and dreams",
             },
             jp: {
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 yt_label:      "公式YouTube",
                 member_title:  "メンバー",
                 btn_all_member:"全メンバーを見る →",
-                hero_badge:    "MKT4X シングル第1弾",
+                hero_badge:    "MKT4X シングル第5弾",
                 hero_sub:      "星と夢についての歌",
             },
             my: {
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 yt_label:      "YOUTUBE RASMI",
                 member_title:  "Ahli",
                 btn_all_member:"Lihat Semua Ahli →",
-                hero_badge:    "SINGLE PERTAMA MKT4X",
+                hero_badge:    "SINGLE KELIMA MKT4X",
                 hero_sub:      "Lagu tentang bintang dan mimpi",
             }
         };
