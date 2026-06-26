@@ -15,7 +15,8 @@ body {
 .content-main,
 .news-wrapper,
 .fc-dashboard,
-#fanclub-content {
+#fanclub-content,
+.main-content {
   flex: 1;
 }
 
