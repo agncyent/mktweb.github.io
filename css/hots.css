@@ -1,0 +1,9 @@
+/* hots.css - override untuk halaman news, jadwal, dll */
+
+.main-content {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 0 70px !important;
+}
+
