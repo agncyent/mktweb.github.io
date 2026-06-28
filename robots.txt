@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mkt4x.agncy.web.id/sitemap.xml
